@@ -1,0 +1,174 @@
+{
+  "selectedTemplate": 2,
+  "headings": {
+    "education": "Education",
+    "projects": "",
+    "awards": "Achievements",
+    "work": "Experience"
+  },
+  "basics": {
+    "name": "Alicia Sykes",
+    "email": "hello@aliciasykes.com",
+    "website": "github.com/lissy93",
+    "location": {
+      "address": "London, UK"
+    }
+  },
+  "education": [
+    {
+      "location": "",
+      "area": "Computer Science",
+      "studyType": "BSc",
+      "startDate": "",
+      "endDate": "",
+      "gpa": "1st Class Honors"
+    }
+  ],
+  "work": [
+    {
+      "company": "AND Digital",
+      "position": "Principle Engineer",
+      "website": "",
+      "startDate": "August 2022",
+      "endDate": "Present",
+      "highlights": [
+        "Lead the development of a white-labled app for Frasers Group/Sports Direct, with 1M downloads and 4.8/5 rating (React Native)",
+        "Planned and coordinated many mini projects to upskill a team of 8-12 associates alongside my client work (Node, .NET, React)",
+        "Organised and hosted bi-weekly engineering guild and knowledge transfer sessions for 40 engineers",
+        "Worked on large scale migrations to newer and more maintainable tech stacks for Lloyds Bank and International SOS"
+      ]
+    },
+    {
+      "highlights": [
+        "Led the development of a high-performance OTC Electronic Trading platform which facilitated over $1b of trading volume",
+        "Spearheaded a major refactor of the existing codebase, enhancing performance by 50% and reducing technical debt, resulting in faster load times and a smoother user experience.",
+        "Collaborated closely with cross-functional teams, including backend engineers, UX/UI designers, and product managers, to ensure seamless integration of frontend components with backend services."
+      ],
+      "company": "Galaxy",
+      "position": "VP of Frontend Engineering",
+      "startDate": "June 2020",
+      "endDate": "May 2022"
+    },
+    {
+      "highlights": [
+        "Engineering lead on the Shell Recharge app (React Native)",
+        "Developed a high quality reusable component library, for a new challenger bank (React, TypeScript, Storybook)",
+        "Developed a dashboard to calculate and display vehicle idling and CO2 metrics for Machine Max (Raspberry Pi, Node, React)"
+      ],
+      "company": "Freelance",
+      "position": "Contract Software Engineer"
+    },
+    {
+      "highlights": [
+        "Took lead on the 3D/AR work for the B&Q bathroom planner (Angular, A-Frame)",
+        "Lead a team of apprentices on the Accenture Innovation Programme (Google Glass, React, D3.js)",
+        "Supported with the roll-out of Universal Credit (Java)"
+      ],
+      "company": "Accenture",
+      "position": "Developer",
+      "startDate": "May 2014",
+      "endDate": "January 2019"
+    },
+    {
+      "highlights": [
+        "Worked on the WorldWide Antimalarial Resistance Network project (Java)",
+        "Built an application to calculate the most effective mg dose per kg patient body weight, to prevent anti-malarial drug resistance",
+        "Learnt the importance of algorithm efficiency when dealing with millions of data points. Gained experience using Tomcat, Jenkins, SQL and XML, Maven, JUnit, Hibernate"
+      ],
+      "company": "Oxford University",
+      "position": "Intern",
+      "startDate": "June 2013",
+      "endDate": "September 2013"
+    }
+  ],
+  "skills": [
+    {
+      "level": "",
+      "keywords": [
+        "React",
+        "Svelte",
+        "TypeScript"
+      ],
+      "name": "Frontend"
+    },
+    {
+      "keywords": [
+        null
+      ]
+    },
+    {
+      "keywords": [
+        "Go",
+        "Rust",
+        "Node.js",
+        "Python",
+        "Java",
+        "PHP"
+      ],
+      "name": "Backend"
+    },
+    {
+      "keywords": [
+        "Kotlin",
+        "Swift",
+        "React Native",
+        "Flutter"
+      ],
+      "name": "Mobile"
+    },
+    {
+      "keywords": [
+        "Ansible",
+        "Kubernetes",
+        "Prometheus",
+        "GitHub Actions"
+      ],
+      "name": "DevOps"
+    },
+    {
+      "keywords": [
+        "Vercel",
+        "Netlify",
+        "GCP",
+        "Azure"
+      ],
+      "name": "Cloud"
+    },
+    {
+      "keywords": [
+        "PostgreSQL",
+        "SQLite",
+        "Redis",
+        "MySQL",
+        "MongoDB"
+      ],
+      "name": "Databases"
+    }
+  ],
+  "projects": [
+    {
+      "name": "",
+      "description": "",
+      "url": "",
+      "keywords": [
+        ""
+      ]
+    }
+  ],
+  "awards": [
+    {
+      "date": "",
+      "awarder": "Open Source Work",
+      "summary": "Among the top 100 developers on GitHub woldwide, with 50k stars, 100M Docker downloads, "
+    }
+  ],
+  "sections": [
+    "templates",
+    "profile",
+    "work",
+    "education",
+    "skills",
+    "projects",
+    "awards"
+  ]
+}
