@@ -1,0 +1,45 @@
+name: Generate PDF
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'tex/**'
+  pull_request:
+    paths:
+      - 'tex/**'
+
+env:
+  PDF_NAME: Alicia-Sykes-CV.pdf
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: 📥 Checkout repository
+      uses: actions/checkout@v2
+
+    - name: 🐍 Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.x'
+
+    - name: 📦 Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+
+    - name: 📝 Install LaTeX
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y texlive-full latexmk
+
+    - name: 📄 Generate PDF
+      run: make
+
+    - name: 📤 Upload PDF artifact
+      uses: actions/upload-artifact@v2
+      with:
+        name: resume-pdf
+        path: out/${{ env.PDF_NAME }}
