@@ -260,6 +260,32 @@
 \newcommand*{\achievementstyle}[1]{{\fontsize{8pt}{1em}\bodyfontlight\upshape\color{text} #1}}
 \newcommand*{\cvparagraphstyle}[1]{{\fontsize{8pt}{1em}\bodyfontlight\upshape\color{text} #1}}
 
+% For elements of personal statement
+\newcommand*{\personalstatementstyle}[1]{{\fontsize{9pt}{1em}\bodyfontlight\upshape\color{text} #1}}
+
+% Custom command for displaying URLs without the protocol
+\newcommand{\displayurl}[1]{\href{#1}{\nolinkurl{#1}}}
+\newcommand{\shortdisplayurl}[1]{\href{#1}{\urlstyle{same}\url{\detokenize{#1}}}}
+
+% Custom command for displaying short URLs without the protocol
+\ExplSyntaxOn
+\NewDocumentCommand{\shorturl}{m}
+ {
+  \tl_set:Nx \l_tmpa_tl { \tl_trim_spaces:n { #1 } }
+  \href{#1}
+   {
+    \str_if_eq:eeTF { \tl_item:Nn \l_tmpa_tl { 1 } } { https:// }
+     { \tl_set:Nx \l_tmpa_tl { \tl_range:nn { \l_tmpa_tl } { 8 } { -1 } } }
+     { \str_if_eq:eeTF { \tl_item:Nn \l_tmpa_tl { 1 } } { http:// }
+       { \tl_set:Nx \l_tmpa_tl { \tl_range:nn { \l_tmpa_tl } { 7 } { -1 } } }
+       { }
+     }
+    \url{ \l_tmpa_tl }
+   }
+ }
+\ExplSyntaxOff
+
+
 
 % Define an environment for cvitems(for cventry)
 \newenvironment{cvitems}{
@@ -624,12 +650,27 @@
   \begin{justify}
   \fontsize{9pt}{1em}\selectfont
   \begin{itemize}[leftmargin=0ex, label={}, nosep, noitemsep, before=\achievementstyle]
-    \setlength{\parskip}{4mm}
+    \setlength{\parskip}{2mm}
 }{
   \end{itemize}
   \end{justify}
-  \vspace{-2mm}
+  \vspace{2mm}
 }
+
+% Define an environment for personal statement
+\newenvironment{cvpersonalstatement}{
+  \vspace{2mm}
+  \bodyfontlight
+  \begin{justify}
+  \fontsize{9pt}{1em}\selectfont
+  \begin{itemize}[leftmargin=0ex, label={}, nosep, noitemsep, before=\cvparagraphstyle]
+    \setlength{\parskip}{2mm}
+}{
+  \end{itemize}
+  \end{justify}
+  \vspace{0mm}
+}
+
 
 
 % Define an environment for cvskill
@@ -648,6 +689,31 @@
 	\skilltypestyle{#1} & \skillsetstyle{#2}
   \\
 }
+
+% Define an environment for cvlinks
+\newenvironment{cvlinks}{
+  \vspace{2mm}
+  \bodyfontlight
+  \color{lighttext}
+  \begin{flushright}
+}{
+  \end{flushright}
+  \vspace{2mm}
+}
+
+% Define an environment for cvfooterlink
+\newenvironment{cvfooterlink}{
+  \vspace{2mm}
+  \bodyfontlight
+  \color{lighttext}
+  \begin{flushright}
+  \tiny
+}{
+  \end{flushright}
+  \vspace{2mm}
+}
+
+
 
 % Define an environment for cvitems(for cventry)
 % \newenvironment{cvitems}{
