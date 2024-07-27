@@ -1,17 +1,11 @@
 %!TEX TS-program = xelatex
 %!TEX encoding = UTF-8 Unicode
-% Awesome CV LaTeX Template
+% Alicia's CV LaTeX Template
 %
-% This template has been downloaded from:
+% This template is heaviliy inspired by:
 % https://github.com/posquit0/Awesome-CV
-%
-% Author:
-% Claud D. Park <posquit0.bj@gmail.com>
-% http://www.posquit0.com
-%
-% Template license:
-% CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
-%
+% By Claud D. Park <http://www.posquit0.com>
+% 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %     Configuration
@@ -80,6 +74,7 @@
 {%- endfor %}
 \end{cventries}
 {% if extra_links.work_history %}
+    \vspace{-5mm}
     \begin{flushright}
         \small\color{lightgray} \href{ {{ extra_links.work_history.link | latex_escape }} }{{ extra_links.work_history.text | latex_escape }}
     \end{flushright}
@@ -110,7 +105,7 @@
     { {{ edu.institution | latex_escape }} }
     {}
     {}
-    {GPA: {{ edu.score | latex_escape }}}
+    {Grade: {{ edu.score | latex_escape }}}
 {%- endfor %}
 \end{cventries}
 {% endif %}
@@ -132,6 +127,7 @@
     {}
 \end{cventries}
 {% if extra_links.projects %}
+    \vspace{-10mm}
     \begin{flushright}
         \small\color{lightgray} \href{ {{ extra_links.projects.link | latex_escape }} }{{ extra_links.projects.text | latex_escape }}
     \end{flushright}
@@ -153,8 +149,9 @@
 \end{cvhonors}
 {% endif %}
 % Add the footer link at the end of the document
-\begin{flushright}
-    \small\color{lightgray} \shorturl{https://github.com/lissy93/cv}{View CV source at github.com/lissy93/cv}
-\end{flushright}
+\vspace{10mm}
+\begin{flushleft}
+    \tiny\color{lightgray} \href{https://github.com/lissy93/cv}{ View CV source at github.com/lissy93/cv}
+\end{flushleft}
 \ 
 \end{document}

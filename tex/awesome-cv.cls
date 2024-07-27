@@ -108,7 +108,7 @@
 %-------------------------------------------------------------------------------
 %% Page Layout
 % Configure page margins with geometry
-\geometry{left=2.0cm, top=1.5cm, right=2.0cm, bottom=2.0cm, footskip=.5cm}
+\geometry{left=2.0cm, top=1cm, right=2.0cm, bottom=1cm, footskip=.5cm}
 
 %% Header & Footer
 % Set offset to each header and offset
@@ -215,6 +215,23 @@
   BoldItalicFont=*-BoldItalic
 ]{Roboto}
 
+% Needed to manage fonts
+\ifxetex
+  \RequirePackage[quiet]{fontspec}
+  % To support LaTeX quoting style
+  \defaultfontfeatures{Ligatures=TeX}
+  \setmainfont[
+    Path=\@fontdir,
+    UprightFont=*-Regular,
+    ItalicFont=*-Italic,
+    BoldFont=*-Bold,
+    BoldItalicFont=*-BoldItalic,
+  ]{Roboto}
+\else
+  \RequirePackage[T1]{fontenc}
+  % Replace by the encoding you are using
+  \RequirePackage[utf8]{inputenc}
+\fi
 
 %-------------------------------------------------------------------------------
 %                Configuration for styles
