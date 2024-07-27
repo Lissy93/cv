@@ -1,0 +1,155 @@
+%!TEX TS-program = xelatex
+%!TEX encoding = UTF-8 Unicode
+% Awesome CV LaTeX Template
+%
+% This template has been downloaded from:
+% https://github.com/posquit0/Awesome-CV
+%
+% Author:
+% Claud D. Park <posquit0.bj@gmail.com>
+% http://www.posquit0.com
+%
+% Template license:
+% CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
+%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%     Configuration
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Themes: Awesome-CV
+\documentclass[]{awesome-cv}
+\usepackage{textcomp}
+%%% Override a directory location for fonts(default: 'fonts/')
+\fontdir[fonts/]
+
+%%% Configure a directory location for sections
+\newcommand*{\sectiondir}{resume/}
+
+%%% Override color
+% Awesome Colors: awesome-emerald, awesome-skyblue, awesome-red, awesome-pink, awesome-orange
+%                 awesome-nephritis, awesome-concrete, awesome-darknight
+%% Color for highlight
+% Define your custom color if you don't like awesome colors
+\colorlet{awesome}{awesome-red}
+%\definecolor{awesome}{HTML}{CA63A8}
+%% Colors for text
+%\definecolor{darktext}{HTML}{414141}
+%\definecolor{text}{HTML}{414141}
+%\definecolor{graytext}{HTML}{414141}
+%\definecolor{lighttext}{HTML}{414141}
+
+%%% Override a separator for social informations in header(default: ' | ')
+%\headersocialsep[\quad\textbar\quad]
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%     Profile
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{center}
+    \headerfirstnamestyle{ Alicia } \headerlastnamestyle{ Sykes } \\
+    \vspace{2mm}
+    {\faEnvelope\ hello@aliciasykes.com} | {\faMapMarker\ London, UK} | {\faLink\ https://github.com/lissy93}
+\end{center}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%     Experience
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\cvsection{Experience}
+\begin{cventries}
+    \cventry
+    { Principle Engineer }
+    { AND Digital }
+    {}
+    { August 2022 – Present }
+    {\begin{cvitems}
+        \item { Lead the development of a white-labled app for Frasers Group/Sports Direct, with 1M downloads and 4.8/5 rating (React Native) }
+        \item { Planned and coordinated many mini projects to upskill a team of 8-12 associates alongside my client work (Node, .NET, React) }
+        \item { Organised and hosted bi-weekly engineering guild and knowledge transfer sessions for 40 engineers }
+        \item { Worked on large scale migrations to newer and more maintainable tech stacks for Lloyds Bank and International SOS }
+    \end{cvitems}}
+    \cventry
+    { VP of Frontend Engineering }
+    { Galaxy }
+    {}
+    { June 2020 – May 2022 }
+    {\begin{cvitems}
+        \item { Led the development of a high-performance OTC Electronic Trading platform which facilitated over \$1b of trading volume }
+        \item { Spearheaded a major refactor of the existing codebase, enhancing performance by 50\% and reducing technical debt, resulting in faster load times and a smoother user experience. }
+        \item { Collaborated closely with cross-functional teams, including backend engineers, UX/UI designers, and product managers, to ensure seamless integration of frontend components with backend services. }
+    \end{cvitems}}
+    \cventry
+    { Contract Software Engineer }
+    { Freelance }
+    {}
+    { January 2018 – June 2020 }
+    {\begin{cvitems}
+        \item { Engineering lead on the Shell Recharge app (React Native) }
+        \item { Developed a high quality reusable component library, for a new challenger bank (React, TypeScript, Storybook) }
+        \item { Developed a dashboard to calculate and display vehicle idling and CO2 metrics for Machine Max (Raspberry Pi, Node, React) }
+    \end{cvitems}}
+    \cventry
+    { Developer }
+    { Accenture }
+    {}
+    { May 2014 – January 2019 }
+    {\begin{cvitems}
+        \item { Took lead on the 3D/AR work for the B\&Q bathroom planner (Angular, A-Frame) }
+        \item { Lead a team of apprentices on the Accenture UKI Innovation Programme (Google Glass, React, D3.js) }
+        \item { Also supported with the roll-out of Universal Credit (Java), Boots NHS Perscriptions integration (Node.js), E.ON Next Smart Meter portal (React) and the Post Office Kiosk Terminal }
+    \end{cvitems}}
+\end{cventries}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%     Achievements
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\cvsection{Achievements}
+\begin{cvachievements}
+    \item { I am among the top 100 developers on GitHub worldwide, with 50k stars and 10M Docker downloads. I maintain over 100 open-source projects, attracting 1M+ annual unique users. }
+    \item { Outside of work, I actively engage in developer communities. I have 10k subscribers to my DEV.to blog, 10+ wins in global hackathons, and rank in the top 1\% of contributors on StackOverflow. As a frequent open-source contributor, I have written over 1M lines of code. }
+\end{cvachievements}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%     Education
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\cvsection{Education}
+\begin{cventries}
+    \cventry
+    { BSc in Computer Science }
+    {  }
+    {}
+    {}
+    {GPA: 1st Class Honors}
+\end{cventries}
+
+
+\vspace{-2mm}
+
+
+\cvsection{Skills}
+\begin{cventries}
+    \cventry
+    {}
+    {\def\arraystretch{1.15}{\begin{tabular}{ l l }
+        Frontend:  & {\skill{ React, Svelte, TypeScript }} \\
+        Backend:  & {\skill{ Go, Rust, Node.js, Python, Java, PHP }} \\
+        Mobile:  & {\skill{ Kotlin, Swift, React Native, Flutter }} \\
+        DevOps:  & {\skill{ Ansible, Kubernetes, Prometheus, GitHub Actions }} \\
+        Cloud:  & {\skill{ Vercel, Netlify, GCP, Azure }} \\
+        Databases:  & {\skill{ PostgreSQL, SQLite, Redis, MySQL, MongoDB }} \\
+    \end{tabular}}}
+    {}
+    {}
+    {}
+\end{cventries}
+
+
+\vspace{-7mm}
+
+
+\ 
+\end{document}
