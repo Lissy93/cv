@@ -42,10 +42,13 @@ def compile_latex(input_tex: str, output_pdf: str, timeout: int = 60) -> None:
         else:
             logger.error("Compilation failed with errors.")
             print(f"{Fore.RED}❌ Error: Compilation failed.")
+            print(result.stdout)
             print(result.stderr)
     except subprocess.CalledProcessError as e:
         logger.error(f"Compilation failed: {e}")
         print(f"{Fore.RED}❌ Error: Compilation failed: {e}")
+        # print(e.stdout)
+        # print(e.stderr)
     except subprocess.TimeoutExpired as e:
         logger.error("Compilation process timed out.")
         print(f"{Fore.RED}❌ Error: Compilation process timed out.")
