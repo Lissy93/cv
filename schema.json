@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-" $id": "http://example.com/example.json",
+  "$id": "http://example.com/example.json",
   "additionalProperties": true,
   "definitions": {
     "iso8601": {
@@ -471,6 +471,28 @@
             "description": " e.g. 'volunteering', 'presentation', 'talk', 'application', 'conference'"
           }
         }
+      }
+    },
+    "achievements": {
+      "type": "array",
+      "description": "List your achievements as paragraphs",
+      "items": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string",
+            "description": "Title of the achievement"
+          },
+          "date": {
+            "$ref": "#/definitions/iso8601",
+            "description": "Date of the achievement"
+          },
+          "description": {
+            "type": "string",
+            "description": "Detailed description of the achievement"
+          }
+        },
+        "required": ["title", "description"]
       }
     },
     "meta": {

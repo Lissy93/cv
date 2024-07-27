@@ -1,35 +1,40 @@
 {
-  "selectedTemplate": 2,
-  "headings": {
-    "education": "Education",
-    "projects": "",
-    "awards": "Achievements",
-    "work": "Experience"
-  },
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "http://example.com/example.json",
   "basics": {
     "name": "Alicia Sykes",
     "email": "hello@aliciasykes.com",
-    "website": "github.com/lissy93",
+    "url": "https://github.com/lissy93",
     "location": {
       "address": "London, UK"
     }
   },
+  "personal-statement": "Accomplished Software Engineer with a proven track record of leading high-impact projects. Expert in optimizing performance, enhancing quality, and delivering user-centric solutions for top-tier organizations. Dedicated mentor, passionate open-source advocate, and active contributor to the developer community.",
+  "extra-links": {
+    "work-history": {
+      "text": "See all previous roles at linkedin.com/in/aliciasykes",
+      "link": "https:://linkedin.com/in/aliciasykes"
+    },
+    "projects": {
+      "text": "See example projects built with each technology at apps.aliciasykes.com",
+      "link": "https:://apps.aliciasykes.com"
+    }
+  },
   "education": [
     {
-      "location": "",
+      "institution": "",
       "area": "Computer Science",
       "studyType": "BSc",
       "startDate": "",
       "endDate": "",
-      "gpa": "1st Class Honors"
+      "score": "1st Class Honors"
     }
   ],
   "work": [
     {
-      "company": "AND Digital",
+      "name": "AND Digital",
       "position": "Principle Engineer",
-      "website": "",
-      "startDate": "August 2022",
+      "startDate": "2022-08",
       "endDate": "Present",
       "highlights": [
         "Lead the development of a white-labled app for Frasers Group/Sports Direct, with 1M downloads and 4.8/5 rating (React Native)",
@@ -39,64 +44,50 @@
       ]
     },
     {
+      "name": "Galaxy",
+      "position": "VP of Frontend Engineering",
+      "startDate": "2020-06",
+      "endDate": "2022-05",
       "highlights": [
         "Led the development of a high-performance OTC Electronic Trading platform which facilitated over $1b of trading volume",
         "Spearheaded a major refactor of the existing codebase, enhancing performance by 50% and reducing technical debt, resulting in faster load times and a smoother user experience.",
         "Collaborated closely with cross-functional teams, including backend engineers, UX/UI designers, and product managers, to ensure seamless integration of frontend components with backend services."
-      ],
-      "company": "Galaxy",
-      "position": "VP of Frontend Engineering",
-      "startDate": "June 2020",
-      "endDate": "May 2022"
+      ]
     },
     {
+      "name": "Freelance",
+      "position": "Contract Software Engineer",
+      "startDate": "2018-01",
+      "endDate": "2020-06",
       "highlights": [
         "Engineering lead on the Shell Recharge app (React Native)",
         "Developed a high quality reusable component library, for a new challenger bank (React, TypeScript, Storybook)",
         "Developed a dashboard to calculate and display vehicle idling and CO2 metrics for Machine Max (Raspberry Pi, Node, React)"
-      ],
-      "company": "Freelance",
-      "position": "Contract Software Engineer"
+      ]
     },
     {
+      "name": "Accenture",
+      "position": "Developer",
+      "startDate": "2014-05",
+      "endDate": "2019-01",
       "highlights": [
         "Took lead on the 3D/AR work for the B&Q bathroom planner (Angular, A-Frame)",
-        "Lead a team of apprentices on the Accenture Innovation Programme (Google Glass, React, D3.js)",
-        "Supported with the roll-out of Universal Credit (Java)"
-      ],
-      "company": "Accenture",
-      "position": "Developer",
-      "startDate": "May 2014",
-      "endDate": "January 2019"
-    },
-    {
-      "highlights": [
-        "Worked on the WorldWide Antimalarial Resistance Network project (Java)",
-        "Built an application to calculate the most effective mg dose per kg patient body weight, to prevent anti-malarial drug resistance",
-        "Learnt the importance of algorithm efficiency when dealing with millions of data points. Gained experience using Tomcat, Jenkins, SQL and XML, Maven, JUnit, Hibernate"
-      ],
-      "company": "Oxford University",
-      "position": "Intern",
-      "startDate": "June 2013",
-      "endDate": "September 2013"
+        "Lead a team of apprentices on the Accenture UKI Innovation Programme (Google Glass, React, D3.js)",
+        "Also supported with the roll-out of Universal Credit (Java), Boots NHS Perscriptions integration (Node.js), E.ON Next Smart Meter portal (React) and the Post Office Kiosk Terminal"
+      ]
     }
   ],
   "skills": [
     {
-      "level": "",
+      "name": "Frontend",
       "keywords": [
         "React",
         "Svelte",
         "TypeScript"
-      ],
-      "name": "Frontend"
-    },
-    {
-      "keywords": [
-        null
       ]
     },
     {
+      "name": "Backend",
       "keywords": [
         "Go",
         "Rust",
@@ -104,71 +95,49 @@
         "Python",
         "Java",
         "PHP"
-      ],
-      "name": "Backend"
+      ]
     },
     {
+      "name": "Mobile",
       "keywords": [
         "Kotlin",
         "Swift",
         "React Native",
         "Flutter"
-      ],
-      "name": "Mobile"
+      ]
     },
     {
+      "name": "DevOps",
       "keywords": [
         "Ansible",
         "Kubernetes",
         "Prometheus",
         "GitHub Actions"
-      ],
-      "name": "DevOps"
+      ]
     },
     {
+      "name": "Cloud",
       "keywords": [
         "Vercel",
         "Netlify",
         "GCP",
         "Azure"
-      ],
-      "name": "Cloud"
+      ]
     },
     {
+      "name": "Databases",
       "keywords": [
         "PostgreSQL",
         "SQLite",
         "Redis",
         "MySQL",
         "MongoDB"
-      ],
-      "name": "Databases"
-    }
-  ],
-  "projects": [
-    {
-      "name": "",
-      "description": "",
-      "url": "",
-      "keywords": [
-        ""
       ]
     }
   ],
-  "awards": [
-    {
-      "date": "",
-      "awarder": "Open Source Work",
-      "summary": "Among the top 100 developers on GitHub woldwide, with 50k stars, 100M Docker downloads, "
-    }
-  ],
-  "sections": [
-    "templates",
-    "profile",
-    "work",
-    "education",
-    "skills",
-    "projects",
-    "awards"
+  "projects": [],
+  "achivments": [
+    "I am among the top 100 developers on GitHub worldwide, with 50k stars and 10M Docker downloads. I maintain over 100 open-source projects, attracting 1M+ annual unique users.",
+    "Outside of work, I actively engage in developer communities. I have 10k subscribers to my DEV.to blog, 10+ wins in global hackathons, and rank in the top 1% of contributors on StackOverflow. As a frequent open-source contributor, I have written over 1M lines of code."  
   ]
 }
