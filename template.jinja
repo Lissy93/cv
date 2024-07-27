@@ -1,0 +1,137 @@
+%!TEX TS-program = xelatex
+%!TEX encoding = UTF-8 Unicode
+% Awesome CV LaTeX Template
+%
+% This template has been downloaded from:
+% https://github.com/posquit0/Awesome-CV
+%
+% Author:
+% Claud D. Park <posquit0.bj@gmail.com>
+% http://www.posquit0.com
+%
+% Template license:
+% CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
+%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%     Configuration
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Themes: Awesome-CV
+\documentclass[]{awesome-cv}
+\usepackage{textcomp}
+%%% Override a directory location for fonts(default: 'fonts/')
+\fontdir[fonts/]
+
+%%% Configure a directory location for sections
+\newcommand*{\sectiondir}{resume/}
+
+%%% Override color
+% Awesome Colors: awesome-emerald, awesome-skyblue, awesome-red, awesome-pink, awesome-orange
+%                 awesome-nephritis, awesome-concrete, awesome-darknight
+%% Color for highlight
+% Define your custom color if you don't like awesome colors
+\colorlet{awesome}{awesome-red}
+%\definecolor{awesome}{HTML}{CA63A8}
+%% Colors for text
+%\definecolor{darktext}{HTML}{414141}
+%\definecolor{text}{HTML}{414141}
+%\definecolor{graytext}{HTML}{414141}
+%\definecolor{lighttext}{HTML}{414141}
+
+%%% Override a separator for social informations in header(default: ' | ')
+%\headersocialsep[\quad\textbar\quad]
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%     Profile
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{center}
+    {% raw %}\headerfirstnamestyle{% endraw %}{ {{ basics.name.split(' ')[0] | latex_escape }} } {% raw %}\headerlastnamestyle{% endraw %}{ {{ basics.name.split(' ')[1] | latex_escape }} } \\
+    \vspace{2mm}
+    {\faEnvelope\ {{ basics.email | latex_escape }}} | {\faMapMarker\ {{ basics.location.address | latex_escape }}} | {\faLink\ {{ basics.url | latex_escape }}}
+\end{center}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%     Experience
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+{% if work %}
+\cvsection{Experience}
+\begin{cventries}
+{%- for job in work %}
+    \cventry
+    { {{ job.position | latex_escape }} }
+    { {{ job.name | latex_escape }} }
+    {}
+    { {{ job.startDate | latex_escape | format_date }} – {{ job.endDate | latex_escape | format_date if job.endDate else 'Present' | latex_escape }} }
+    {\begin{cvitems}
+        {%- for highlight in job.highlights %}
+        \item { {{ highlight | latex_escape }} }
+        {%- endfor %}
+    \end{cvitems}}
+{%- endfor %}
+\end{cventries}
+{% endif %}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%     Achievements
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+{% if achivments %}
+\cvsection{Achievements}
+\begin{cvachievements}
+{%- for achievement in achivments %}
+    \item { {{ achievement | latex_escape }} }
+{%- endfor %}
+\end{cvachievements}
+{% endif %}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%     Education
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+{% if education %}
+\cvsection{Education}
+\begin{cventries}
+{%- for edu in education %}
+    \cventry
+    { {{ edu.studyType | latex_escape }} in {{ edu.area | latex_escape }} }
+    { {{ edu.institution | latex_escape }} }
+    {}
+    {}
+    {GPA: {{ edu.score | latex_escape }}}
+{%- endfor %}
+\end{cventries}
+{% endif %}
+
+\vspace{-2mm}
+
+{% if skills %}
+\cvsection{Skills}
+\begin{cventries}
+    \cventry
+    {}
+    {\def\arraystretch{1.15}{\begin{tabular}{ l l }
+    {%- for skill in skills %}
+        {{ skill.name | latex_escape }}:  & {\skill{ {{ skill.keywords | join(', ') | latex_escape }} }} \\
+    {%- endfor %}
+    \end{tabular}}}
+    {}
+    {}
+    {}
+\end{cventries}
+{% endif %}
+
+\vspace{-7mm}
+
+{% if awards %}
+\cvsection{Awards}
+\begin{cvhonors}
+{%- for award in awards %}
+    \cvhonor
+    {}
+    { {{ award.summary | latex_escape }} }
+    { {{ award.title | latex_escape }} }
+    {}
+{%- endfor %}
+\end{cvhonors}
+{% endif %}
+\ 
+\end{document}
