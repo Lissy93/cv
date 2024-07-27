@@ -28,6 +28,10 @@ def latex_escape(text):
         '~': r'\textasciitilde{}',
         '^': r'\textasciicircum{}',
         '\\': r'\textbackslash{}',
+        # ':': r'\textcolon{}',
+        '<': r'\textless{}',
+        '>': r'\textgreater{}',
+        '|': r'\textbar{}',
         '\'': r'\textquotesingle{}',
     }
     return ''.join(latex_special_chars.get(char, char) for char in text)
@@ -54,11 +58,13 @@ def render_template(template_path, resume_data):
     template = env.get_template(os.path.basename(template_path))
     return template.render(
         basics=resume_data.get('basics', {}),
+        personal_statement=resume_data.get('personal-statement', ""),
         work=resume_data.get('work', []),
         education=resume_data.get('education', []),
         skills=resume_data.get('skills', []),
         awards=resume_data.get('awards', []),
-        achivments=resume_data.get('achivments', [])
+        achivments=resume_data.get('achivments', []),
+        extra_links=resume_data.get('extra-links', {})
     )
 
 def main():
