@@ -48,8 +48,17 @@
 \begin{center}
     {% raw %}\headerfirstnamestyle{% endraw %}{ {{ basics.name.split(' ')[0] | latex_escape }} } {% raw %}\headerlastnamestyle{% endraw %}{ {{ basics.name.split(' ')[1] | latex_escape }} } \\
     \vspace{2mm}
-    {\faEnvelope\ {{ basics.email | latex_escape }}} | {\faMapMarker\ {{ basics.location.address | latex_escape }}} | {\faLink\ {{ basics.url | latex_escape }}}
+    {\faEnvelope\ {{ basics.email | latex_escape }}} | {\faMapMarker\ {{ basics.location.address | latex_escape }}} | {\faLink\ \href{ {{ basics.url | latex_escape }} }{ {{ basics.url | latex_escape }} }}
 \end{center}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%     Personal Statement
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+{% if personal_statement %}
+\begin{cvpersonalstatement}
+  \item { {{ personal_statement | latex_escape }} }
+\end{cvpersonalstatement}
+{% endif %}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %     Experience
@@ -70,6 +79,11 @@
     \end{cvitems}}
 {%- endfor %}
 \end{cventries}
+{% if extra_links.work_history %}
+    \begin{flushright}
+        \small\color{lightgray} \href{ {{ extra_links.work_history.link | latex_escape }} }{{ extra_links.work_history.text | latex_escape }}
+    \end{flushright}
+{% endif %}
 {% endif %}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -117,6 +131,11 @@
     {}
     {}
 \end{cventries}
+{% if extra_links.projects %}
+    \begin{flushright}
+        \small\color{lightgray} \href{ {{ extra_links.projects.link | latex_escape }} }{{ extra_links.projects.text | latex_escape }}
+    \end{flushright}
+{% endif %}
 {% endif %}
 
 \vspace{-7mm}
@@ -133,5 +152,9 @@
 {%- endfor %}
 \end{cvhonors}
 {% endif %}
+% Add the footer link at the end of the document
+\begin{flushright}
+    \small\color{lightgray} \shorturl{https://github.com/lissy93/cv}{View CV source at github.com/lissy93/cv}
+\end{flushright}
 \ 
 \end{document}
