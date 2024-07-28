@@ -5,9 +5,9 @@
   "definitions": {
     "iso8601": {
       "type": "string",
-      "description": "Similar to the standard date type, but each section after the year is optional. e.g. 2014-06-29 or 2023-04",
-      "pattern": "^([1-2][0-9]{3}-[0-1][0-9]-[0-3][0-9]|[1-2][0-9]{3}-[0-1][0-9]|[1-2][0-9]{3})$"
-    }
+      "description": "Similar to the standard date type, but each section after the year is optional. e.g. 2014-06-29 or 2023-04 or Present",
+      "pattern": "^(Present|([1-2][0-9]{3}(-[0-1][0-9])?(-[0-3][0-9])?)|)$"
+    }    
   },
   "properties": {
     "$schema": {
@@ -95,6 +95,41 @@
               }
             }
           }
+        }
+      }
+    },
+    "personal-statement": {
+      "type": "string",
+      "description": "A brief personal statement or summary"
+    },
+    "extra-links": {
+      "type": "object",
+      "properties": {
+        "work_history": {
+          "type": "object",
+          "properties": {
+            "text": {
+              "type": "string"
+            },
+            "link": {
+              "type": "string",
+              "format": "uri"
+            }
+          },
+          "required": ["text", "link"]
+        },
+        "projects": {
+          "type": "object",
+          "properties": {
+            "text": {
+              "type": "string"
+            },
+            "link": {
+              "type": "string",
+              "format": "uri"
+            }
+          },
+          "required": ["text", "link"]
         }
       }
     },
@@ -473,26 +508,11 @@
         }
       }
     },
-    "achievements": {
+    "achivments": {
       "type": "array",
       "description": "List your achievements as paragraphs",
       "items": {
-        "type": "object",
-        "properties": {
-          "title": {
-            "type": "string",
-            "description": "Title of the achievement"
-          },
-          "date": {
-            "$ref": "#/definitions/iso8601",
-            "description": "Date of the achievement"
-          },
-          "description": {
-            "type": "string",
-            "description": "Detailed description of the achievement"
-          }
-        },
-        "required": ["title", "description"]
+        "type": "string"
       }
     },
     "meta": {
