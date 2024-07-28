@@ -1,0 +1,62 @@
+# Ignore all generated files except the content of ./out
+
+# Compiled Python files
+*.pyc
+__pycache__/
+
+# LaTeX auxiliary files
+*.aux
+*.log
+*.out
+*.toc
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+
+# Ignore all files in the tex directory except for the necessary files
+tex/*.aux
+tex/*.log
+tex/*.out
+tex/*.toc
+tex/*.fls
+tex/*.fdb_latexmk
+tex/*.synctex.gz
+
+# Ignore node_modules directory if using Node.js
+node_modules/
+
+# Ignore environment variables
+.env
+
+# Ignore compiled output
+out/*
+
+# Do not ignore specific files in out directory
+!out/Alicia-Sykes-CV.pdf
+
+# Other ignored files and directories
+resume.aux
+resume.log
+resume.out
+
+# Ignore all hidden system files
+.DS_Store
+Thumbs.db
+
+# Backup files
+*.bak
+*.swp
+
+# Temporary files
+*.tmp
+*.temp
+
+# Ignore all log files
+*.log
+
+# Ignore any other generated files
+*.bak
+*.tmp
+*.backup
+*.old
+*.swp
