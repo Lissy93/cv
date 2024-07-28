@@ -2,6 +2,7 @@ import argparse
 import json
 import logging
 import os
+import yaml
 from datetime import datetime
 from jinja2 import Environment, FileSystemLoader, select_autoescape
 from colorama import init, Fore, Style
@@ -9,23 +10,25 @@ from colorama import init, Fore, Style
 # Initialize colorama
 init(autoreset=True)
 
+print(f"{Fore.CYAN}➡️ Starting: Generating LaTex files from Jinja templates and YAML data")
+
 # Configure logging
 logging.basicConfig(level=logging.INFO, format='%(levelname)s: %(message)s')
 logger = logging.getLogger(__name__)
 
-def load_resume(json_path: str) -> dict:
+def load_resume(yaml_path: str) -> dict:
     """
-    Load the resume data from a JSON file.
+    Load the resume data from a YAML file.
     Args:
-        json_path (str): The path to the JSON file containing resume data.
+        yaml_path (str): The path to the YAML file containing resume data.
     Returns:
         dict: The loaded resume data.
     """
     try:
-        with open(json_path, 'r') as file:
-            return json.load(file)
+        with open(yaml_path, 'r') as file:
+            return yaml.safe_load(file)
     except Exception as e:
-        logger.error(f"Failed to load JSON file {json_path}: {e}")
+        logger.error(f"Failed to load YAML file {yaml_path}: {e}")
         raise
 
 def latex_escape(text: str) -> str:
@@ -98,8 +101,8 @@ def render_template(template_path: str, resume_data: dict) -> str:
     )
 
 def main():
-    parser = argparse.ArgumentParser(description="Generate a LaTeX resume from a JSON file and a Jinja2 template.")
-    parser.add_argument('--resume', required=True, help="Path to the JSON resume file")
+    parser = argparse.ArgumentParser(description="Generate a LaTeX resume from a YAML file and a Jinja2 template.")
+    parser.add_argument('--resume', required=True, help="Path to the YAML resume file")
     parser.add_argument('--template', required=True, help="Path to the Jinja2 template file")
     parser.add_argument('--output', required=True, help="Path to the output LaTeX file")
     
@@ -116,11 +119,12 @@ def main():
 
     try:
         resume_data = load_resume(args.resume)
-    except json.JSONDecodeError as e:
-        logger.error(f"Error decoding JSON from {args.resume}: {e}")
-        print(f"{Fore.RED}❌ Error decoding JSON from {args.resume}: {e}")
+    except yaml.YAMLError as e:
+        logger.error(f"Error decoding YAML from {args.resume}: {e}")
+        print(f"{Fore.RED}❌ Error decoding YAML from {args.resume}: {e}")
         return
     except Exception as e:
+        logger.error(f"Error loading resume file {args.resume}: {e}")
         print(f"{Fore.RED}❌ Error: {e}")
         return
 

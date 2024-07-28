@@ -7,6 +7,8 @@ from colorama import init, Fore
 # Initialize colorama
 init(autoreset=True)
 
+print(f"{Fore.CYAN}➡️ Starting: Compiling LaTex files into a PDF")
+
 # Configure logging
 logging.basicConfig(level=logging.INFO, format='%(levelname)s: %(message)s')
 logger = logging.getLogger(__name__)

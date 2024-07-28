@@ -1,3 +1,4 @@
 jsonschema
 jinja2
 pylatex
+colorama
