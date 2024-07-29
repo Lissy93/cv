@@ -6,7 +6,7 @@ on:
     paths:
       - 'tex/**'
     tags:
-      - '*'
+      - '**'
   pull_request:
     paths:
       - 'tex/**'
