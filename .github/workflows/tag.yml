@@ -17,9 +17,12 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       new_tag: ${{ steps.create_new_tag.outputs.new_tag }}
+      new_tag_file: ${{ steps.upload_tag.outputs.tag }}
     steps:
       - name: 🛎️ Checkout Repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: 🧪 Get Current Tag
         id: get_current_tag
@@ -37,7 +40,7 @@ jobs:
             MAJOR=$(echo $CURRENT_TAG | cut -d. -f1)
             MINOR=$(echo $CURRENT_TAG | cut -d. -f2)
             PATCH=$(echo $CURRENT_TAG | cut -d. -f3)
-            NEW_TAG="$MAJOR.$((MINOR+1)).0"
+            NEW_TAG="$MAJOR.$MINOR.$((PATCH+1))"
           else
             NEW_TAG=$INPUT_TAG
           fi
@@ -57,6 +60,7 @@ jobs:
         run: |
           git config user.name "Liss-Bot"
           git config user.email "liss-bot@d0h.co"
+          git config --global init.defaultBranch main
 
       - name: 📦 Create New Tag
         id: create_new_tag
@@ -65,6 +69,15 @@ jobs:
           DESCRIPTION="${{ github.event.inputs.description }}"
           git tag -a "$NEW_TAG" -m "$DESCRIPTION"
           echo "new_tag=$NEW_TAG" >> $GITHUB_OUTPUT
+
+      - name: Create Tag File
+        run: echo $NEW_TAG > new_tag.txt
+
+      - name: Upload Tag Artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: new_tag_file
+          path: new_tag.txt
 
       - name: 🚀 Push New Tag
         run: |
