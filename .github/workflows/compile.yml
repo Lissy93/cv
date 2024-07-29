@@ -65,8 +65,9 @@ jobs:
       if: github.event_name == 'workflow_run'
       uses: actions/download-artifact@v2
       with:
-        name: new_tag_file
+        name: new_tag
         path: .
+      continue-on-error: true
 
     - name: 🏷️ Determine Tag Name
       id: determine_tag
@@ -81,8 +82,8 @@ jobs:
           fi
         else
           TAG_NAME="${{ github.ref }}"
-          echo "TAG_NAME=$TAG_NAME" >> $GITHUB_ENV
         fi
+        echo "TAG_NAME=$TAG_NAME" >> $GITHUB_ENV
 
     - name: 📤 Download PDF artifact
       uses: actions/download-artifact@v2

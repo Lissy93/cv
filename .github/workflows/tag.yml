@@ -17,7 +17,6 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       new_tag: ${{ steps.create_new_tag.outputs.new_tag }}
-      new_tag_file: ${{ steps.upload_tag.outputs.tag }}
     steps:
       - name: 🛎️ Checkout Repository
         uses: actions/checkout@v4
@@ -76,7 +75,7 @@ jobs:
       - name: Upload Tag Artifact
         uses: actions/upload-artifact@v2
         with:
-          name: new_tag_file
+          name: new_tag
           path: new_tag.txt
 
       - name: 🚀 Push New Tag
