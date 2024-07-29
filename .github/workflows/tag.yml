@@ -64,7 +64,7 @@ jobs:
           NEW_TAG=${{ env.NEW_TAG }}
           DESCRIPTION="${{ github.event.inputs.description }}"
           git tag -a "$NEW_TAG" -m "$DESCRIPTION"
-          echo "::set-output name=new_tag::$NEW_TAG"
+          echo "new_tag=$NEW_TAG" >> $GITHUB_OUTPUT
 
       - name: 🚀 Push New Tag
         run: |
