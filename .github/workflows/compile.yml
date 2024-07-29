@@ -10,6 +10,10 @@ on:
   pull_request:
     paths:
       - 'tex/**'
+  workflow_run:
+    workflows: ["Tag"]
+    types:
+      - completed
 
 env:
   PDF_NAME: Alicia-Sykes-CV.pdf
@@ -49,11 +53,22 @@ jobs:
   release:
     needs: build
     runs-on: ubuntu-latest
-    if: startsWith(github.ref, 'refs/tags/')
+    if: |
+      github.event_name == 'push' && startsWith(github.ref, 'refs/tags/') ||
+      github.event_name == 'workflow_run' && startsWith(github.event.workflow_run.conclusion, 'success')
 
     steps:
     - name: 📥 Checkout repository
       uses: actions/checkout@v2
+
+    - name: 🏷️ Determine Tag Name
+      id: determine_tag
+      run: |
+        if [ "${{ github.event_name }}" = "workflow_run" ]; then
+          echo "TAG_NAME=${{ github.event.workflow_run.outputs.new_tag }}" >> $GITHUB_ENV
+        else
+          echo "TAG_NAME=${{ github.ref }}" >> $GITHUB_ENV
+        fi
 
     - name: 📤 Download PDF artifact
       uses: actions/download-artifact@v2
@@ -67,9 +82,9 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.BOT_TOKEN || secrets.GITHUB_TOKEN }}
       with:
-        tag_name: ${{ github.ref }}
-        release_name: Release ${{ github.ref }}
-        body: "Generated CV PDF for release ${{ github.ref }}"
+        tag_name: ${{ env.TAG_NAME }}
+        release_name: Release ${{ env.TAG_NAME }}
+        body: "Generated CV PDF for release ${{ env.TAG_NAME }}"
         draft: true
         prerelease: false
 

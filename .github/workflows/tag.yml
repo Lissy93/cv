@@ -1,4 +1,4 @@
-name: Create and Push Tag
+name: Tag
 
 on:
   workflow_dispatch:
@@ -15,6 +15,8 @@ on:
 jobs:
   create_tag:
     runs-on: ubuntu-latest
+    outputs:
+      new_tag: ${{ steps.create_new_tag.outputs.new_tag }}
     steps:
       - name: 🛎️ Checkout Repository
         uses: actions/checkout@v2
@@ -62,6 +64,7 @@ jobs:
           NEW_TAG=${{ env.NEW_TAG }}
           DESCRIPTION="${{ github.event.inputs.description }}"
           git tag -a "$NEW_TAG" -m "$DESCRIPTION"
+          echo "::set-output name=new_tag::$NEW_TAG"
 
       - name: 🚀 Push New Tag
         run: |
