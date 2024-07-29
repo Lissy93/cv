@@ -22,7 +22,7 @@ jobs:
       - name: 🧪 Get Current Tag
         id: get_current_tag
         run: |
-          CURRENT_TAG=$(git describe --tags --abbrev=0)
+          CURRENT_TAG=$(git describe --tags --abbrev=0 2>/dev/null || echo "0.0.0")
           echo "CURRENT_TAG=$CURRENT_TAG" >> $GITHUB_ENV
           echo "Current tag is $CURRENT_TAG"
 
@@ -30,6 +30,7 @@ jobs:
         id: determine_new_tag
         run: |
           INPUT_TAG=${{ github.event.inputs.tag }}
+          CURRENT_TAG=${{ env.CURRENT_TAG }}
           if [ -z "$INPUT_TAG" ]; then
             MAJOR=$(echo $CURRENT_TAG | cut -d. -f1)
             MINOR=$(echo $CURRENT_TAG | cut -d. -f2)
