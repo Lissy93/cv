@@ -1,4 +1,5 @@
 jsonschema
+yaml
 jinja2
 pylatex
 colorama
