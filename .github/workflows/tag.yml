@@ -1,0 +1,80 @@
+name: Create and Push Tag
+
+on:
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: 'Tag to create (e.g. 4.2.0)'
+        required: false
+        default: ''
+      description:
+        description: 'Tag description'
+        required: false
+        default: ''
+
+jobs:
+  create_tag:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 🛎️ Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: 🧪 Get Current Tag
+        id: get_current_tag
+        run: |
+          CURRENT_TAG=$(git describe --tags --abbrev=0)
+          echo "CURRENT_TAG=$CURRENT_TAG" >> $GITHUB_ENV
+          echo "Current tag is $CURRENT_TAG"
+
+      - name: 📝 Determine New Tag
+        id: determine_new_tag
+        run: |
+          INPUT_TAG=${{ github.event.inputs.tag }}
+          if [ -z "$INPUT_TAG" ]; then
+            MAJOR=$(echo $CURRENT_TAG | cut -d. -f1)
+            MINOR=$(echo $CURRENT_TAG | cut -d. -f2)
+            PATCH=$(echo $CURRENT_TAG | cut -d. -f3)
+            NEW_TAG="$MAJOR.$((MINOR+1)).0"
+          else
+            NEW_TAG=$INPUT_TAG
+          fi
+          echo "NEW_TAG=$NEW_TAG" >> $GITHUB_ENV
+          echo "New tag is $NEW_TAG"
+
+      - name: ⚠️ Check Tag Validity
+        id: check_tag_validity
+        run: |
+          CURRENT_TAG=${{ env.CURRENT_TAG }}
+          NEW_TAG=${{ env.NEW_TAG }}
+          if [ $(echo -e "$CURRENT_TAG\n$NEW_TAG" | sort -V | head -n1) = "$NEW_TAG" ] && [ "$CURRENT_TAG" != "$NEW_TAG" ]; then
+            echo "::warning::The new tag $NEW_TAG is lower than the current tag $CURRENT_TAG"
+          fi
+
+      - name: 🔑 Set Up Git User
+        run: |
+          git config user.name "Liss-Bot"
+          git config user.email "liss-bot@d0h.co"
+
+      - name: 📦 Create New Tag
+        id: create_new_tag
+        run: |
+          NEW_TAG=${{ env.NEW_TAG }}
+          DESCRIPTION=${{ github.event.inputs.description }}
+          git tag -a $NEW_TAG -m "$DESCRIPTION"
+          git push origin $NEW_TAG
+
+      - name: 🚀 Push New Tag
+        if: ${{ secrets.BOT_TOKEN }}
+        run: |
+          NEW_TAG=${{ env.NEW_TAG }}
+          git push origin $NEW_TAG
+        env:
+          GITHUB_TOKEN: ${{ secrets.BOT_TOKEN }}
+
+      - name: 🚀 Push New Tag (Fallback)
+        if: ${{ !secrets.BOT_TOKEN }}
+        run: |
+          NEW_TAG=${{ env.NEW_TAG }}
+          git push origin $NEW_TAG
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
