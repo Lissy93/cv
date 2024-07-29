@@ -60,8 +60,8 @@ jobs:
         id: create_new_tag
         run: |
           NEW_TAG=${{ env.NEW_TAG }}
-          DESCRIPTION=${{ github.event.inputs.description }}
-          git tag -a $NEW_TAG -m "$DESCRIPTION"
+          DESCRIPTION="${{ github.event.inputs.description }}"
+          git tag -a "$NEW_TAG" -m "$DESCRIPTION"
 
       - name: 🚀 Push New Tag
         run: |
@@ -70,6 +70,6 @@ jobs:
           else
             TOKEN=${{ secrets.GITHUB_TOKEN }}
           fi
-          git push https://$TOKEN@github.com/${{ github.repository }} $NEW_TAG
+          git push https://$TOKEN@github.com/${{ github.repository }} "$NEW_TAG"
         env:
           NEW_TAG: ${{ env.NEW_TAG }}
