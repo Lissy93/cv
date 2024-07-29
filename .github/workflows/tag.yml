@@ -61,20 +61,14 @@ jobs:
           NEW_TAG=${{ env.NEW_TAG }}
           DESCRIPTION=${{ github.event.inputs.description }}
           git tag -a $NEW_TAG -m "$DESCRIPTION"
-          git push origin $NEW_TAG
 
       - name: 🚀 Push New Tag
-        if: ${{ secrets.BOT_TOKEN }}
         run: |
-          NEW_TAG=${{ env.NEW_TAG }}
-          git push origin $NEW_TAG
+          if [ -n "${{ secrets.BOT_TOKEN }}" ]; then
+            TOKEN=${{ secrets.BOT_TOKEN }}
+          else
+            TOKEN=${{ secrets.GITHUB_TOKEN }}
+          fi
+          git push https://$TOKEN@github.com/${{ github.repository }} $NEW_TAG
         env:
-          GITHUB_TOKEN: ${{ secrets.BOT_TOKEN }}
-
-      - name: 🚀 Push New Tag (Fallback)
-        if: ${{ !secrets.BOT_TOKEN }}
-        run: |
-          NEW_TAG=${{ env.NEW_TAG }}
-          git push origin $NEW_TAG
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NEW_TAG: ${{ env.NEW_TAG }}
