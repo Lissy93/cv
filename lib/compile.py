@@ -35,6 +35,9 @@ def compile_latex(input_tex: str, output_pdf: str, timeout: int = 60) -> None:
 
         if result.returncode == 0:
             logger.info("Compilation successful.")
+            # Ensure the output directory exists
+            if not os.path.exists(output_dir):
+                os.makedirs(output_dir)
             # Move the generated PDF to the desired output path
             compiled_pdf_path = os.path.join(input_dir, base_name)
             os.rename(compiled_pdf_path, output_pdf)
@@ -47,8 +50,6 @@ def compile_latex(input_tex: str, output_pdf: str, timeout: int = 60) -> None:
     except subprocess.CalledProcessError as e:
         logger.error(f"Compilation failed: {e}")
         print(f"{Fore.RED}❌ Error: Compilation failed: {e}")
-        # print(e.stdout)
-        # print(e.stderr)
     except subprocess.TimeoutExpired as e:
         logger.error("Compilation process timed out.")
         print(f"{Fore.RED}❌ Error: Compilation process timed out.")
