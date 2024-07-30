@@ -79,16 +79,16 @@ jobs:
         # If workflow was triggered by the tag workflow, use the new tag
         if [ "$GITHUB_EVENT_NAME" == "workflow_run" ]; then
           if [[ -n "${{ github.event.workflow_run.outputs.new_tag }}" ]]; then
-            TAG_NAME="${{ github.event.workflow_run.outputs.new_tag }}"
+            TAG_NAME=${{ github.event.workflow_run.outputs.new_tag }}
           elif [[ -f tag.txt ]]; then
             TAG_NAME=$(cat tag.txt)
           fi
         # If workflow was triggered by a push event, use the tag from the ref
         elif [[ "$GITHUB_EVENT_NAME" == "push" && "${{ github.ref_type }}" == "tag" ]]; then
-          TAG_NAME="${{ github.ref }}"
+          TAG_NAME=${{ github.ref }}
         fi
         echo "Using tag $TAG_NAME"
-        echo "TAG_NAME=\"$TAG_NAME\"" >> $GITHUB_ENV
+        echo "TAG_NAME=\$TAG_NAME\" >> $GITHUB_ENV
     
 
     - name: 🔍 Check if release already exists
@@ -102,7 +102,7 @@ jobs:
           echo "Release for tag $TAG_NAME already exists."
           exit 1
         else
-          echo "Tag is present, valid and no existing releases exist. Continuing...."
+          echo "Tag is present, valid and no existing releases exist ($TAG_NAME). Continuing...."
         fi
 
     - name: 📤 Download PDF artifact
