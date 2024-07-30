@@ -91,23 +91,10 @@ jobs:
         name: resume-pdf
         path: out/
 
-    - name: 📄 Create GitHub Release
-      id: create_release
-      uses: actions/create-release@v1
-      env:
-        GITHUB_TOKEN: ${{ secrets.BOT_TOKEN || secrets.GITHUB_TOKEN }}
-        TAG_NAME: ${{ env.TAG_NAME }}
-      with:
-        tag_name: ${{ env.TAG_NAME }}
-        release_name: Release ${{ env.TAG_NAME }}
-        body: "Generated CV PDF for release ${{ env.TAG_NAME }}"
-        draft: true
-        prerelease: false
+    - name: 🔑 Set up GitHub CLI
+      run: |
+        echo "${{ secrets.BOT_TOKEN }}" | gh auth login --with-token
 
-    - name: 📤 Upload PDF to Release
-      uses: actions/upload-release-asset@v1
-      with:
-        upload_url: ${{ steps.create_release.outputs.upload_url }}
-        asset_path: out/${{ env.PDF_NAME }}
-        asset_name: ${{ env.PDF_NAME }}
-        asset_content_type: application/pdf
+    - name: 📄 Create GitHub Release
+      run: |
+        gh release create "${{ github.ref }}" out/${{ env.PDF_NAME }} --title "Release ${{ github.ref }}" --notes "Generated CV PDF for release ${{ github.ref }}"

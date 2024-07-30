@@ -73,7 +73,7 @@ jobs:
         run: echo $NEW_TAG > new_tag.txt
 
       - name: Upload Tag Artifact
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: new_tag
           path: new_tag.txt
