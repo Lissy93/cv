@@ -23,7 +23,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: 📥 Checkout repository
+    - name: 🛎️ Checkout repository
       uses: actions/checkout@v2
 
     - name: 🐍 Set up Python
@@ -58,32 +58,46 @@ jobs:
       github.event_name == 'workflow_run' && github.event.workflow_run.conclusion == 'success'
 
     steps:
-    - name: 📥 Checkout repository
+    - name: 🛎️ Checkout repository
       uses: actions/checkout@v2
 
     - name: 🏷️ Download Tag Artifact
       if: github.event_name == 'workflow_run'
       uses: actions/download-artifact@v2
       with:
-        name: new
+        name: tag
         path: .
       continue-on-error: true
 
     - name: 🏷️ Determine Tag Name
       id: determine_tag
       run: |
+        TAG_NAME=$(git describe --tags --abbrev=0 2>/dev/null)
         if [ "${{ github.event_name }}" == "workflow_run" ]; then
           if [[ -n "${{ github.event.workflow_run.outputs.new_tag }}" ]]; then
             TAG_NAME="${{ github.event.workflow_run.outputs.new_tag }}"
           elif [[ -f tag.txt ]]; then
             TAG_NAME=$(cat tag.txt)
-          else
-            TAG_NAME=$(git describe --tags --abbrev=0 2>/dev/null || echo "0.0.0")
           fi
-        else
-          NEW_TAG=$(git describe --tags --abbrev=0)
+        elif [ "${{ github.event_name }}" == "push" ] && [ -n "${{ github.ref }}" ] && [[ "${{ github.ref }}" == refs/tags/* ]]; then
+          TAG_NAME="${{ github.ref }}#refs/tags/"
         fi
+        echo "Using tag $TAG_NAME"
         echo "TAG_NAME=$TAG_NAME" >> $GITHUB_ENV
+  
+    - name: 🔍 Check if release already exists
+      id: check_release
+      run: |
+        if [ -z "$TAG_NAME" ]; then
+          echo "No tag name found, skipping release check"
+          exit 1
+        fi  
+        if gh release view "$TAG_NAME" > /dev/null 2>&1; then
+          echo "Release for tag $TAG_NAME already exists."
+          exit 1
+        else
+          echo "Tag is present, valid and no existing releases exist. Continuing...."
+        fi
 
     - name: 📤 Download PDF artifact
       uses: actions/download-artifact@v2
@@ -98,3 +112,4 @@ jobs:
     - name: 📄 Create GitHub Release
       run: |
         gh release create "$TAG_NAME" out/${{ env.PDF_NAME }} --title "Release $TAG_NAME" --notes "Generated CV PDF for release $TAG_NAME"
+        

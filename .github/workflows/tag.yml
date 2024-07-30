@@ -54,6 +54,15 @@ jobs:
           if [ $(echo -e "$CURRENT_TAG\n$NEW_TAG" | sort -V | head -n1) = "$NEW_TAG" ] && [ "$CURRENT_TAG" != "$NEW_TAG" ]; then
             echo "::warning::The new tag $NEW_TAG is lower than the current tag $CURRENT_TAG"
           fi
+      
+      - name: ❌ Ensure Tag Doesn't Already Exist
+        id: ensure_tag_doesnt_exist
+        run: |
+          NEW_TAG=${{ env.NEW_TAG }}
+          if git rev-parse "refs/tags/$NEW_TAG" >/dev/null 2>&1; then
+            echo "::error::The tag $NEW_TAG already exists."
+            exit 1
+          fi
 
       - name: 🔑 Set Up Git User
         run: |
@@ -69,10 +78,10 @@ jobs:
           git tag -a "$NEW_TAG" -m "$DESCRIPTION"
           echo "new_tag=$NEW_TAG" >> $GITHUB_OUTPUT
 
-      - name: Create Tag File
+      - name: 📄 Create Tag File
         run: echo $NEW_TAG > tag.txt
 
-      - name: Upload Tag Artifact
+      - name: ⬆️ Upload Tag Artifact
         uses: actions/upload-artifact@v4
         with:
           name: tag
