@@ -75,8 +75,8 @@ jobs:
         if [ "${{ github.event_name }}" == "workflow_run" ]; then
           if [[ -n "${{ github.event.workflow_run.outputs.new_tag }}" ]]; then
             TAG_NAME="${{ github.event.workflow_run.outputs.new_tag }}"
-          elif [[ -f new_tag.txt ]]; then
-            TAG_NAME=$(cat new_tag.txt)
+          elif [[ -f tag.txt ]]; then
+            TAG_NAME=$(cat tag.txt)
           else
             TAG_NAME=$(git describe --tags --abbrev=0 2>/dev/null || echo "0.0.0")
           fi

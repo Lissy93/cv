@@ -70,13 +70,13 @@ jobs:
           echo "new_tag=$NEW_TAG" >> $GITHUB_OUTPUT
 
       - name: Create Tag File
-        run: echo $NEW_TAG > new_tag.txt
+        run: echo $NEW_TAG > tag.txt
 
       - name: Upload Tag Artifact
         uses: actions/upload-artifact@v4
         with:
-          name: new_tag
-          path: new_tag.txt
+          name: tag
+          path: tag.txt
 
       - name: 🚀 Push New Tag
         run: |
