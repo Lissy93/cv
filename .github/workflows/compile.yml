@@ -65,7 +65,7 @@ jobs:
       if: github.event_name == 'workflow_run'
       uses: actions/download-artifact@v2
       with:
-        name: new_tag
+        name: new
         path: .
       continue-on-error: true
 
@@ -97,4 +97,5 @@ jobs:
 
     - name: 📄 Create GitHub Release
       run: |
-        gh release create "${{ github.ref }}" out/${{ env.PDF_NAME }} --title "Release ${{ github.ref }}" --notes "Generated CV PDF for release ${{ github.ref }}"
+        TAG_NAME="${GITHUB_REF##*/}"
+        gh release create "$TAG_NAME" out/${{ env.PDF_NAME }} --title "Release $TAG_NAME" --notes "Generated CV PDF for release $TAG_NAME"
