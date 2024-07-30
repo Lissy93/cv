@@ -97,5 +97,4 @@ jobs:
 
     - name: 📄 Create GitHub Release
       run: |
-        TAG_NAME="${GITHUB_REF##*/}"
         gh release create "$TAG_NAME" out/${{ env.PDF_NAME }} --title "Release $TAG_NAME" --notes "Generated CV PDF for release $TAG_NAME"
