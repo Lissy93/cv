@@ -41,7 +41,7 @@ jobs:
             PATCH=$(echo $CURRENT_TAG | cut -d. -f3)
             NEW_TAG="$MAJOR.$MINOR.$((PATCH+1))"
           else
-            NEW_TAG=$(git describe --tags --abbrev=0)
+            NEW_TAG=$INPUT_TAG
           fi
           echo "NEW_TAG=$NEW_TAG" >> $GITHUB_ENV
           echo "New tag is $NEW_TAG"
