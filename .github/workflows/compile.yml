@@ -24,7 +24,7 @@ jobs:
 
     steps:
     - name: 🛎️ Checkout repository
-      uses: actions/checkout@v2
+      uses: actions/checkout@v4
 
     - name: 🐍 Set up Python
       uses: actions/setup-python@v2
@@ -59,7 +59,9 @@ jobs:
 
     steps:
     - name: 🛎️ Checkout repository
-      uses: actions/checkout@v2
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
 
     - name: 🏷️ Download Tag Artifact
       if: github.event_name == 'workflow_run'
@@ -72,19 +74,23 @@ jobs:
     - name: 🏷️ Determine Tag Name
       id: determine_tag
       run: |
+        # Attempt to get tag from most recent tag creared (fallback)
         TAG_NAME=$(git describe --tags --abbrev=0 2>/dev/null)
-        if [ "${{ github.event_name }}" == "workflow_run" ]; then
+        # If workflow was triggered by the tag workflow, use the new tag
+        if [ "$GITHUB_EVENT_NAME" == "workflow_run" ]; then
           if [[ -n "${{ github.event.workflow_run.outputs.new_tag }}" ]]; then
             TAG_NAME="${{ github.event.workflow_run.outputs.new_tag }}"
           elif [[ -f tag.txt ]]; then
             TAG_NAME=$(cat tag.txt)
           fi
-        elif [ "${{ github.event_name }}" == "push" ] && [ -n "${{ github.ref }}" ] && [[ "${{ github.ref }}" == refs/tags/* ]]; then
-          TAG_NAME="${{ github.ref }}#refs/tags/"
+        # If workflow was triggered by a push event, use the tag from the ref
+        elif [[ "$GITHUB_EVENT_NAME" == "push" && "${{ github.ref_type }}" == "tag" ]]; then
+          TAG_NAME="${{ github.ref }}"
         fi
         echo "Using tag $TAG_NAME"
-        echo "TAG_NAME=$TAG_NAME" >> $GITHUB_ENV
-  
+        echo "TAG_NAME=\"$TAG_NAME\"" >> $GITHUB_ENV
+    
+
     - name: 🔍 Check if release already exists
       id: check_release
       run: |
