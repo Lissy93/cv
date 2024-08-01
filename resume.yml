@@ -4,10 +4,10 @@ basics:
   url: https://github.com/lissy93
   location:
     address: London, UK
-personal-statement: Accomplished Software Engineer with a proven track record of leading
-  high-impact projects. Expert in optimizing performance, enhancing quality, and delivering
-  user-centric solutions for top-tier organizations. Dedicated mentor, passionate
-  open-source advocate, and active contributor to the developer community.
+personal-statement: Accomplished Software Engineer with a over a decade of profesional experience
+  and proven track record of leading high-impact projects. Expert in optimizing performance,
+  enhancing quality, and delivering user-centric solutions for top-tier organizations.
+  Dedicated mentor, passionate open-source advocate, and active contributor to the developer community.
 extra-links:
   work_history:
     text: See all previous roles at linkedin.com/in/aliciasykes
@@ -111,10 +111,17 @@ skills:
   - MongoDB
 projects: []
 achivments:
-- I'm among the top 100 developers on GitHub worldwide, with 50k stars and 10M Docker
-  downloads. I maintain over 100 open-source projects, attracting 1M+ annual unique
-  users.
-- Outside of work, I actively engage in developer communities. I have 10k subscribers
-  to my DEV.to blog, 10+ wins in global hackathons, and rank in the top 1% of contributors
-  on StackOverflow. As a frequent open-source contributor, I have written over 1M
-  lines of code.
+- I'm among the [top 100 developers](https://gitstar-ranking.com/Lissy93) on
+  GitHub worldwide, with 50k stars and 10M Docker downloads. I maintain over
+  [100 open source projects](https://apps.aliciasykes.com/),
+  attracting 1M+ annual unique users.
+- Outside of work, I actively engage in developer communities.
+  I have 10k subscribers to my [DEV.to blog](https://dev.to/lissy93),
+  10+ wins in global hackathons, and rank in the top 1% of contributors
+  on [StackOverflow](https://stackoverflow.com/users/979052/alicia-sykes).
+  As a frequent [open-source contributor](https://github.com/lissy93),
+  I have written [over 1M lines of code](https://codestats.net/users/alicia).
+- This year I earnt a place on the [Open UK Honors list](https://openuk.uk/community/openuk-honours-lists/2024-honours-list/)
+  for contributions to the tech and open source sector.
+  I was among 10 developers selected to take part in the [GitHub Accelerator](https://github.blog/news-insights/company-news/2024-github-accelerator-meet-the-11-projects-shaping-open-source-ai/#web-check-bringing-security-to-the-web), (in partnership with Microsoft's M12 fund),
+  where I developed and launched an AI-powered security insights tool, being used by 10s of thousands of organisations world-wide.
