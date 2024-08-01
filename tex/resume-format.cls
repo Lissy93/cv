@@ -1,27 +1,39 @@
-%% Start of file `awesome-cv.cls'.
-% Awesome CV Class File
+%-------------------------------------------------------------------------------
+% Resume Class File (resume.cls)
+%-------------------------------------------------------------------------------
+% Licensed under MIT, ⓒ 2024 Alicia Sykes <aliciasykes.com>
+% Full source and usage docs at https://github.com/lissy93/cv
+%-------------------------------------------------------------------------------
+% This LaTeX class file defines the structure and layout for resume and CV 
+% documents. It provides a comprehensive and customizable format for creating
+% professional resumes, inspired by the Awesome-CV template by Claud D. Park
+% (http://posquit0.com).
 %
-% This class has been downloaded from:
-% https://github.com/posquit0/Awesome-CV
+% Usage:
+% - To use this class, include it in the preamble of your LaTeX document:
+%   \documentclass{resume}
+% - Customize your document using the provided commands and environments.
+% - For examples and documentation, visit: https://github.com/lissy93/cv
 %
-% Author:
-% Claud D. Park <posquit0.bj@gmail.com>
-% http://www.posquit0.com
+% Features:
+% - Built for styling a CV PDF. With sections like skills, experience, education..
+% - Outputs a clean, modern design with support for various font and color options.
+% - Compatibility with both XeLaTeX and pdfLaTeX.
 %
-% Notes:
-% 1) This class file defines the structure and layout of the template file (cv.tex, resume.tex).
-% 2) It has been written in such a way that under most circumstances you
-% should not need to edit it.
+% Buggy? Spaghetti code? Yeah. I know.
 %
-% Class license:
-% LPPL v1.3c (http://www.latex-project.org/lppl)
+% Heavily inspired by github.com/posquit0/Awesome-CV by Claud D. Park <posquit0.com>
 %
+% Dependencies are used in accordance with the LaTeX Project Public License (LPPL) v1.3c:
+% http://www.latex-project.org/lppl
+%
+%-------------------------------------------------------------------------------
 
 
 %-------------------------------------------------------------------------------
 %                Identification
 %-------------------------------------------------------------------------------
-\ProvidesClass{awesome-cv}[2015/12/14 v1.3 Awesome Curriculum Vitae Class]
+\ProvidesClass{resume-format}[2015/12/14 v1.3 Awesome Curriculum Vitae Class]
 \NeedsTeXFormat{LaTeX2e}
 
 
@@ -108,7 +120,7 @@
 %-------------------------------------------------------------------------------
 %% Page Layout
 % Configure page margins with geometry
-\geometry{left=2.0cm, top=1cm, right=2.0cm, bottom=1cm, footskip=.5cm}
+\geometry{left=2.0cm, top=0.5cm, right=2.0cm, bottom=0.5cm, footskip=.5cm}
 
 %% Header & Footer
 % Set offset to each header and offset
@@ -731,45 +743,18 @@
 }
 
 
+% Define a new command to convert markdown links to LaTeX links
+\newcommand{\markdownlink}[1]{%
+  \ifthenelse{\boolean{shownotes}}{\href{\detokenize{#1}}{#1}}{}%
+}
 
-% Define an environment for cvitems(for cventry)
-% \newenvironment{cvitems}{
-%   \vspace{-4mm}
-%   \begin{justify}
-%   \begin{itemize}[leftmargin=2ex, nosep, noitemsep]
-%     \setlength{\parskip}{0pt}
-%     \renewcommand{\labelitemi}{\bullet}
-% }{
-%   \end{itemize}
-%   \end{justify}
-%   \vspace{-2mm}
-% }
-
-% Define an environment for cvparagraphs
-% \newenvironment{cvparagraphs}{
-%   \vspace{-2mm}
-%   \begin{justify}
-%   \begin{itemize}[leftmargin=0ex, label={}, nosep, noitemsep]
-%     \setlength{\parskip}{0pt}
-% }{
-%   \end{itemize}
-%   \end{justify}
-%   \vspace{-2mm}
-% }
-
-% % Define an environment for cvparagraphs
-% \newenvironment{cvparagraphs}{
-%   \vspace{-4mm}
-%   \begin{justify}
-%   \begin{itemize}[leftmargin=2ex, nosep, noitemsep, before=\descriptionstyle]
-%     \setlength{\parskip}{0pt}
-%     \renewcommand{\labelitemi}{\bullet}
-% }{
-%   \end{itemize}
-%   \end{justify}
-%   \vspace{-2mm}
-% }
-
+% Define a command to handle markdown links
+\newcommand{\processMarkdownLinks}[1]{%
+  \def\process##1[##2](##3){%
+    \href{##3}{##2}%
+  }%
+  \expandafter\process#1
+}
 
 % Define an environment for cvparagraphs
 \newenvironment{cvparagraph}{
