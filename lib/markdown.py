@@ -97,8 +97,11 @@ def generate_markdown(resume: Dict[str, Any]) -> str:
 
     basics = resume.get('basics', {})
     if basics:
+        email = basics.get('email', '')
+        url = basics.get('url', '')
+        location = basics.get('location', {}).get('address', '')
         md_content.append(f"<h1 align=\"center\">{basics.get('name', '')}</h1>")
-        md_content.append(f"<p align=\"center\">{basics.get('email', '')} | {basics.get('url', '')} | {basics.get('location', {}).get('address', '')}</p>")
+        md_content.append(f"<p align=\"center\"><a href=\"mailto:{email}\">{email}</a> | <a href=\"{url}\">{url.replace('https://', '')}</a> | {location}</p>")
 
     personal_statement = resume.get('personal-statement', '')
     if personal_statement:
@@ -110,16 +113,18 @@ def generate_markdown(resume: Dict[str, Any]) -> str:
 
     education = resume.get('education', [])
     edu_items = [
-        f"- **{edu['institution']}** ({format_date(edu.get('startDate', ''))} - {format_date(edu.get('endDate', ''))}): {edu.get('studyType', '')} in {edu.get('area', '')} <br> {edu.get('score', '')}"
+        f"- **{edu['institution']}** ({format_date(edu.get('startDate', ''))} - {format_date(edu.get('endDate', ''))}): {edu.get('studyType', '')} in {edu.get('area', '')} <br>\n {edu.get('score', '')}"
         for edu in education
     ]
     md_content.append(format_section('Education', edu_items))
 
     work = resume.get('work', [])
-    work_items = [
-        f"- **{job['name']}** ({format_date(job.get('startDate', ''))} - {format_date(job.get('endDate', ''))}): {job['position']} <br> {', '.join(job.get('highlights', []))}"
-        for job in work
-    ]
+    work_items = []
+    for job in work:
+        highlights = "\n".join([f"  - {highlight}" for highlight in job.get('highlights', [])])
+        work_items.append(
+            f"- **{job['name']}** ({format_date(job.get('startDate', ''))} - {format_date(job.get('endDate', ''))}): {job['position']} <br>\n {highlights}"
+        )
     if extra_links_work:
         work_items.append(f"See all previous roles at [{extra_links_work['text']}]({extra_links_work['link']})")
     md_content.append(format_section('Work Experience', work_items))
@@ -130,7 +135,7 @@ def generate_markdown(resume: Dict[str, Any]) -> str:
         for skill in skills
     ]
     if extra_links_projects:
-        skill_items.append(f"See example projects built with each technology at [{extra_links_projects['text']}]({extra_links_projects['link']})")
+        skill_items.append(f"See example projects built with each technology at <a href=\"{extra_links_projects['link']}\">{extra_links_projects['link']}</a>")
     md_content.append(format_section('Skills', skill_items))
 
     achievements = resume.get('achivments', [])
