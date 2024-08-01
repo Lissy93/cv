@@ -1,5 +1,5 @@
 import argparse
-import json
+import re
 import logging
 import os
 import yaml
@@ -57,6 +57,10 @@ def latex_escape(text: str) -> str:
     }
     return ''.join(latex_special_chars.get(char, char) for char in text)
 
+def markdown_to_latex(text):
+    link_pattern = re.compile(r'\[([^\]]+)\]\(([^)]+)\)')
+    return link_pattern.sub(r'\\href{\2}{\1}', text).replace('%', '\%')
+
 def format_date(date_str: str) -> str:
     """
     Formats a date string to 'Month Year'. If the format is unknown, returns the original string.
@@ -88,6 +92,7 @@ def render_template(template_path: str, resume_data: dict) -> str:
     )
     env.filters['latex_escape'] = latex_escape
     env.filters['format_date'] = format_date
+    env.filters['markdown_to_latex'] = markdown_to_latex
     template = env.get_template(os.path.basename(template_path))
     return template.render(
         basics=resume_data.get('basics', {}),

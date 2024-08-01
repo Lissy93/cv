@@ -1,17 +1,12 @@
 %!TEX TS-program = xelatex
 %!TEX encoding = UTF-8 Unicode
-% Alicia's CV LaTeX Template
-%
-% This template is heaviliy inspired by:
-% https://github.com/posquit0/Awesome-CV
-% By Claud D. Park <http://www.posquit0.com>
-% 
+% Alicia Sykes CV LaTeX Template
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %     Configuration
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%% Themes: Awesome-CV
-\documentclass[]{awesome-cv}
+\documentclass[]{resume-format}
 \usepackage{textcomp}
 %%% Override a directory location for fonts(default: 'fonts/')
 \fontdir[fonts/]
@@ -88,7 +83,7 @@
 \cvsection{Achievements}
 \begin{cvachievements}
 {%- for achievement in achivments %}
-    \item { {{ achievement | latex_escape }} }
+    \item { {{ achievement | markdown_to_latex | safe }} }
 {%- endfor %}
 \end{cvachievements}
 {% endif %}
@@ -148,6 +143,10 @@
 {%- endfor %}
 \end{cvhonors}
 {% endif %}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%     Footer
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Add the footer link at the end of the document
 \vspace{10mm}
 \begin{flushleft}
