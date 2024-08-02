@@ -1,5 +1,5 @@
 ################################################################################
-# Entry point for the CV generation process								  									 #
+# Entry point for the CV generation process                                    #
 ################################################################################
 # The following Makefile wraps all commands required to generate the CV from   #
 # the source data and template, as well as helpers and prerequisites.          #
@@ -31,7 +31,7 @@ install:
 
 # Validate the resume JSON against the schema
 validate:
-	$(PYTHON) lib/validate.py --schema $(SCHEMA) --resume $(RESUME)
+	$(PYTHON) lib/validate.py --schema $(SCHEMA) --resume $(RESUME) --template $(TEMPLATE)
 
 # Generate the LaTeX file from the template and JSON data
 generate:
