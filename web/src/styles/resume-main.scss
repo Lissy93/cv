@@ -1,0 +1,66 @@
+.resume, .skills-page {
+  
+  p, ul, a {
+    margin: 0;
+    font-size: 0.85rem;
+  }
+  h1 {
+    font-size: 1.4rem;
+    font-weight: 600;
+  }
+  h2 {
+    margin: 1.5rem 0 0 0;
+    font-size: 1.2rem;
+    border-bottom: 2px solid #d1cfcf;
+    text-transform: capitalize;
+  }
+  h3 {
+    margin: 0.75rem 0 0.25rem 0;
+    font-size: 1rem;
+    font-weight: 600;
+    text-transform: capitalize;
+  }
+  h4 {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 400;
+    .grey {
+      color: #a4a4a4;
+    }
+  }
+
+  .basics {
+    h1 {
+      font-size: 2rem;
+      margin: 0;
+    }
+    .contacts {
+      display: flex;
+      justify-content: space-between;
+      width: fit-content;
+      margin: 0 auto;
+      gap: 1rem;
+      flex: 1 1 1 0px;
+      margin: 0.5rem auto;
+    }
+  }
+  .personal-statement {
+    p {
+
+    }
+  }
+  .skills {
+    ul {
+      margin-top: 0.75rem;
+      padding-left: 1rem;
+    }
+  }
+  .achievements {
+    p {
+      margin: 0.75rem 0;
+      a {
+        color: rgba(0, 0, 0, 0.8);
+      }
+    }
+  }
+}

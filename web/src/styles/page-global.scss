@@ -1,0 +1,221 @@
+.app {
+  display: flex;
+  height: 100vh;
+  font-family: var(--font-family);
+}
+
+::selection {
+  background: var(--primary);
+  color: var(--background);
+}
+
+aside {
+  width: var(--sidebar-width);
+  background: var(--background);
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  box-shadow: var(--box-shadow);
+  z-index: 9;
+
+  .aside-inner {
+    padding: 1.25rem;
+  }
+
+  .profile-picture {
+    border-radius: 4px;
+    margin-bottom: 1.25rem;
+    width: 100%;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+  }
+
+  h1 {
+    margin: 0;
+    color: var(--primary);
+    font-size: 1.8rem;
+    font-weight: bold;
+  }
+
+  .job-title {
+    font-size: 0.9rem;
+    text-align: center;
+    margin: 0 auto 1.25rem auto;
+    background: var(--primary-transparent);
+    width: fit-content;
+    padding: 0.1rem 0.75rem;
+    border-radius: 20px;
+    font-weight: 500;
+  }
+
+  .socials {
+    display: flex;
+    gap: 0.75rem;
+    list-style: none;
+    padding: 0;
+    justify-content: center;
+    margin: 0 auto 1.25rem auto;
+    li {
+      a {
+        color: var(--text-color-dim);
+        transition: all 0.25s ease-in-out;
+        i {
+          font-size: 1.5rem;
+        }
+        &:hover {
+          color: var(--hover-color);
+        }
+      }
+    }
+  }
+
+  .cv-pages-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.625rem;
+
+    li {
+      transform: translateX(-0.75rem);
+      transition: all 0.25s ease-in-out;
+      &.is-active a {
+        color: var(--primary-darker);
+        font-weight: 600;
+      }
+      a {
+        color: var(--text-color);
+        transition: all 0.25s ease-in-out;
+        &:hover {
+          color: var(--primary);
+        }
+      }
+      .nav-icon {
+        width: 1rem;
+        height: 1rem;
+        font-size: 0.85rem;
+        margin-right: 0.2rem;
+        opacity: 0;
+        transition: all 0.25s ease-in-out;
+        color: var(--text-color-dim);
+      }
+      &:hover, &.is-active {
+        transform: translateX(0);
+        .nav-icon {
+          opacity: 1;
+        }
+      }
+    }
+  }
+
+  .view-code-link {
+    color: var(--primary);
+    font-size: 0.85rem;
+    width: fit-content;
+    margin: 0.25rem auto;
+    display: flex;
+  }
+}
+
+.content-wrapper {
+  margin-left: var(--sidebar-width);
+  width: calc(100% - var(--sidebar-width));
+  box-shadow: var(--box-shadow);
+  overflow: visible;
+  display: flex;
+  flex-direction: column;
+
+  main {
+    border-radius: 0.625rem 0 0 0;
+    margin: -2px 0 0 -2px;
+    z-index: 12;
+    background: #e0e0e0;
+    box-shadow: rgb(202, 202, 202) 3.2px 3.2px 8px 0px inset, rgb(255, 255, 255) -3.2px -3.2px 8px 0px inset;
+  }
+}
+
+header {
+  width: 100%;
+  height: var(--header-height);
+  background: var(--background);
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  z-index: 10;
+  padding: 0.75rem 0;
+
+  .nav-links {
+    display: flex;
+    gap: 0.25rem;
+    margin-right: 1rem;
+    a {
+      font-weight: 500;
+      transition: all 0.25s ease-in-out;
+      padding: 0.25rem 0.5rem;
+      border-radius: var(--button-radius);
+      color: var(--text-color);
+      text-decoration: none;
+    }
+
+    a:hover {
+      color: var(--background);
+      background: var(--primary);
+    }
+  }
+}
+
+main {
+  background: #e9e5ef;
+  padding: 1.25rem;
+  flex-grow: 1;
+  overflow-y: auto;
+}
+
+.page {
+  width: 80%;
+  min-height: 80%;
+  margin: 1rem auto;
+  padding: 1rem;
+  border-radius: 8px;
+  background-color: var(--background);
+  box-shadow:
+    0 2.8px 2.2px rgba(0, 0, 0, 0.034),
+    0 6.7px 5.3px rgba(0, 0, 0, 0.048),
+    0 12.5px 10px rgba(0, 0, 0, 0.06),
+    0 22.3px 17.9px rgba(0, 0, 0, 0.072),
+    0 41.8px 33.4px rgba(0, 0, 0, 0.086),
+    0 100px 80px rgba(0, 0, 0, 0.12)
+  ;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  aside {
+    width: 100%;
+    height: auto;
+    position: static;
+    box-shadow: none;
+    border-bottom: 1px solid var(--primary);
+  }
+
+  .content-wrapper {
+    margin: 0;
+    width: 100%;
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  header {
+    justify-content: center;
+    padding: 0.625rem;
+  }
+
+  main {
+    padding: 0.625rem;
+  }
+}
