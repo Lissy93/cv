@@ -55,3 +55,9 @@ clean_tex:
 # Helper target to watch for changes and rebuild everything
 watch:
 	ls $(REQUIREMENTS) $(SCHEMA) $(RESUME) $(TEMPLATE) | entr -c make all
+
+web:
+	cd web && yarn && yarn build && yarn preview
+
+web_dev:
+	cd web && yarn dev
