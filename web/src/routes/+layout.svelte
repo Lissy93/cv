@@ -59,7 +59,7 @@
 					{/if}
 				</ul>
 			</nav>
-			<a href="https://github.com/Lissy93/cv/releases/download/1.0.0/Alicia-Sykes-CV.pdf" class="no-underline">
+			<a href="/download" class="no-underline">
 				<button class="download-btn"><i class="fa-solid fa-file-arrow-down"></i>Download CV</button>
 			</a>
 			<a class="view-code-link" href="https://github.com/lissy93/cv" target="_blank" rel="nofollow">View CV Source Code</a>
