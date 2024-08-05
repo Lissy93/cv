@@ -3,7 +3,7 @@
 <!-- <a href="https://github.com/Lissy93/cv"><img src="https://i.ibb.co/8BV5p7L/CV-Logo-Alicia-Sykes.png" width="128" /><br /></a> -->
 <i>This repo contains the source for my personal CV</i>
 <br />
-<b>🌐 <a href="https://cv.aliciasykes.com/">cv.aliciasykes.com</a> | 📄 <a href="https://cv.aliciasykes.com/cv.pdf"><code>Alicia-Sykes-CV.pdf</code></a></b> <br />
+<b>🌐 <a href="https://cv.aliciasykes.com/">cv.aliciasykes.com</a> | 📄 <a href="https://cv.aliciasykes.com/download"><code>Alicia-Sykes-CV.pdf</code></a></b> <br />
 </p>
 <br />
 
