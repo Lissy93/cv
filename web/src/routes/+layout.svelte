@@ -1,12 +1,56 @@
-<script>
+<script lang="ts">
+	import { browser } from '$app/environment';
+	import { onMount } from 'svelte';
+	import { page } from '$app/stores';
+	import { onNavigate } from '$app/navigation';
+
 	import '../app.css';
 	import '../styles/variables.scss';
 	import '../styles/link.scss';
 	import '../styles/page-global.scss';
 
-	import { page } from '$app/stores';
+	interface Document {
+		startViewTransition?: (callback: () => Promise<void>) => void;
+	}
+
+  onNavigate((navigation) => {
+		const doc = document as Document;
+    if (!doc.startViewTransition) return;
+    return new Promise<void>((resolve) => {
+      doc.startViewTransition && doc.startViewTransition(async () => {
+        resolve();
+        await navigation.complete;
+      });
+    });
+  });
+
+	let header: HTMLElement | null = null;
+  let main: HTMLElement | null = null;
+
+  function handleScroll() {
+    if (header && main) {
+      if (main.scrollTop > 60) {
+        header.style.boxShadow = '24px 0 22px 0 #0000007d';
+        header.style.zIndex = '13';
+      } else {
+        header.style.boxShadow = '';
+        header.style.zIndex = '';
+      }
+    }
+  }
+
+  onMount(() => {
+    if (browser) {
+      main?.addEventListener('scroll', handleScroll);
+
+      return () => {
+        main?.removeEventListener('scroll', handleScroll);
+      };
+    }
+  });
 	
 	let path;
+	// @ts-ignore
 	$: path = $page.url.pathname;
 
 	const socials = [
@@ -66,14 +110,14 @@
 		</div>
 	</aside>
 	<div class="content-wrapper">
-		<header>
+		<header bind:this={header}>
 			<div class="nav-links">
 				{#each headerLinks as { name, url }}
 					<a class="no-underline" target="_blank" href={url}>{name}</a>
 				{/each}
 			</div>
 		</header>
-		<main>
+		<main bind:this={main}>
 			<div class="page"><slot /></div>
 		</main>
 	</div>

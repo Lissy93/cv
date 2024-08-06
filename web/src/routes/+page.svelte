@@ -60,6 +60,13 @@
         </ul>
       </div>
     {/each}
+		<a href="/experience">
+			<button class="small-btn">
+				<i class="nav-icon fa-solid fa-briefcase"></i>
+				View All Experience
+				<i class="fa-solid fa-arrow-right"></i>
+			</button>
+		</a>
   </section>
 
 	<section class="education">
@@ -82,6 +89,13 @@
 			</li>
     {/each}
 		</ul>
+		<a href="/skills">
+			<button class="small-btn">
+				<i class="nav-icon fa-solid fa-code"></i>
+				View All Skills
+				<i class="fa-solid fa-arrow-right"></i>
+			</button>
+		</a>
   </section>
 
   <section class="achievements">
@@ -89,6 +103,13 @@
 		{#each data.achivments as achievement}
 			<p>{@html mdToHtml(achievement)}</p>
 		{/each}
+		<a href="/achievements">
+			<button class="small-btn">
+				<i class="nav-icon fa-solid fa-star"></i>
+				View All Achievements
+				<i class="fa-solid fa-arrow-right"></i>
+			</button>
+		</a>
   </section>
 </div>
 <style>

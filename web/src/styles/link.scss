@@ -50,3 +50,23 @@ a:not(.no-underline):not(.is-active) {
     background: linear-gradient(90deg, var(--primary-darker) 0%, var(--primary) 100%); 
   }
 }
+.small-btn {
+  background: var(--primary);
+  color: var(--background);
+  border: none;
+  padding: 0.25rem 0;
+  cursor: pointer;
+  border-radius: var(--button-radius);
+  margin: 0.25rem 0.5rem;
+  text-align: center;
+  font-weight: bold;
+  font-size: 0.85rem;
+  float: right;
+  min-width: 14rem;
+  // transition: all 0.5s ease-in-out;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+  i { margin: 0 0.5rem; }
+  &:hover {
+    background: linear-gradient(90deg, var(--primary-darker) 0%, var(--primary) 100%); 
+  }
+}
