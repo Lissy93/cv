@@ -6,17 +6,22 @@
     ];
 
     const intro = [
-      `Alicia Sykes in a Principle Engineer, specialising in front-end and full-stack web development.
-      With over a decade of industry experience, working on a wide range of projects, Alicia has a wealth of knowledge to draw upon.`,
+      `Alicia Sykes in a distinguished Principle Engineer, specialising in front-end and full-stack web development.
+      With over a decade of industry experience, working on a diverse wide range of projects,
+      she has a proven track record of delivering high-quality, scalable solutions.`,
 
-      `Alicia is well versed in a variety of programming languages, frameworks and libraries, and is continually
-      staying up-to-date on the latest technologies, with the aim of always using the best tools for any specific job.`,
+      `Alicia is well versed in a variety of programming languages, frameworks and libraries 
+      (including Rust, Go, Node.js, Python, Java, Vue.js, Svelte, React, to name a few) and is continually
+      staying up-to-date on the latest technologies.
+      This puts her in the perfect position to advise on the best tools and technologies for any given project.`,
 
-      `Mentoring and supporting junior developers is a passion of Alicia's, and she has a proven track record of helping others to grow and develop their skills.`,
+      `With a genuine passion for mentoring and supporting developers, Alicia
+      has a proven track record of helping others to grow and improve their skills.`,
 
       `Outside of work, she's the maintainer of several high-profile open source projecrs, supporting millions of active users.
       Alicia is among the top 100 contributors on GitHub, and has crafted over 1 million lines of code.
-      Her self-hosted applications have gained over 10 million downloads on Docker Hub, and have been featured in several industry publications.`,
+      Her self-hosted applications have gained over 10 million downloads on Docker Hub, and have been featured in several industry publications.
+      `,
       
       `A keen participant in the tech community, Alicia has written many guest articles, and has a strong following among the developer
       community, with 10k subscribers to her DEV.to blog, and many more across other platforms.
