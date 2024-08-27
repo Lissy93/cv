@@ -41,6 +41,7 @@ generate:
 compile:
 	$(PYTHON) ./lib/compile.py --input $(OUTPUT_TEX) --output $(OUTPUT_PDF)
 
+# Convert the resume to markdown
 markdown:
 	$(PYTHON) lib/markdown.py --input $(RESUME) --output $(OUTPUT_MD)
 
@@ -56,8 +57,12 @@ clean_tex:
 watch:
 	ls $(REQUIREMENTS) $(SCHEMA) $(RESUME) $(TEMPLATE) | entr -c make all
 
-web:
-	cd web && yarn && yarn build && yarn preview
 
-web_dev:
+web_install:
+	cd web && yarn
+
+web: web_install
+	cd web && yarn build && yarn preview
+
+web_dev: web_install
 	cd web && yarn dev
