@@ -17,7 +17,7 @@
 
 ---
 
-## Intro
+## About
 
 The resume content is defined in [`resume.yml`](/resume.yml) following the [jsonresume.org](https://jsonresume.org/) standard, and validated against [`schema.json`](/schema.json).
 A LaTex document is then generated from [`template.jinja`](/template.jinja) formated with [`resume-format.cls`](/tex/resume-format.cls), which is then compiled into a PDF by GitHub Actions, and published under the [Releases](https://github.com/Lissy93/cv/releases) tab.
@@ -74,6 +74,13 @@ These are triggered either by the [`Makefile`](/Makefile) or via GitHub Actions 
 The source for the website version is located in [`web/`](/web)
 
 ---
+
+## Screenshot
+
+<p align="center"><a href="https://cv.aliciasykes.com"><img width="650" src="https://i.ibb.co/7NjgmHC/alicia-sykes-cv-mockup.png" /></a></p>
+
+---
+  
 
 ## Attributions
 
