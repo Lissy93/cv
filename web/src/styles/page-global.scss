@@ -2,6 +2,10 @@
   display: flex;
   height: 100vh;
   font-family: var(--font-family);
+  // on mobile use flex-direction: column;
+  @media (max-width: 600px) {
+    flex-direction: column;
+  }
 }
 
 ::selection {
@@ -27,15 +31,29 @@ aside {
   left: 0;
   box-shadow: var(--box-shadow);
   z-index: 9;
+  justify-content: space-between;
 
   .aside-inner {
     padding: 1.25rem;
+    margin: 0 auto;
+  }
+  .aside-bottom {
+    margin: 0 auto;
+    text-align: center;
+    .get-in-touch {
+      font-size: 1rem;
+    }
+    .license {
+      font-size: 0.6rem;
+      opacity: 0.5;
+    }
   }
 
   .profile-picture {
     border-radius: 4px;
     margin-bottom: 1.25rem;
     width: 100%;
+    max-width: 300px;
     box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
   }
 
@@ -120,10 +138,15 @@ aside {
 
   .view-code-link {
     color: var(--primary);
-    font-size: 0.85rem;
+    font-size: 0.8rem;
     width: fit-content;
     margin: 0.25rem auto;
     display: flex;
+    opacity: 0.75;
+    transition: all 0.25s ease-in-out;
+    &:hover {
+      opacity: 1;
+    }
   }
 }
 
@@ -190,6 +213,8 @@ main {
   padding: 1rem;
   border-radius: 8px;
   background-color: var(--background);
+  display: flex;
+  flex-direction: column;
   box-shadow:
     0 2.8px 2.2px rgba(0, 0, 0, 0.034),
     0 6.7px 5.3px rgba(0, 0, 0, 0.048),

@@ -1,5 +1,7 @@
 <script lang="ts">
 
+import Language from '../../components/Language.svelte';
+
 const stats = [
   {
     stat: '10M downloads on DockerHub',
@@ -27,7 +29,7 @@ const stats = [
   },
   {
     stat: '10k+ subscribers to developer blog',
-    source: '',
+    source: 'https://dev.to/lissy93',
   },
   // {
   //   stat: '5k+ followers on GitHub, X, Dev, LinkedIn etc',
@@ -97,9 +99,28 @@ const hackathonWins = [
   },
 ];
 
+const projects = [
+  { name: 'Dashy', description: 'Control panel for self-hosting', tech: 'Vue', logo: '', stars: '17k', repo: 'lissy93/dashy', web: 'https://dashy.to' },
+  { name: 'Web-Check', description: 'All-in-one OSINT and security scanner', tech: 'React', logo: '', stars: '20k', repo: 'lissy93/web-check', web: 'https://web-check.xyz' },
+  { name: 'Digital Defense', description: 'Ultimate checklist of online security tips', tech: 'Solid', logo: '', stars: '17k', repo: 'lissy93/personal-security-checklist', web: 'https://digital-defense.io' },
+  { name: 'Awesome Privacy', description: 'Curated list of verified privacy-respecting services', tech: 'Astro', logo: '', stars: '7k', repo: 'lissy93/awesome-privacy', web: 'https://awesome-privacy.xyz' },
+  { name: 'AdGuardian Term', description: 'Real-time traffic monitoring', tech: 'Rust', logo: '', stars: '1k', repo: 'lissy93/AdGuardian-Term', web: 'https://adguardian.as93.net' },
+  { name: 'Portainer Templated', description: 'Over 500 1-click Docker apps', tech: 'Python', logo: '', stars: '2k', repo: 'Lissy93/portainer-templates', web: 'https://portainer-templates.as93.net' },
+
+];
+
+const normalizeUrl = (url: string) => {
+  if (!url) return '';
+  return url.replaceAll('https://', '').replaceAll('http://', '');
+};
+
 </script>
 
-<h2>Achivments</h2>
+<svelte:head>	
+	<title>Alicia Sykes | CV | Achievements</title>
+</svelte:head>
+
+<h2>Achievements</h2>
 
 <h3>Stats</h3>
 <ul class="stats">
@@ -113,6 +134,8 @@ const hackathonWins = [
   {/each}
 </ul>
 
+<hr>
+
 <h3>Awards</h3>
 <ul class="awards">
   {#each awards as {award, source}}
@@ -125,6 +148,8 @@ const hackathonWins = [
   {/each}
 </ul>
 
+<hr>
+
 <h3>Hackathons</h3>
 <ul class="hackathons">
   {#each hackathonWins as win}
@@ -134,6 +159,45 @@ const hackathonWins = [
     </li>
   {/each}
 </ul>
+
+<hr>
+
+<h3>Recent Projects</h3>
+<ul class="projects">
+  {#each projects as project}
+    <li>
+      <strong><a href={project.web}>{project.name}</a></strong> - 
+      <span class="desc">
+        {project.description}
+        <span title="GitHub Star Count">(<i class="fa-solid fa-star"></i> {project.stars})</span>
+      </span>
+      
+      <br>
+      <span class="project-stats">
+        <Language language={project.tech} small={true} />
+        |
+        <a
+          title={`View ${project.repo.split('/')[1]} on GitHub`}
+          href={`https://github.com/${project.repo}`}>
+          <i class="fa-brands fa-github"></i> {project.repo}
+        </a>
+        | 
+        <a title={`View ${project.name}'s homepage`} href={project.web}>
+          <i class="fa-solid fa-globe"></i> {normalizeUrl(project.web)}
+        </a>
+      </span>
+    </li>
+  {/each}
+</ul>
+
+
+<p class="projects-more">
+  I've deplored and maintain well over 100 open source apps, and contribute to many more.
+  You can view my app catalog at <a href="https://apps.aliciasykes.com">apps.aliciasykes.com</a>.
+  These apps currently serve hundreds of thousands of business and personal users worldwide, with millions Docker downloads, and thousands of GitHub stars.
+  <br><br>
+  I am incredibly quick to learn new tech stacks, and am able to take a new project from zero to production in a matter of days, while maintaining a high quality of code.
+</p> 
 
 <style lang="scss">
   h2 {
@@ -150,6 +214,10 @@ const hackathonWins = [
   ul {
     margin: 0;
     padding-left: 1.5rem;
+  }
+  hr {
+    margin: 1rem 0;
+    opacity: 0.8;
   }
   .source {
     font-size: 0.65rem;
@@ -170,5 +238,41 @@ const hackathonWins = [
       font-style: italic;
       opacity: 0.8;
     }
+  }
+
+  .projects {
+    li {
+      strong {
+        font-weight: 500;
+        a {
+
+        }
+      }
+      i {
+        font-size: 0.8rem;
+      }
+      .desc {
+        font-style: italic;
+        font-weight: 500;
+      }
+      a {
+        color: var(--text-color);
+        &:hover {
+          color: var(--primary);
+        }
+      }
+      .project-stats {
+        font-size: 0.8rem;
+        opacity: 0.8;
+        a {
+          opacity: 0.8;
+        }
+      }
+    }
+  }
+
+  .projects-more {
+    opacity: 0.8;
+    font-style: italic;
   }
 </style>

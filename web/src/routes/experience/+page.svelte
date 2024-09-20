@@ -5,6 +5,10 @@
   const experience = data.combinedJobData;
 </script>
 
+<svelte:head>	
+	<title>Alicia Sykes | CV | Experience</title>
+</svelte:head>
+
 <h1>Experience</h1>
 
 {#each experience as job}

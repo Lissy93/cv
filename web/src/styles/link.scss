@@ -70,3 +70,7 @@ a:not(.no-underline):not(.is-active) {
     background: linear-gradient(90deg, var(--primary-darker) 0%, var(--primary) 100%); 
   }
 }
+
+.no-float {
+  float: none;
+}

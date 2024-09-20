@@ -24,8 +24,7 @@
 </script>
 
 <svelte:head>	
-	<title>CV</title>
-	<meta name="description" content="Svelte demo app" />
+	<title>Alicia Sykes | CV | Home</title>
 </svelte:head>
 
 <div class="resume">
@@ -42,6 +41,13 @@
 	<!-- Personal statement -->
   <section class="personal-statement">
     <p>{data['personal-statement']}</p>
+		<a href="/intro">
+			<button class="small-btn">
+				<i class="nav-icon fa-solid fa-address-card"></i>
+				View Full Bio
+				<i class="fa-solid fa-arrow-right"></i>
+			</button>
+		</a>
   </section>
 
   <section class="work">

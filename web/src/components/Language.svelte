@@ -1,5 +1,6 @@
 <script lang="ts">
   export let language = '';
+  export let small = false;
 
   interface LanguageAttributes {
     name: string;
@@ -156,7 +157,7 @@
 </script>
 
 {#if langAttributes}
-<div class="language">
+<div class="language {small ? 'small' : ''}" title={`Build with ${langAttributes.name}`} style={`--lang-color: #${langAttributes.color};`} >
   <img height="16" width="16" alt="l" src="https://cdn.simpleicons.org/{langAttributes.icon}/595959" />
   {langAttributes.name}
 </div>
@@ -174,17 +175,31 @@
   }
   .language {
     font-size: 0.95rem;
-    font-weight: bold;
+    font-weight: 500;
     width: fit-content;
     padding: 0.1rem 0.2rem;
     border-radius: var(--curve-factor, 4px);
     display: flex;
     gap: 0.5rem;
     display: inline;
+    transition: all 0.3s ease-in-out;
+    cursor: default;
+    &:hover {
+      font-weight: 600;
+      color: var(--lang-color);
+    }
     img {
       width: 1rem;
       height: 1rem;
       margin-right: 0.25rem;
+    }
+    &.small {
+      font-size: 0.8rem;
+      font-weight: 400;
+      img {
+        width: 0.8rem;
+        height: 0.8rem;
+      }
     }
   }
 </style>

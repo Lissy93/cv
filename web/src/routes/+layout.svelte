@@ -27,6 +27,16 @@
 	let header: HTMLElement | null = null;
   let main: HTMLElement | null = null;
 
+	// Display banner if looking for job, within the specified dates. Format date into human readable string
+	const lookingForJobDates = {
+		start: new Date('2024-09-01'),
+		end: new Date('2024-12-31'),
+	};
+	const currentDate = new Date();
+	const startDateFormatted = new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'long' }).format(lookingForJobDates.start);
+	const isSeekingOpportunities = currentDate <= lookingForJobDates.end;
+	const pagesToShowBanner = ['/', '/contact' ];
+
   function handleScroll() {
     if (header && main) {
       if (main.scrollTop > 60) {
@@ -106,7 +116,18 @@
 			<a href="/download" class="no-underline">
 				<button class="download-btn"><i class="fa-solid fa-file-arrow-down"></i>Download CV</button>
 			</a>
-			<a class="view-code-link" href="https://github.com/lissy93/cv" target="_blank" rel="nofollow">View CV Source Code</a>
+			<a class="view-code-link" href="https://github.com/lissy93/cv" target="_blank" rel="nofollow">Or View CV Source Code on GitHub</a>
+		</div>
+		<div class="aside-bottom">
+			<a class="get-in-touch" href="/contact">
+				<i class="fa-solid fa-paper-plane"></i>
+				Send me a Message
+			</a>
+			<br>
+			<small class="license">
+				<a href="https://github.com/lissy93/cv">lissy93/cv</a>
+				is licensed under <a href="https://github.com/Lissy93/cv/blob/main/LICENSE">MIT</a>, &copy; <a href="https://aliciasykes.com">Alicia Sykes</a> 2024
+			</small>
 		</div>
 	</aside>
 	<div class="content-wrapper">
@@ -117,8 +138,47 @@
 				{/each}
 			</div>
 		</header>
+
 		<main bind:this={main}>
+
+			{#if pagesToShowBanner.includes(path) && isSeekingOpportunities}
+			<div class="im-on-the-market">
+				<p>
+					<strong>As of {startDateFormatted}, I am actively seeking new opportunities!</strong>
+					<br>
+					Read my <a href="/intro">full bio</a> to learn more about me,
+					and if you think I could be a good fit for your team,
+					please <a href="/contact">get in touch</a>.
+				</p>
+				<a href="/ideal-role">
+					<button class="small-btn">
+						<i class="fa-solid fa-bullseye-arrow"></i>
+						View Ideal Role
+						<i class="fa-solid fa-arrow-right"></i>
+					</button>
+				</a>
+			</div>
+		{/if}
+
 			<div class="page"><slot /></div>
 		</main>
 	</div>
 </div>
+
+<style lang="scss">
+	.im-on-the-market {
+		background: #dcfddc;
+		border: 1px solid #8ddb8d;
+		width: 80%;
+		margin: 1rem auto;
+		padding: 0.25rem 1rem 2.5rem 1rem;
+		border-radius: 8px;
+		font-size: 0.8rem;
+		strong {
+			color: #376237;
+		}
+		p {
+			margin-bottom: 0;
+		}
+	}
+</style>
