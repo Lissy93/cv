@@ -61,6 +61,7 @@ See the [`Makefile`](/Makefile) for all the available commands. Or, just run `ma
 - `make compile` - Compile PDF
 - `make clean` - Remove generated files
 - `make watch` - Watch for changes, recompile and refresh
+- `make web` - Launches web version, installs NPM deps, builds and serves the site
 </details>
 
 ---
@@ -77,7 +78,7 @@ The source for the website version is located in [`web/`](/web)
 
 ## Screenshot
 
-<p align="center"><a href="https://cv.aliciasykes.com"><img width="650" src="https://i.ibb.co/7NjgmHC/alicia-sykes-cv-mockup.png" /></a></p>
+<p align="center"><a href="https://cv.aliciasykes.com"><img width="650" src="https://i.ibb.co/7NjgmHC/alicia-sykes-cv-mockup.png?" /></a></p>
 
 ---
   
