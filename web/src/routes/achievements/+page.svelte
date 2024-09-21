@@ -100,13 +100,60 @@ const hackathonWins = [
 ];
 
 const projects = [
-  { name: 'Dashy', description: 'Control panel for self-hosting', tech: 'Vue', logo: '', stars: '17k', repo: 'lissy93/dashy', web: 'https://dashy.to' },
-  { name: 'Web-Check', description: 'All-in-one OSINT and security scanner', tech: 'React', logo: '', stars: '20k', repo: 'lissy93/web-check', web: 'https://web-check.xyz' },
-  { name: 'Digital Defense', description: 'Ultimate checklist of online security tips', tech: 'Solid', logo: '', stars: '17k', repo: 'lissy93/personal-security-checklist', web: 'https://digital-defense.io' },
-  { name: 'Awesome Privacy', description: 'Curated list of verified privacy-respecting services', tech: 'Astro', logo: '', stars: '7k', repo: 'lissy93/awesome-privacy', web: 'https://awesome-privacy.xyz' },
-  { name: 'AdGuardian Term', description: 'Real-time traffic monitoring', tech: 'Rust', logo: '', stars: '1k', repo: 'lissy93/AdGuardian-Term', web: 'https://adguardian.as93.net' },
-  { name: 'Portainer Templated', description: 'Over 500 1-click Docker apps', tech: 'Python', logo: '', stars: '2k', repo: 'Lissy93/portainer-templates', web: 'https://portainer-templates.as93.net' },
-
+  {
+    name: 'Dashy',
+    description: 'Control panel for self-hosting',
+    tech: 'Vue',
+    logo: 'https://dashy.to/img/dashy.png',
+    stars: '17k',
+    repo: 'lissy93/dashy',
+    web: 'https://dashy.to',
+  },
+  {
+    name: 'Web-Check',
+    description: 'All-in-one OSINT and security scanner',
+    tech: 'React',
+    logo: 'https://v1.web-check.xyz/web-check.png',
+    stars: '20k',
+    repo: 'lissy93/web-check',
+    web: 'https://web-check.xyz',
+  },
+  {
+    name: 'Digital Defense',
+    description: 'Ultimate checklist of online security tips',
+    tech: 'Solid',
+    logo: 'https://i.ibb.co/Rb6P6h6/shield.png',
+    stars: '17k',
+    repo: 'lissy93/personal-security-checklist',
+    web: 'https://digital-defense.io',
+  },
+  {
+    name: 'Awesome Privacy',
+    description: 'Curated list of verified privacy-respecting services',
+    tech: 'Astro',
+    logo: 'https://github.com/Lissy93/awesome-privacy/blob/gh-pages/awesome-privacy.png?raw=true',
+    stars: '7k',
+    repo: 'lissy93/awesome-privacy',
+    web: 'https://awesome-privacy.xyz',
+  },
+  {
+    name: 'AdGuardian Term',
+    description: 'Real-time traffic monitoring',
+    tech: 'Rust',
+    logo: 'https://i.ibb.co/25GNT0n/adguardian-banner-4.png',
+    stars: '1k',
+    repo: 'lissy93/AdGuardian-Term',
+    web: 'https://adguardian.as93.net'
+  },
+  {
+    name: 'Portainer Templates',
+    description: 'Over 500 1-click Docker apps',
+    tech: 'Python',
+    logo: 'https://i.ibb.co/hMymwH0/portainer-templates-small.png',
+    stars: '2k',
+    repo: 'Lissy93/portainer-templates',
+    web: 'https://portainer-templates.as93.net',
+  },
 ];
 
 const normalizeUrl = (url: string) => {
@@ -162,17 +209,20 @@ const normalizeUrl = (url: string) => {
 
 <hr>
 
-<h3>Recent Projects</h3>
+<h3>Flagship Projects</h3>
 <ul class="projects">
   {#each projects as project}
     <li>
-      <strong><a href={project.web}>{project.name}</a></strong> - 
-      <span class="desc">
-        {project.description}
-        <span title="GitHub Star Count">(<i class="fa-solid fa-star"></i> {project.stars})</span>
-      </span>
-      
-      <br>
+      <p class="top-line">
+        <img src={project.logo} alt={''} width="20">
+        <strong>
+          <a href={project.web}>{project.name}</a>
+        </strong>
+        <span class="desc"> 
+          - {project.description}
+          <span title="GitHub Star Count">
+        </span>
+      </p>
       <span class="project-stats">
         <Language language={project.tech} small={true} />
         |
@@ -185,6 +235,8 @@ const normalizeUrl = (url: string) => {
         <a title={`View ${project.name}'s homepage`} href={project.web}>
           <i class="fa-solid fa-globe"></i> {normalizeUrl(project.web)}
         </a>
+        |
+        <span title="GitHub Star Count"><i class="fa-solid fa-star"></i> Star Count: {project.stars}</span>
       </span>
     </li>
   {/each}
@@ -192,11 +244,12 @@ const normalizeUrl = (url: string) => {
 
 
 <p class="projects-more">
-  I've deplored and maintain well over 100 open source apps, and contribute to many more.
-  You can view my app catalog at <a href="https://apps.aliciasykes.com">apps.aliciasykes.com</a>.
-  These apps currently serve hundreds of thousands of business and personal users worldwide, with millions Docker downloads, and thousands of GitHub stars.
+  The above list are a selection of projects I have built, which demonstrate my
+  competency with  React, Vue, Svelte, Rust and Python.
   <br><br>
-  I am incredibly quick to learn new tech stacks, and am able to take a new project from zero to production in a matter of days, while maintaining a high quality of code.
+  I am incredibly quick to learn new tech stacks, and am able to take a new project
+  from zero to production in a matter of days, while maintaining a high quality of code.
+  You can view my full catalog of apps at <a href="https://apps.aliciasykes.com">apps.aliciasykes.com</a>.
 </p> 
 
 <style lang="scss">
@@ -241,9 +294,22 @@ const normalizeUrl = (url: string) => {
   }
 
   .projects {
+    padding-left: 0.5rem;
     li {
+      list-style: none;
+      .top-line {
+        margin: 0;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        flex-wrap: wrap;
+      }
       strong {
         font-weight: 500;
+        display: inline-flex;
+        gap: 0.5rem;
+        justify-content: center;
+        align-items: center;
         a {
 
         }
@@ -262,6 +328,7 @@ const normalizeUrl = (url: string) => {
         }
       }
       .project-stats {
+        margin-left: 1rem;
         font-size: 0.8rem;
         opacity: 0.8;
         a {
