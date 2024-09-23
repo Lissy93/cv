@@ -34,21 +34,18 @@
 
 <div class="some-text">
   <p>
-    Before reaching out regarding a role, please take a look at my
-    <a href="/ideal-role">ideal role</a> page to see if I would be a good fit for your team.
-  </p>
-  <p>
     You can learn more about me on the <a href="/intro">intro</a> page,
     or browse the <a href="/skills">skills</a>, <a href="/experience">experience</a> and
     <a href="/achievements">achievements</a> pages to see if I align with what you're looking for.
-  </p>
-  <p>
     A shortened version of my CV in PDF format can be downloaded <a href="/download">here</a>.
   </p>
   <p>
     Beyond that, I'm on LinkedIn, at <a href="https://www.linkedin.com/in/aliciasykes/">in/aliciasykes</a>
     and GitHub at <a href="https://github.com/lissy93">@lissy93</a>.
     A catalog of my recent open source apps can be found at <a href="https://apps.aliciasykes.com">apps.aliciasykes.com</a>
+  </p>
+  <p>
+    To see if I'd be a good fit for your team, you can view my <a href="/ideal-role">ideal role</a>
   </p>
   <p>
     If you've got any questions, or would like me to send over some references, feel free to reach out! :)

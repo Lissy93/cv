@@ -35,7 +35,7 @@
 	const currentDate = new Date();
 	const startDateFormatted = new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'long' }).format(lookingForJobDates.start);
 	const isSeekingOpportunities = currentDate <= lookingForJobDates.end;
-	const pagesToShowBanner = ['/', '/contact' ];
+	const pagesToShowBanner = ['/', '/achievements', '/skills', '/experience'];
 
   function handleScroll() {
     if (header && main) {
