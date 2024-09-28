@@ -170,6 +170,7 @@
 		background: #dcfddc;
 		border: 1px solid #8ddb8d;
 		width: 80%;
+		max-width: 1000px;
 		margin: 1rem auto;
 		padding: 0.25rem 1rem 2.5rem 1rem;
 		border-radius: 8px;

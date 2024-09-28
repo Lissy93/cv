@@ -49,15 +49,6 @@
 <p>{paragraph}</p>
 {/each}
 
-<h2>Requirements</h2>
-<ul>
-  {#each requirements as { lbl, desc }}
-    <li>
-      <strong>{lbl}:</strong> {desc}
-    </li>
-  {/each}
-</ul>
-
 <h2>Values</h2>
 <p class="subtitle">I'm looking for a company which has the following core values</p>
 <ul>
@@ -67,15 +58,28 @@
 </ul>
 
 
+<h2>Requirements</h2>
+<p class="subtitle">I'm pretty flexible on the details, but ideally looking to work within these parameters</p>
+<ul>
+  {#each requirements as { lbl, desc }}
+    <li>
+      <strong>{lbl}:</strong> {desc}
+    </li>
+  {/each}
+</ul>
+
+
+
 <h2>Why me?</h2>
 <p>
+  I'm an accomplished full-stack senior developer, just take a look at my recent <a href="/achievements">achievements</a> for evidence of this! 
   You can learn more about me, my attributes and the philosophy that drives me in my <a href="/intro">intro</a> page.
   Or if you prefer to see my past work, take a look at my published apps at <a href="https://apps.aliciasykes.com">apps.aliciasykes.com</a>
 </p>
 
 <h2>Get in Touch</h2>
 <p>
-  If you think I could be a good fit for your team, please <a href="/contact">get in touch</a>.
+  Does this sound good to you? If so, I'd love to hear from you! So please do <a href="/contact">get in touch</a>.
 </p>
 
 <div class="other-pages">
@@ -112,11 +116,17 @@ ul {
   }
 }
 
+p {
+  font-size: 1rem;
+  margin: 0 0 0.5rem 0;
+}
+
 .other-pages {
   display: grid;
   align-items: center;
   grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
   gap: 1rem;
+  margin: 1rem 0;
   a {
     button {
       margin: 0;
