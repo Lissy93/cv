@@ -8,7 +8,7 @@ const stats = [
     source: 'https://hub.docker.com/u/lissy93',
   },
   {
-    stat: 'Top 100 developer on GitHub',
+    stat: 'Top 100 developer on GitHub worldwide',
     source: 'https://gitstar-ranking.com/Lissy93',
   },
   {
@@ -31,27 +31,43 @@ const stats = [
     stat: '10k+ subscribers to developer blog',
     source: 'https://dev.to/lissy93',
   },
-  // {
-  //   stat: '5k+ followers on GitHub, X, Dev, LinkedIn etc',
-  //   source: 'https://github.com/lissy93',
-  // },
+  {
+    stat: '5k+ followers on GitHub, X, Dev, LinkedIn etc',
+    source: 'https://github.com/lissy93',
+  },
   {
     stat: '100+ repos I maintain or are a core contributor of',
     source: 'https://github.com/Lissy93?tab=repositories&q=&type=&language=&sort=stargazers',
   },
+  {
+    stat: '1000+ repos and open source projects contributed to',
+    source: '',
+  },
+  // {
+  //   stat: '100k GitHub stars on my personal projects',
+  //   source: 'https://gitstar-ranking.com/Lissy93',
+  // },
 ];
 
 const awards = [
   {
-    award: 'OpenUK Honors List 2024',
-    source: 'https://openuk.uk/community/openuk-honours-lists/2024-honours-list',
+    award: 'OpenUK Honors List 2025',
+    issuer: 'OpenUK',
+    source: 'https://openuk.uk/honours/',
   },
   {
     award: 'GitHub Accelerator Program',
+    issuer: 'GitHub',
     source: 'https://accelerator.github.com/',
   },
   {
-    award: 'BCS Best Computer Scient Project',
+    award: 'OpenUK Honors List 2024',
+    issuer: 'OpenUK',
+    source: 'https://openuk.uk/community/openuk-honours-lists/2024-honours-list',
+  },
+  {
+    award: 'Best Final Year CompSci Project',
+    issuer: 'British Computer Society, Oxford',
     source: 'https://oxon.bcs.org/2016/06/27/annual-student-prizes-2016/',
   },
 ];
@@ -105,7 +121,7 @@ const projects = [
     description: 'Control panel for self-hosting',
     tech: 'Vue',
     logo: 'https://dashy.to/img/dashy.png',
-    stars: '17k',
+    stars: '20k',
     repo: 'lissy93/dashy',
     web: 'https://dashy.to',
   },
@@ -113,8 +129,8 @@ const projects = [
     name: 'Web-Check',
     description: 'All-in-one OSINT and security scanner',
     tech: 'React',
-    logo: 'https://v1.web-check.xyz/web-check.png',
-    stars: '20k',
+    logo: 'https://github.com/Lissy93/web-check/blob/master/.github/web-check-logo.png?raw=true',
+    stars: '25k',
     repo: 'lissy93/web-check',
     web: 'https://web-check.xyz',
   },
