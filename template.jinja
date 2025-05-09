@@ -76,17 +76,6 @@
 {% endif %}
 {% endif %}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%     Achievements
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-{% if achivments %}
-\cvsection{Achievements}
-\begin{cvachievements}
-{%- for achievement in achivments %}
-    \item { {{ achievement | markdown_to_latex | safe }} }
-{%- endfor %}
-\end{cvachievements}
-{% endif %}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %     Education
@@ -105,49 +94,52 @@
 \end{cventries}
 {% endif %}
 
-\vspace{-2mm}
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%     Skills
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 {% if skills %}
 \cvsection{Skills}
-\begin{cventries}
-    \cventry
-    {}
-    {\def\arraystretch{1.15}{\begin{tabular}{ l l }
-    {%- for skill in skills %}
-        {{ skill.name | latex_escape }}:  & {\skill{ {{ skill.keywords | join(', ') | latex_escape }} }} \\
-    {%- endfor %}
-    \end{tabular}}}
-    {}
-    {}
-    {}
-\end{cventries}
-{% if extra_links.projects %}
-    \vspace{-10mm}
-    \begin{flushright}
-        \small\color{lightgray} \href{ {{ extra_links.projects.link | latex_escape }} }{{ extra_links.projects.text | latex_escape }}
-    \end{flushright}
-{% endif %}
+\vspace{0.5mm}  % match Stats/Awards
+\begin{cvskills}
+{%- for skill in skills %}
+  \cvskill{ {{ skill.name | latex_escape }} }{ {{ skill.keywords | join(', ') | latex_escape }} }
+{%- endfor %}
+\end{cvskills}
 {% endif %}
 
-\vspace{-7mm}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%     Achievements Statistics
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+{% if achievements %}
+\cvsection{Stats}
+\vspace{0.5mm}
+\begin{cvachievements}
+\setlength{\itemsep}{0mm}
+{%- for ach in achievements %}
+  \item { {{ ach.text | markdown_to_latex | safe }}{% if ach.source %} \href{ {{ ach.source | latex_escape }} }{\scriptsize\color{lightgray}\faLink}{% endif %} }
+{%- endfor %}
+\end{cvachievements}
+{%- endif %}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%     Awards
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 {% if awards %}
 \cvsection{Awards}
-\begin{cvhonors}
+\vspace{0.5mm}
+\begin{cvachievements}
+\setlength{\itemsep}{0mm}
 {%- for award in awards %}
-    \cvhonor
-    {}
-    { {{ award.summary | latex_escape }} }
-    { {{ award.title | latex_escape }} }
-    {}
+  \item { \textbf{ {{ award.title   | latex_escape }} } - {{ award.summary | latex_escape }}{% if award.source %} \href{ {{ award.source | latex_escape }} }{\scriptsize\color{lightgray}\faLink}{% endif %} }
 {%- endfor %}
-\end{cvhonors}
+\end{cvachievements}
 {% endif %}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %     Footer
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Add the footer link at the end of the document
 \vspace{10mm}
 \begin{flushleft}
     \tiny\color{lightgray} \href{https://github.com/lissy93/cv}{ View CV source at github.com/lissy93/cv}

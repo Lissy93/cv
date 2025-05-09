@@ -110,18 +110,32 @@ skills:
   - MySQL
   - MongoDB
 projects: []
-achivments:
-- I'm among the [top 100 developers](https://gitstar-ranking.com/Lissy93) on
-  GitHub worldwide, with 50k stars and 10M Docker downloads. I maintain over
-  [100 open source projects](https://apps.aliciasykes.com/),
-  attracting 1M+ annual unique users.
-- Outside of work, I actively engage in developer communities.
-  I have 10k subscribers to my [DEV.to blog](https://dev.to/lissy93),
-  10+ wins in global hackathons, and rank in the top 1% of contributors
-  on [StackOverflow](https://stackoverflow.com/users/979052/alicia-sykes).
-  As a frequent [open-source contributor](https://github.com/lissy93),
-  I have written [over 1M lines of code](https://codestats.net/users/alicia).
-- This year I earned a place on the [Open UK Honors list](https://openuk.uk/community/openuk-honours-lists/2024-honours-list/)
-  for contributions to the tech and open source sector.
-  I was among 10 developers selected to take part in the prestigious [GitHub Accelerator](https://github.blog/news-insights/company-news/2024-github-accelerator-meet-the-11-projects-shaping-open-source-ai/#web-check-bringing-security-to-the-web) program, (in partnership with Microsoft's M12 fund),
-  where I developed and launched an AI-powered security insights tool, being used by 10s of thousands of organisations world-wide.
+
+achievements:
+  - text: Top 100 GitHub developer worldwide (70k+ stars)
+    source: 'https://gitstar-ranking.com/Lissy93'
+  - text: 10M+ Docker pulls for my open-source projects
+    source: 'https://hub.docker.com/u/lissy93'
+  - text: 10+ global hackathon wins, demonstrating rapid innovation
+    source: 'https://notes.aliciasykes.com/p/0s5s3uOtKj'
+  - text: 1M+ lines of code authored, maintainer of 100+ repos, powering 1M+ annual unique users
+    source: 'https://codestats.net/users/alicia'
+  - text: 10k+ subscribers on DEV.to blog, and 5k+ followers on X, GitHub, LinkedIn
+    source: 'https://dev.to/lissy93'
+  - text: Top 1% contributor on StackOverflow
+    source: 'https://stackoverflow.com/users/979052/alicia-sykes'
+
+awards:
+- title: Open UK Honours List (2025)
+  summary: Recognised for outstanding contributions to the tech and open-source sector
+  source: 'https://openuk.uk/honours/'
+- title: GitHub Accelerator Alumni
+  summary: Selected among 10 developers (Microsoft M12 partnership) to launch AI-security tooling
+  source: 'https://accelerator.github.com/'
+- title: Open UK Honours List (2024)
+  summary: Honoured for leadership and impact in open-source communities
+  source: 'https://openuk.uk/community/openuk-honours-lists/2024-honours-list'
+- title: Best Comp Sci Project
+  summary: Awarded by Oxford British Computer Society
+  source: 'https://oxon.bcs.org/2016/06/27/annual-student-prizes-2016/'
+

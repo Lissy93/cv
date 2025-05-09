@@ -106,7 +106,7 @@
 
   <section class="achievements">
 		<h2>Achievements</h2>
-		{#each data.achivments as achievement}
+		{#each data.achievements as achievement}
 			<p>{@html mdToHtml(achievement)}</p>
 		{/each}
 		<a href="/achievements">
