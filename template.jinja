@@ -146,25 +146,17 @@
 \begin{cvachievements}
   \setlength{\itemsep}{0mm}
 {%- for proj in projects %}
-  %— Project first line
   \item {
-    \href{ {{ proj.url | latex_escape }} }{ \textbf{ {{ proj.name | latex_escape }} }}
-    - {{ proj.description | latex_escape }}
+    \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} l r}
+      \href{ {{ proj.url | latex_escape }} }{\textbf{ {{ proj.name | latex_escape }} }} 
+      - {{ proj.description | latex_escape }} \href{ {{ proj.url | latex_escape }} }{\scriptsize\color{lightgray}\faLink}
+      & 
+      \href{https://github.com/{{ proj.github | latex_escape }}}{\faGithub\ {{ proj.github | latex_escape }}} \\
+    \end{tabular*}
   }
-  % Project second line
-  \vspace{-1mm}
-  %— detail line, indented, with its own itemize
-  \begin{itemize}[leftmargin=4ex, nosep, itemsep=-0.2mm]
-    \item {
-    \href{https://github.com/{{ proj.github | latex_escape }}}{\faGithub\ {{ proj.github | latex_escape }}}
-      \quad|\quad {{ proj.language | latex_escape }}
-      \quad|\quad \faStar\ {{ proj.stars | latex_escape }}
-    }
-  \end{itemize}
 {%- endfor %}
 \end{cvachievements}
 {% endif %}
-
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -172,7 +164,10 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \vspace{10mm}
 \begin{flushleft}
-    \tiny\color{lightgray} \href{https://github.com/lissy93/cv}{ View CV source at github.com/lissy93/cv}
+    \tiny\color{lightgray}
+    Resume built with LaTeX, view source at
+    \href{https://github.com/lissy93/cv}{ github.com/lissy93/cv }.
+    Licensed under MIT (C) Alicia Sykes 2025
 \end{flushleft}
 \ 
 \end{document}
