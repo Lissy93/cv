@@ -109,7 +109,6 @@ skills:
   - Redis
   - MySQL
   - MongoDB
-projects: []
 
 achievements:
   - text: Top 100 GitHub developer worldwide (70k+ stars)
@@ -138,4 +137,18 @@ awards:
 - title: Best Comp Sci Project
   summary: Awarded by Oxford British Computer Society
   source: 'https://oxon.bcs.org/2016/06/27/annual-student-prizes-2016/'
+
+projects:
+- name: 'Dashy'
+  description: 'The self-hosted startpage for servers'
+  github: 'lissy93/dashy'
+  url: 'https://dashy.to'
+  language: 'Vue'
+  stars: '20k'
+- name: 'Web-Check'
+  description: 'OSINT website scanner'
+  github: 'lissy93/web-check'
+  url: 'https://web-check.xyz'
+  language: 'React'
+  stars: '25k'
 

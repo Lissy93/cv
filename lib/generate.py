@@ -87,8 +87,8 @@ def render_template(template_path: str, resume_data: dict) -> str:
         str: The rendered LaTeX resume.
     """
     env = Environment(
-        loader=FileSystemLoader(os.path.dirname(template_path)),
-        autoescape=select_autoescape(['html', 'xml'])
+    loader=FileSystemLoader(os.path.dirname(template_path)),
+    autoescape=select_autoescape(['html', 'xml'])
     )
     env.filters['latex_escape'] = latex_escape
     env.filters['format_date'] = format_date
@@ -102,6 +102,7 @@ def render_template(template_path: str, resume_data: dict) -> str:
         skills=resume_data.get('skills', []),
         awards=resume_data.get('awards', []),
         achievements=resume_data.get('achievements', []),
+        projects=resume_data.get('projects', []),
         extra_links=resume_data.get('extra-links', {})
     )
 
