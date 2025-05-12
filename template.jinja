@@ -94,12 +94,6 @@
     \end{cvitems}}
 {%- endfor %}
 \end{cventries}
-{% if extra_links.work_history %}
-    \vspace{-5mm}
-    \begin{flushright}
-        \small\color{lightgray} \href{ {{ extra_links.work_history.link | latex_escape }} }{{ extra_links.work_history.text | latex_escape }}
-    \end{flushright}
-{% endif %}
 {% endif %}
 
 
@@ -189,11 +183,12 @@
 %     Footer
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \vspace{10mm}
-\begin{flushleft}
+\begin{center}
     \tiny\color{lightgray}
     Resume built with LaTeX, view source at
     \href{https://github.com/lissy93/cv}{ github.com/lissy93/cv }.
-    Licensed under MIT (C) Alicia Sykes 2025
-\end{flushleft}
+    Licensed under MIT (C)
+    \href{https://aliciasykes.com}{ Alicia Sykes } 2025
+\end{center}
 \ 
 \end{document}

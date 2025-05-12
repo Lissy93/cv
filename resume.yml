@@ -4,10 +4,15 @@ basics:
   url: https://github.com/lissy93
   location:
     address: London, UK
-personal-statement: Accomplished Software Engineer with a over a decade of professional experience
-  and proven track record of leading high-impact projects. Expert in optimizing performance,
-  enhancing quality, and delivering user-centric solutions for top-tier organizations.
-  Dedicated mentor, passionate open-source advocate, and active contributor to the developer community.
+personal-statement: |
+  I'm a builder at heart. I care about clean, simple software that's fast,
+  secure, accessible—and actually helps people.
+  Over the years, I've led teams, shipped products used by millions,
+  modernised ageing systems, and helped engineers grow.
+  I believe in open source, protecting user privacy, and leaving things better
+  than I found them.
+  I like working with kind, curious people who want to do great work and have a
+  little fun along the way.
 extra-links:
   work_history:
     text: See all previous roles at linkedin.com/in/aliciasykes
@@ -21,44 +26,63 @@ education:
   studyType: BSc
   startDate: ''
   endDate: ''
-  score: 1st Class Honors. Winner of British Computer Society Best Final Year Project Prize. President of Computing Society.
+  score: 1st Class Honors. Winner of Best Final Year Project Prize. President of Computing Society.
 work:
+- name: loveholidays
+  position: Staff Software Engineer
+  startDate: 2024-11
+  endDate: Present
+  highlights:
+  - Led accessibility strategy ahead of the European Accessibility Act by building lova11y,
+    a site-wide scanning tool that logs and categorises violations into BigQuery and Looker,
+    enabling measurable progress across teams.
+  - Contributed to core web infrastructure (Kubernetes, Terraform), worked closely
+    with vendors like Fastly and DataDome, and delivered improvements in site performance
+    and reliability.
+  - As learning champion, I created resources and pathways to foster continuous learning,
+    mentoring, and upskilling across the engineering org.
+
 - name: AND Digital
   position: Principal Engineer
   startDate: 2022-08
-  endDate: Present
+  endDate: 2024-10
   highlights:
-  - Lead the development of a white-labelled app for Frasers Group, with 1M downloads
-    and 4.8/5 rating (React Native)
-  - Planned and coordinated many mini projects to upskill a team of 8-12 associates
-    alongside my client work
-  - Organised and hosted bi-weekly engineering guild and knowledge transfer sessions
-    for 40 engineers
-  - Worked on large scale migrations to newer and more maintainable tech stacks for
-    Lloyds Bank and International SOS
+  - Led architecture and development for a high-scale white-labelled mobile app for Frasers Group, achieving 1M+ downloads and a 4.8/5 rating on app stores (React Native).
+  - Delivered strategic technical leadership across multiple client projects including Lloyds Bank and International SOS, driving large-scale migrations to modern, maintainable stacks.
+  - Mentored and upskilled a team of 8–12 engineers through structured mini-projects, paired programming, and technical coaching, fostering a high-growth culture.
+  - Established and hosted a bi-weekly engineering guild attended by 40+ engineers, sharing best practices in performance, accessibility, testing, and architecture.
+  - Acted as a bridge between delivery and engineering excellence, ensuring long-term code quality and platform resilience without compromising speed.
+
 - name: Galaxy
   position: VP of Frontend Engineering
   startDate: 2020-06
   endDate: 2022-05
   highlights:
-  - Led the development of a high-performance OTC Electronic Trading platform which
-    facilitated over $1b of trading volume
-  - Spearheaded a major refactor of the existing codebase, enhancing performance by
-    50% and reducing technical debt, resulting in faster load times and a smoother
-    user experience.
-  - Collaborated closely with cross-functional teams, including backend engineers,
-    UX/UI designers, and product managers, to ensure seamless integration of frontend
-    components with backend services.
+  - Directed frontend engineering for Galaxy's flagship OTC trading platform,
+    enabling over $1B in trading volume with enterprise-grade performance and reliability.
+  - Architected and led a full-stack modernization of legacy codebases,
+    improving app load times by 50% and significantly reducing tech debt.
+  - Oversaw and scaled frontend engineering strategy, standards, and execution
+    across multiple teams, including hiring, mentoring, and tech governance.
+  - Partnered closely with product, design, and backend leadership to deliver
+    high-quality features at speed, with a strong focus on user experience and stability.
+  - Advocated for open standards, accessibility, and performance as core pillars
+    of engineering success.
+
 - name: Freelance
-  position: Contract Software Engineer
+  position: Contract Software Engineer Lead
   startDate: 2018-01
   endDate: 2020-06
   highlights:
-  - Engineering lead on the Shell Recharge app (React Native)
-  - Developed a high quality reusable component library, for a new challenger bank
-    (React, TypeScript, Storybook)
-  - Developed a dashboard to calculate and display vehicle idling and CO2 metrics
-    for Machine Max (Rasp Pi, Node, React)
+  - Acted as engineering lead on high-impact React Native projects including
+    Shell Recharge, driving delivery from design to deployment across platforms.
+  - Built a performant, scalable component library from scratch for a UK fintech
+    startup, establishing strong frontend architecture and design consistency.
+  - Delivered a full-stack IoT dashboard for Machine Max, visualizing real-time
+    CO2 and idling metrics from edge devices (Raspberry Pi + cloud stack).
+  - Consistently embedded in client teams as a trusted lead, providing
+    architecture reviews, CI/CD pipeline improvements, and technical mentorship.
+
 - name: Accenture
   position: Developer
   startDate: 2014-05
@@ -67,6 +91,9 @@ work:
   - Took lead on the 3D/AR work for the B&Q bathroom planner (Angular, A-Frame)
   - Lead a team of apprentices on the Accenture UKI Innovation Programme (Google Glass,
     React, D3.js)
+  - Ran sessions on coding best practices, testing and observability for engineers
+    across the business
+  - Headed up the pair programming initiative within Accenture Digital and their clients
   - Also supported with the roll-out of Universal Credit (Java), Boots NHS Prescriptions
     integration (Node.js), E.ON Next Smart Meter portal (React) and the Post Office
     Kiosk Terminal
@@ -94,7 +121,16 @@ skills:
   keywords:
   - Ansible
   - Kubernetes
+  - Terraform
+- name: Obs/Mon
+  keywords:
   - Prometheus
+  - ELK stack
+  - OpenTelemetry
+  - Grafana
+- name: CI/CD
+  keywords:
+  - Argo CD
   - GitHub Actions
 - name: Cloud
   keywords:
@@ -169,4 +205,5 @@ projects:
   url: 'https://domain-locker.com/'
   language: 'Angular'
   stars: '0'
+
 
