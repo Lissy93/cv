@@ -1,7 +1,7 @@
 %-------------------------------------------------------------------------------
 % Resume Class File (resume.cls)
 %-------------------------------------------------------------------------------
-% Licensed under MIT, ⓒ 2024 Alicia Sykes <aliciasykes.com>
+% Licensed under MIT, ⓒ 2025 Alicia Sykes <aliciasykes.com>
 % Full source and usage docs at https://github.com/lissy93/cv
 %-------------------------------------------------------------------------------
 % This LaTeX class file defines the structure and layout for resume and CV 
@@ -118,6 +118,7 @@
 %-------------------------------------------------------------------------------
 %                Configuration for layout
 %-------------------------------------------------------------------------------
+
 %% Page Layout
 % Configure page margins with geometry
 \geometry{left=2.0cm, top=0.5cm, right=2.0cm, bottom=0.5cm, footskip=.5cm}
@@ -157,7 +158,8 @@
 \definecolor{awesome-emerald}{HTML}{00A388}
 \definecolor{awesome-skyblue}{HTML}{0395DE}
 \definecolor{awesome-red}{HTML}{000000}
-\definecolor{awesome-pink}{HTML}{EF4089}
+\definecolor{awesome-pink}{HTML}{F04C8A}
+\definecolor{headerbg}{HTML}{F04C8A}
 \definecolor{awesome-orange}{HTML}{FF6138}
 \definecolor{awesome-nephritis}{HTML}{27AE60}
 \definecolor{awesome-concrete}{HTML}{95A5A6}
@@ -250,8 +252,9 @@
 %-------------------------------------------------------------------------------
 % Configure styles for each CV elements
 % For fundamental structures
-\newcommand*{\headerfirstnamestyle}[1]{{\fontsize{32pt}{1em}\headerfontlight\color{graytext} #1}}
-\newcommand*{\headerlastnamestyle}[1]{{\fontsize{32pt}{1em}\headerfont\bfseries\color{text} #1}}
+
+\newcommand*{\headerfirstnamestyle}[1]{{\fontsize{32pt}{1em}\headerfontlight\color{white} #1}}
+\newcommand*{\headerlastnamestyle}[1]{{\fontsize{32pt}{1em}\headerfont\color{white} #1}}
 \newcommand*{\headerpositionstyle}[1]{{\fontsize{7.6pt}{1em}\bodyfont\scshape\color{awesome} #1}}
 \newcommand*{\headeraddressstyle}[1]{{\fontsize{8pt}{1em}\headerfont\itshape\color{lighttext} #1}}
 \newcommand*{\headersocialstyle}[1]{{\fontsize{6.8pt}{1em}\headerfont\color{text} #1}}
@@ -261,11 +264,13 @@
 \newcommand*{\subsectionstyle}[1]{{\fontsize{12pt}{1em}\bodyfont\scshape\textcolor{text}{#1}}}
 
 % For elements of entry
-\newcommand*{\entrytitlestyle}[1]{{\fontsize{10pt}{1em}\bodyfont\bfseries\color{darktext} #1}}
-\newcommand*{\entrypositionstyle}[1]{{\fontsize{8pt}{1em}\bodyfont\scshape\color{graytext} #1}}
+\newcommand*{\entrytitlestyle}[1]{{\vspace*{-1.5mm}\fontsize{12pt}{1em}\bodyfont\bfseries\color{darktext} #1}}
+\newcommand*{\entrypositionstyle}[1]{{\fontsize{10pt}{1em}\bodyfont\scshape\color{graytext} #1}}
+
+
 \newcommand*{\entrydatestyle}[1]{{\fontsize{8pt}{1em}\bodyfontlight\slshape\color{graytext} #1}}
 \newcommand*{\entrylocationstyle}[1]{{\fontsize{9pt}{1em}\bodyfontlight\slshape\color{awesome} #1}}
-\newcommand*{\descriptionstyle}[1]{{\fontsize{9pt}{1em}\bodyfontlight\upshape\color{text} #1}}
+\newcommand*{\descriptionstyle}[1]{{\fontsize{10pt}{12pt}\bodyfontlight\upshape\color{text} #1}}
 \newcommand*{\skill}[1]{{\fontsize{9pt}{1em}\bodyfontlight\upshape\color{text} \textnormal{#1}}}
 
 % For elements of subentry
@@ -620,6 +625,7 @@
 % Define an entry of cv information
 % Usage: \cventry{<position>}{<title>}{<location>}{<date>}{<description>}
 \newcommand*{\cventry}[5]{
+  \par\addvspace{1.5mm}
   \setlength\tabcolsep{0pt}
   \setlength{\extrarowheight}{0pt}
   \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} L{12.5cm} R{4.5cm}}
@@ -700,7 +706,24 @@
   \vspace{0mm}
 }
 
-
+\renewenvironment{cvpersonalstatement}{
+  \vspace{4mm}
+  \bodyfontlight
+  \begin{justify}
+  \fontsize{12pt}{14pt}\selectfont
+  \begin{itemize}[
+    leftmargin=0ex,
+    label={},
+    nosep,
+    noitemsep,
+    before=\cvparagraphstyle
+  ]
+  \setlength{\parskip}{3mm}
+}{
+  \end{itemize}
+  \end{justify}
+  \vspace{2mm}
+}
 
 % Define an environment for cvskill
 \newenvironment{cvskills}{

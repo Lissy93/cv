@@ -30,15 +30,41 @@
 %%% Override a separator for social informations in header(default: ' | ')
 %\headersocialsep[\quad\textbar\quad]
 \begin{document}
+%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %     Profile
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{center}
-    \headerfirstnamestyle{ Alicia } \headerlastnamestyle{ Sykes } \\
-    \vspace{2mm}
-    {\faEnvelope\ hello@aliciasykes.com} | {\faMapMarker\ London, UK} | {\faLink\ \href{ https://github.com/lissy93 }{ https://github.com/lissy93 }}
-\end{center}
+
+\setlength\fboxsep{10pt}%
+
+\begingroup
+  \hypersetup{
+    colorlinks=true,
+    linkcolor=white,
+    urlcolor=white,
+    citecolor=white,
+    pdfborder={0 0 0}
+  }%
+
+\noindent
+\colorbox{headerbg}{
+  \parbox{\dimexpr\textwidth-2\fboxsep}{
+    \color{white} %
+    \begin{center} %
+      \headerfirstnamestyle{ Alicia } %
+      \headerlastnamestyle{  Sykes }\\[2mm] %
+      \faEnvelope~\href{mailto:hello@aliciasykes.com}hello@aliciasykes.com %
+      \quad|\quad %
+      \faMapMarker~London, UK %
+      \quad|\quad %
+      \faLink~\href{ https://github.com/lissy93 }{ https://github.com/lissy93 } %
+    \end{center} %
+  }
+}
+\endgroup
+\vspace{2mm} %
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %     Personal Statement

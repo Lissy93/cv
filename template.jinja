@@ -30,15 +30,41 @@
 %%% Override a separator for social informations in header(default: ' | ')
 %\headersocialsep[\quad\textbar\quad]
 \begin{document}
+%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %     Profile
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{center}
-    {% raw %}\headerfirstnamestyle{% endraw %}{ {{ basics.name.split(' ')[0] | latex_escape }} } {% raw %}\headerlastnamestyle{% endraw %}{ {{ basics.name.split(' ')[1] | latex_escape }} } \\
-    \vspace{2mm}
-    {\faEnvelope\ {{ basics.email | latex_escape }}} | {\faMapMarker\ {{ basics.location.address | latex_escape }}} | {\faLink\ \href{ {{ basics.url | latex_escape }} }{ {{ basics.url | latex_escape }} }}
-\end{center}
+
+\setlength\fboxsep{10pt}%
+
+\begingroup
+  \hypersetup{
+    colorlinks=true,
+    linkcolor=white,
+    urlcolor=white,
+    citecolor=white,
+    pdfborder={0 0 0}
+  }%
+
+\noindent
+\colorbox{headerbg}{
+  \parbox{\dimexpr\textwidth-2\fboxsep}{
+    \color{white} %
+    \begin{center} %
+      \headerfirstnamestyle{ {{ basics.name.split(' ')[0] | latex_escape }} } %
+      \headerlastnamestyle{  {{ basics.name.split(' ')[1] | latex_escape }} }\\[2mm] %
+      \faEnvelope~\href{mailto:{{ basics.email | latex_escape }}}{{ basics.email | latex_escape }} %
+      \quad|\quad %
+      \faMapMarker~{{ basics.location.address | latex_escape }} %
+      \quad|\quad %
+      \faLink~\href{ {{ basics.url | latex_escape }} }{ {{ basics.url | latex_escape }} } %
+    \end{center} %
+  }
+}
+\endgroup
+\vspace{2mm} %
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %     Personal Statement
