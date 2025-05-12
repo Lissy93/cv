@@ -323,7 +323,7 @@
 
 % Define an environment for cvitems(for cventry)
 \newenvironment{cvitems}{
-  \vspace{-2mm}
+  \vspace{-3mm}
   \begin{justify}
   \begin{itemize}[leftmargin=-2ex, nosep, noitemsep]
     \setlength{\parskip}{0pt}
@@ -625,7 +625,6 @@
 % Define an entry of cv information
 % Usage: \cventry{<position>}{<title>}{<location>}{<date>}{<description>}
 \newcommand*{\cventry}[5]{
-  \par\addvspace{1.5mm}
   \setlength\tabcolsep{0pt}
   \setlength{\extrarowheight}{0pt}
   \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} L{12.5cm} R{4.5cm}}
