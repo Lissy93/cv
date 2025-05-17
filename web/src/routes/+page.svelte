@@ -17,8 +17,11 @@
 		return `${months[parseInt(month) - 1]} ${year}`;
 	}
 
-	const mdToHtml = (md: string) => {
-		return marked(md);
+	const mdToHtml = (md: { text: string, source: string }) => {
+		if (!md || !md.text) {
+			return '';
+		}
+		return marked(md.text);
 	}
 
 </script>
@@ -50,31 +53,34 @@
 		</a>
   </section>
 
-  <section class="work">
-		<h2>Experience</h2>
-    {#each data.work as job}
-      <div>
-        <h3>{job.name}</h3>
-        <h4>
-					{job.position}
-					<span class="grey">{formatData(job.startDate)} - {formatData(job.endDate)}</span>
-				</h4>
-        <ul>
-          {#each job.highlights as highlight}
-            <li>{highlight}</li>
-          {/each}
-        </ul>
-      </div>
-    {/each}
-		<a href="/experience">
-			<button class="small-btn">
-				<i class="nav-icon fa-solid fa-briefcase"></i>
-				View All Experience
-				<i class="fa-solid fa-arrow-right"></i>
-			</button>
-		</a>
-  </section>
+	{#if data.work && data.work.length > 0}
+		<section class="work">
+			<h2>Experience</h2>
+			{#each data.work as job}
+				<div>
+					<h3>{job.name}</h3>
+					<h4>
+						{job.position}
+						<span class="grey">{formatData(job.startDate)} - {formatData(job.endDate)}</span>
+					</h4>
+					<ul>
+						{#each job.highlights as highlight}
+							<li>{highlight}</li>
+						{/each}
+					</ul>
+				</div>
+			{/each}
+			<a href="/experience">
+				<button class="small-btn">
+					<i class="nav-icon fa-solid fa-briefcase"></i>
+					View All Experience
+					<i class="fa-solid fa-arrow-right"></i>
+				</button>
+			</a>
+		</section>
+	{/if}
 
+	{#if data.education && data.education.length > 0}
 	<section class="education">
 		<h2>Education</h2>
     {#each data.education as edu}
@@ -85,6 +91,7 @@
       </div>
     {/each}
   </section>
+	{/if}
 
   <section class="skills">
     <h2>Skills</h2>
@@ -106,9 +113,18 @@
 
   <section class="achievements">
 		<h2>Achievements</h2>
-		{#each data.achievements as achievement}
-			<p>{@html mdToHtml(achievement)}</p>
-		{/each}
+		<ul>
+			{#each (data.achievements || []) as achievement}
+				<li>
+					{ achievement.text }
+					{#if achievement.source}
+						<a href={achievement.source} title={makeUrlretty(achievement.source)} target="_blank" rel="nofollow">
+							<i class="achievement-link fa-solid fa-link"></i>
+						</a>
+					{/if}
+				</li>
+			{/each}
+		</ul>
 		<a href="/achievements">
 			<button class="small-btn">
 				<i class="nav-icon fa-solid fa-star"></i>
@@ -116,8 +132,33 @@
 				<i class="fa-solid fa-arrow-right"></i>
 			</button>
 		</a>
+	</section>
+
+	<section class="achievements">
+		<h2>Awards</h2>
+		<ul>
+			{#each (data.awards || []) as award}
+				<li>
+					<b>{ award.title }</b> - <i>{ award.summary}</i>
+					{#if award.source}
+						<a href={award.source} title={makeUrlretty(award.source)} target="_blank" rel="nofollow">
+							<i class="achievement-link fa-solid fa-link"></i>
+						</a>
+					{/if}
+				</li>
+			{/each}
+		</ul>
+
   </section>
 </div>
 <style>
-
+.achievement-link {
+	color: var(--text-color);
+	opacity: 0.8;
+	font-size: 0.6rem;
+	transition: all 0.2s ease-in-out;
+	&:hover {
+		color: var(--primary);
+	}
+}
 </style>

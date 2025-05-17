@@ -8,7 +8,8 @@ export const prerender = true;
 import type { PageLoad } from './$types';
 
 export const load: PageLoad = async () => {
-  const response = await fetch('https://raw.githubusercontent.com/Lissy93/cv/main/resume.yml');
+  // const response = await fetch('https://raw.githubusercontent.com/Lissy93/cv/main/resume.yml');
+  const response = await fetch('https://raw.githubusercontent.com/Lissy93/cv/refs/heads/v2/resume.yml');
   const yamlText = await response.text();
   const data = yaml.load(yamlText);
   return data;

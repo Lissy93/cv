@@ -28,7 +28,7 @@
     crystal: { name: 'crystal', color: '000000', icon: 'crystal' },
     css: { name: 'CSS', color: '563D7C', icon: 'css3' },
     config: { name: 'Config', color: 'EF1970', icon: 'haveibeenpwned' },
-    d3: { name: 'D3.js', color: 'F9A03C', icon: 'd3dotjs' },
+    d3: { name: 'D3.js', color: 'F9A03C', icon: 'd3' },
     dart: { name: 'Dart', color: '0175C2', icon: 'dart' },
     dockerfile: { name: 'Docker', color: '2496ED', icon: 'docker' },
     docker: { name: 'Docker', color: '2496ED', icon: 'docker' },
@@ -54,6 +54,7 @@
     perl: { name: 'Perl', color: '39457E', icon: 'perl' },
     php: { name: 'PHP', color: '777BB4', icon: 'php' },
     powershell: { name: 'PowerShell', color: '5391FE', icon: 'powershell' },
+    preact: { name: 'Preact', color: '673AB8', icon: 'preact' },
     pug: { name: 'Pug', color: 'A86454', icon: 'pug' },
     python: { name: 'Python', color: '3C78A9', icon: 'python' },
     r: { name: 'R', color: '198CE7', icon: 'r' },
@@ -79,6 +80,7 @@
     githubactions: { name: 'GitHub Actions', color: '2088FF', icon: 'githubactions' },
     prometheus: { name: 'Prometheus', color: 'E6522C', icon: 'prometheus' },
     grafana: { name: 'Grafana', color: 'F46800', icon: 'grafana' },
+    terraform: { name: 'Terraform', color: '844FBA', icon: 'terraform' },
 
     // Cloud
     netlify: { name: 'Netlify', color: '00C7B7', icon: 'netlify' },
@@ -88,6 +90,7 @@
     azure: { name: 'Azure', color: '0089D6', icon: 'cloudways' },
     gcp: { name: 'GCP', color: '4285F4', icon: 'googlecloud' },
     ibmcloud: { name: 'IBM Cloud', color: '1261FE', icon: 'ibmcloud' },
+    fastly: { name: 'Fastly', color: 'FF282D', icon: 'fastly' },
 
     // Databases
     mysql: { name: 'MySQL', color: '4479A1', icon: 'mysql' },
@@ -95,6 +98,7 @@
     redis: { name: 'Redis', color: 'DC382D', icon: 'redis' },
     sqlite: { name: 'SQLite', color: '003B57', icon: 'sqlite' },
     postgresql: { name: 'PostgreSQL', color: '336791', icon: 'postgresql' },
+    bigquery: { name: 'BigQuery', color: '669DF6', icon: 'googlebigquery' },
 
     // Testing
     jest: { name: 'Jest', color: 'C21325', icon: 'jest' },
@@ -158,7 +162,7 @@
 
 {#if langAttributes}
 <div class="language {small ? 'small' : ''}" title={`Build with ${langAttributes.name}`} style={`--lang-color: #${langAttributes.color};`} >
-  <img height="16" width="16" alt="l" src="https://cdn.simpleicons.org/{langAttributes.icon}/595959" />
+  <img height="16" width="16" alt="l" src="https://cdn.simpleicons.org/{langAttributes.icon}/{langAttributes.color}" />
   {langAttributes.name}
 </div>
 {/if}
@@ -166,10 +170,11 @@
 
 <style lang="scss">
   img {
-    filter: grayscale(20%);
+    // filter: grayscale(20%);
+    filter: brightness(0.6);
     transition: all 0.1s ease-in-out;
     &:hover {
-      filter: grayscale(0%);
+      filter: brightness(1);
       transform: scale(1.05);
     }
   }
@@ -184,6 +189,8 @@
     display: inline;
     transition: all 0.3s ease-in-out;
     cursor: default;
+    color: var(--lang-color);
+    filter: brightness(0.8);
     &:hover {
       font-weight: 600;
       color: var(--lang-color);

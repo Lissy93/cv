@@ -14,17 +14,21 @@
 {#each experience as job}
   <div class="job">
     <h2>
+      {#if job.companyUrl && job.companyLogo}
       <a href={job.companyUrl} target="_blank" rel="nofollow" class="no-underline">
         <img width="128" src={job.companyLogo} alt={job.company} />
       </a>
+      {/if}
       <span>{job.position}</span>
       at
       <span>{job.company}</span>
     </h2>
     <p class="dates">{job.datesWorked}</p>
 
-    <p class="responsibilities">{job.responsibilities}</p>
-
+    {#if job.responsibilities}
+      <p class="responsibilities">{job.responsibilities}</p>
+    {/if}
+    
     {#if job.highlights}
       <h3>Highlights</h3>
       <ul class="highlights">

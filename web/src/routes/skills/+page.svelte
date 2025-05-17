@@ -30,9 +30,7 @@
 <section class="skills-page">
 <h1>Skills</h1>
 <p>
-  Below is a list of technologies that I've worked extensively with.
-  I've included a link to projects and source code for each technology listed, for verification.
-  <br>
+  Below is a list of technologies that I've worked extensively with, along with links to projects I've build with each.
   I enjoy staying up-to-date with the latest technologies,
   so that I'm in the best position to use the optimum tech stack for any given project.
 </p>
@@ -44,12 +42,19 @@
       <li>
         <b><Language language={technology.language} /> </b>
         <br>
-        <span class="project-list">
-          Projects:
-        {#each technology.projects as project}
-          <a href="https://github.com/lissy93/{project}" target="_blank" rel="nofollow">{project}</a>
-        {/each}
-        </span>
+        <details class="projects-collapsable">
+          <summary class="project-list-title">Sample Projects ({technology.projects.length + 1})</summary>
+          <ul>
+            {#each technology.projects as project}
+            <li>
+              <i class="fa-brands fa-github"></i>
+              <a href="https://github.com/lissy93/{project}" target="_blank" rel="nofollow">
+                {project}
+              </a>
+            </li>
+          {/each}
+          </ul>
+        </details>
       </li>
       {/each}
     </ul>
@@ -81,23 +86,26 @@
   p {
     font-size: 0.95rem;
   }
+  .second-intro {
+    font-size: 0.8rem;
+    opacity: 0.8;
+  }
   ul {
     padding-left: 0.5rem;
     list-style: none;
     li {
       margin: 0.1rem 0;
       font-size: 0.95rem;
-      .project-list {
+      .projects-collapsable {
         margin-left: 2rem;
         opacity: 0.8;
         font-size: 0.8rem;
-
-        display: -webkit-box;
-        max-width: 100%;
-        -webkit-line-clamp: 1;
-        -webkit-box-orient: vertical;
-        overflow: hidden;
-        
+        ul {
+          margin-bottom: 0.5rem;
+        }
+        .project-list-title {
+          cursor: pointer;
+        }
         a {
           color: var(--text-color);
           text-transform: capitalize;
