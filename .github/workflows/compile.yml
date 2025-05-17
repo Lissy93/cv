@@ -11,7 +11,7 @@ on:
     paths:
       - 'tex/**'
   workflow_run:
-    workflows: ["Tag"]
+    workflows: ["🏷️ Tag"]
     types:
       - completed
 
