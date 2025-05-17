@@ -4,7 +4,7 @@ import type { PageLoad } from './$types';
 
 const yamlEndpoint = 'https://raw.githubusercontent.com/Lissy93/cv/HEAD/resume.yml';
 // const jsonEndpoint = '/data/additional-data.json';
-const jsonEndpoint = 'https://gist.githubusercontent.com/Lissy93/f3f3ad8c35449043f4e68449a05afd4d/raw/efa8060803083f464519718037b6bab53b457461/cv-data.json';
+const jsonEndpoint = 'https://gist.githubusercontent.com/Lissy93/f3f3ad8c35449043f4e68449a05afd4d/raw/4ad57ecd293f659892d38cdc0e4683df1c67e560/cv-data.json';
 
 const formatForCompare = (str: string) => {
   if (!str) { return ''; }

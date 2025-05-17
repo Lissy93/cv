@@ -531,15 +531,23 @@
         "projects": [
           "dashy",
           "all-the-countries",
-          "alicia-sykes-website",
+          "aliciasykes.com",
           "tfl-lift-availability-dash"
         ]
       },
       {
         "language": "Svelte",
         "projects": [
+          "portainer-templates",
+          "bug-bounties",
           "my-website",
           "cheat-code"
+        ]
+      },
+      {
+        "language": "Qwik",
+        "projects": [
+          "personal-security-checklist"
         ]
       },
       {
@@ -557,6 +565,7 @@
       {
         "language": "Angular",
         "projects": [
+          "domain-locker",
           "happy-app",
           "realtime-speech-analytics"
         ]
@@ -564,7 +573,15 @@
       {
         "language": "Astro",
         "projects": [
-          "git-into-open-source"
+          "awesome-privacy",
+          "git-into-open-source",
+          "email-comparison"
+        ]
+      },
+      {
+        "language": "Van.js",
+        "projects": [
+          "raid-calculator"
         ]
       },
       {
@@ -579,6 +596,18 @@
         "language": "Alpine",
         "projects": [
           "who-dat"
+        ]
+      },
+      {
+        "language": "Lit",
+        "projects": [
+          "email-comparison"
+        ]
+      },
+      {
+        "language": "Hono",
+        "projects": [
+          "readme-contribs"
         ]
       },
       {
@@ -636,7 +665,21 @@
       {
         "language": "Bash",
         "projects": [
+          "dotfiles",
           "minimal-terminal-prompt"
+        ]
+      },
+      {
+        "language": "Docker",
+        "projects": [
+          "dockyard",
+          "docker-tcpdump"
+        ]
+      },
+      {
+        "language": "Ansible",
+        "projects": [
+          "ansibles"
         ]
       },
       {

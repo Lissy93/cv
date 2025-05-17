@@ -39,6 +39,7 @@
     flutter: { name: 'Flutter', color: '02569B', icon: 'flutter' },
     go: { name: 'Go', color: '00ADD8', icon: 'go' },
     html: { name: 'HTML', color: 'E34F26', icon: 'html5' },
+    hono: { name: 'Hono', color: 'E36002', icon: 'hono' },
     haskell: { name: ' Haskell', color: '5D4F85', icon: ' haskell' },
     java: { name: 'Java', color: '007396', icon: 'mocha' },
     javascript: { name: 'JavaScript', color: 'F7DF1E', icon: 'javascript' },
@@ -71,7 +72,7 @@
     typescript: { name: 'TypeScript', color: '3178C6', icon: 'typescript' },
     qwik: { name: 'Qwik', color: 'ac7ef4', icon: 'qwik' },
     vue: { name: 'Vue.js', color: '4FC08D', icon: 'vuedotjs' },
-    van: { name: 'Van.js', color: 'F44336', icon: 'vitess' },
+    vanjs: { name: 'Van.js', color: 'F44336', icon: 'ejs' },
     webassembly: { name: 'WebAssembly', color: '654FF0', icon: 'webassembly' },
 
     // DevOps
@@ -153,7 +154,7 @@
   // Get the language info (if present) for the languages passed as a prop
   const getLangAttributes = (lang: string): LanguageAttributes | null => {
     const defaultConfig = {name: lang, color: '000000', icon: '' };
-    return badgeConfigs[lang?.toLocaleLowerCase().replaceAll(' ', '')] || defaultConfig;
+    return badgeConfigs[lang?.toLocaleLowerCase().replaceAll('.', '').replaceAll(' ', '')] || defaultConfig;
   };
 
   // Make both badge URL and language info available to the component (and reactive)

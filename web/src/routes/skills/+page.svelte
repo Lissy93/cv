@@ -43,7 +43,7 @@
         <b><Language language={technology.language} /> </b>
         <br>
         <details class="projects-collapsable">
-          <summary class="project-list-title">Sample Projects ({technology.projects.length + 1})</summary>
+          <summary class="project-list-title">Sample Projects ({technology.projects.length})</summary>
           <ul>
             {#each technology.projects as project}
             <li>
