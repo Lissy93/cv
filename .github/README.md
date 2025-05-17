@@ -11,11 +11,8 @@
 
 
 ## Motive
-I don't want to f\*\*k around with Microsoft Word, creating weird invisible tables trying to get things formatted correctly.
-
-Instead, I wanna just define all my resume content in a single YAML file, following a standard spec.<br>
-Then upon changes, have GitHub Actions generate and release a PDF file, as well as deploy a web version.
-
+I want a script that auto-generates a LaTeX PDF and deploys a static resume website, from content a single YAML file.
+In order that I can easily maintain my resume, without the need to f\*\*k around with Microsoft Word.
 
 <details>
   <summary>Motive (legacy)</summary>
