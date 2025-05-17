@@ -53,9 +53,10 @@ Why? ...Because why spend 30 minutes writing your CV, when you could spend 30 ho
 
 | Workflow     | Description      | Status                     |
 | :----------- | :--------------- | :------------------------: |
-| `tag`        | Creates a new Git tag. Optionally specify the tag name and description, or by default it will just bump the sem ver patch number by 1 | [![Tag](https://github.com/Lissy93/cv/actions/workflows/tag.yml/badge.svg)](https://github.com/Lissy93/cv/actions/workflows/tag.yml)  |
+| `tag`        | Creates a new Git tag. Optionally specify the tag name and description, or by default it will just bump the sem ver patch number by 1 | [![🏷️ Tag](https://github.com/Lissy93/cv/actions/workflows/tag.yml/badge.svg)](https://github.com/Lissy93/cv/actions/workflows/tag.yml)  |
 | `generate`   | Generates your resume in PDF form as an artifact. If triggered by a tag, then a new release will be created, with the PDF attatched   | [![Generate PDF](https://github.com/Lissy93/cv/actions/workflows/compile.yml/badge.svg)](https://github.com/Lissy93/cv/actions/workflows/compile.yml) |
-| `validate`   | Validates your resume data against the schema. This will also run whenever a new PR is opened, to ensure it's valid and working | st |
+| `validate`   | Validates your resume data against the schema. This will also run whenever a new PR is opened, to ensure it's valid and working | [![☑️ Validate Resume](https://github.com/Lissy93/cv/actions/workflows/validate.yml/badge.svg)](https://github.com/Lissy93/cv/actions/workflows/validate.yml) |
+| `mirror`     | Backups up repository and content to our (non-Microsoft) Codeberg mirror | [![🪞 Mirror to Codeberg](https://github.com/Lissy93/cv/actions/workflows/mirror.yml/badge.svg)](https://github.com/Lissy93/cv/actions/workflows/mirror.yml) |
 
 </details>
 
