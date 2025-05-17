@@ -1,4 +1,4 @@
-name: Tag
+name: 🏷️ Tag
 
 on:
   workflow_dispatch:

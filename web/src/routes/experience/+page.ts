@@ -2,15 +2,19 @@ import yaml from 'js-yaml';
 export const prerender = true;
 import type { PageLoad } from './$types';
 
-const yamlEndpoint = 'https://raw.githubusercontent.com/Lissy93/cv/main/resume.yml';
-const jsonEndpoint = 'https://gist.githubusercontent.com/Lissy93/f3f3ad8c35449043f4e68449a05afd4d/raw/9d5db47f33cd1ad324c4ab5ca06fe943a7cd9fc6/cv-data.json';
+const yamlEndpoint = 'https://raw.githubusercontent.com/Lissy93/cv/HEAD/resume.yml';
+// const jsonEndpoint = '/data/additional-data.json';
+const jsonEndpoint = 'https://gist.githubusercontent.com/Lissy93/f3f3ad8c35449043f4e68449a05afd4d/raw/efa8060803083f464519718037b6bab53b457461/cv-data.json';
 
-const formatForCompare = (str: string) => str.toLowerCase().replace(/[^a-z0-9]/gi, '');
+const formatForCompare = (str: string) => {
+  if (!str) { return ''; }
+  return str.toLowerCase().replace(/[^a-z0-9]/gi, '')
+  };
 
 const mergeJobData = (cvData, websiteData) => {
   const formattedWebsiteData = websiteData.map(job => ({
     ...job,
-    formattedCompany: formatForCompare(job.company)
+    formattedCompany: formatForCompare(job.company),
   }));
 
   const combinedData = cvData.map(cvJob => {
@@ -32,7 +36,13 @@ const mergeJobData = (cvData, websiteData) => {
         highlights: cvJob.highlights
       };
     }
-    return cvJob;
+
+    console.log(cvJob)
+    return {
+      company: cvJob.name,
+      datesWorked: `${cvJob.startDate} - ${cvJob.endDate}`,
+      ...cvJob,
+    };
   });
 
   const combinedCompanyNames = combinedData.map(job => formatForCompare(job.company));
@@ -61,10 +71,8 @@ export const load: PageLoad = async () => {
   ]);
 
   const yamlText = await yamlResponse.text();
-  const cvData = yaml.load(yamlText).work;
-
+  const cvData = ((yaml.load(yamlText) as any) || {}).work;
   const websiteData = await jsonResponse.json();
-
   const combinedJobData = mergeJobData(cvData, websiteData.workExperience);
 
   return {

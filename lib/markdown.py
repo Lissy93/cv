@@ -138,7 +138,7 @@ def generate_markdown(resume: Dict[str, Any]) -> str:
         skill_items.append(f"See example projects built with each technology at <a href=\"{extra_links_projects['link']}\">{extra_links_projects['link']}</a>")
     md_content.append(format_section('Skills', skill_items))
 
-    achievements = resume.get('achivments', [])
+    achievements = resume.get('achievements', [])
     achievement_items = [f"{achievement}\n" for achievement in achievements]
     md_content.append(format_section('Achievements', achievement_items))
 

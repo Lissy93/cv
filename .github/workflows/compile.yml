@@ -1,4 +1,4 @@
-name: Generate PDF
+name: 🔨 Compile and Generate PDF
 
 on:
   workflow_dispatch:

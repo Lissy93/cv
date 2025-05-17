@@ -273,30 +273,64 @@
     },
     "awards": {
       "type": "array",
-      "description": "Specify any awards you have received throughout your professional career",
-      "additionalItems": false,
       "items": {
         "type": "object",
-        "additionalProperties": true,
+        "additionalProperties": false,
         "properties": {
-          "title": {
-            "type": "string",
-            "description": "e.g. One of the 100 greatest minds of the century"
-          },
-          "date": {
-            "$ref": "#/definitions/iso8601"
-          },
-          "awarder": {
-            "type": "string",
-            "description": "e.g. Time Magazine"
-          },
-          "summary": {
-            "type": "string",
-            "description": "e.g. Received for my work with Quantum Physics"
-          }
-        }
+          "title":   { "type": "string" },
+          "summary": { "type": "string" },
+          "source":  { "type": "string", "format": "uri" }
+        },
+        "required": ["title","summary"]
       }
     },
+    "achievements": {
+      "type": "array",
+      "description": "List notable achievements",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "text": {
+            "type": "string",
+            "description": "Description of the achievement"
+          },
+          "source": {
+            "type": "string",
+            "description": "URL providing more details about the achievement",
+            "format": "uri"
+          }
+        },
+        "required": ["text", "source"]
+      }
+    },
+    "projects": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "name":        { "type": "string" },
+          "description": { "type": "string" },
+          "url":         { "type": "string", "format": "uri" },
+          "github":      { "type": "string", "format": "uri" },
+          "language":    { "type": "string" },
+          "stars":       { "type": "string" },
+          "highlights":  {
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "keywords":    {
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "startDate":   { "$ref": "#/definitions/iso8601" },
+          "endDate":     { "$ref": "#/definitions/iso8601" }
+        },
+        "required": ["name","description","url"]
+      }
+    },
+
     "certificates": {
       "type": "array",
       "description": "Specify any certificates you have received throughout your professional career",
@@ -441,78 +475,6 @@
             "description": "e.g. Joe blogs was a great employee, who turned up to work at least once a week. He exceeded my expectations when it came to doing nothing."
           }
         }
-      }
-    },
-    "projects": {
-      "type": "array",
-      "description": "Specify career projects",
-      "additionalItems": false,
-      "items": {
-        "type": "object",
-        "additionalProperties": true,
-        "properties": {
-          "name": {
-            "type": "string",
-            "description": "e.g. The World Wide Web"
-          },
-          "description": {
-            "type": "string",
-            "description": "Short summary of project. e.g. Collated works of 2017."
-          },
-          "highlights": {
-            "type": "array",
-            "description": "Specify multiple features",
-            "additionalItems": false,
-            "items": {
-              "type": "string",
-              "description": "e.g. Directs you close but not quite there"
-            }
-          },
-          "keywords": {
-            "type": "array",
-            "description": "Specify special elements involved",
-            "additionalItems": false,
-            "items": {
-              "type": "string",
-              "description": "e.g. AngularJS"
-            }
-          },
-          "startDate": {
-            "$ref": "#/definitions/iso8601"
-          },
-          "endDate": {
-            "$ref": "#/definitions/iso8601"
-          },
-          "url": {
-            "type": "string",
-            "format": "uri",
-            "description": "e.g. http://www.computer.org/csdl/mags/co/1996/10/rx069-abs.html"
-          },
-          "roles": {
-            "type": "array",
-            "description": "Specify your role on this project or in company",
-            "additionalItems": false,
-            "items": {
-              "type": "string",
-              "description": "e.g. Team Lead, Speaker, Writer"
-            }
-          },
-          "entity": {
-            "type": "string",
-            "description": "Specify the relevant company/entity affiliations e.g. 'greenpeace', 'corporationXYZ'"
-          },
-          "type": {
-            "type": "string",
-            "description": " e.g. 'volunteering', 'presentation', 'talk', 'application', 'conference'"
-          }
-        }
-      }
-    },
-    "achivments": {
-      "type": "array",
-      "description": "List your achievements as paragraphs",
-      "items": {
-        "type": "string"
       }
     },
     "meta": {

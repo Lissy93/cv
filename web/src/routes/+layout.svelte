@@ -90,7 +90,7 @@
 	<aside>
 		<div class="aside-inner">
 			<a href="/" class="no-underline"><h1>CV: Alicia Sykes</h1></a>
-			<h2 class="job-title">Principle Engineer</h2>
+			<h2 class="job-title">Principal Engineer</h2>
 			<img class="profile-picture" width="300" src="/profile-picture.jpg" alt="Alicia Sykes" />
 			<ul class="socials">
 				{#each socials as { url, icon, color }}

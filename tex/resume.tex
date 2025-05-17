@@ -30,22 +30,56 @@
 %%% Override a separator for social informations in header(default: ' | ')
 %\headersocialsep[\quad\textbar\quad]
 \begin{document}
+%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %     Profile
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{center}
-    \headerfirstnamestyle{ Alicia } \headerlastnamestyle{ Sykes } \\
-    \vspace{2mm}
-    {\faEnvelope\ hello@aliciasykes.com} | {\faMapMarker\ London, UK} | {\faLink\ \href{ https://github.com/lissy93 }{ https://github.com/lissy93 }}
-\end{center}
+
+\setlength\fboxsep{10pt}%
+
+\begingroup
+  \hypersetup{
+    colorlinks=true,
+    linkcolor=white,
+    urlcolor=white,
+    citecolor=white,
+    pdfborder={0 0 0}
+  }%
+
+\noindent
+\colorbox{headerbg}{
+  \parbox{\dimexpr\textwidth-2\fboxsep}{
+    \color{white} %
+    \begin{center} %
+      \headerfirstnamestyle{ Alicia } %
+      \headerlastnamestyle{  Sykes }\\[2mm] %
+      \faEnvelope~\href{mailto:hello@aliciasykes.com}hello@aliciasykes.com %
+      \quad|\quad %
+      \faMapMarker~London, UK %
+      \quad|\quad %
+      \faLink~\href{ https://github.com/lissy93 }{ https://github.com/lissy93 } %
+    \end{center} %
+  }
+}
+\endgroup
+\vspace{2mm} %
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %     Personal Statement
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{cvpersonalstatement}
-  \item { Accomplished Software Engineer with a over a decade of professional experience and proven track record of leading high-impact projects. Expert in optimizing performance, enhancing quality, and delivering user-centric solutions for top-tier organizations. Dedicated mentor, passionate open-source advocate, and active contributor to the developer community. }
+  \item { I\textquotesingle{}m a builder at heart. I care about clean, simple software that\textquotesingle{}s fast,
+secure, accessible—and actually helps people.
+Over the years, I\textquotesingle{}ve led teams, shipped products used by millions,
+modernised ageing systems, and helped engineers grow.
+I believe in open source, protecting user privacy, and leaving things better
+than I found them.
+I like working with kind, curious people who want to do great work and have a
+little fun along the way.
+ }
 \end{cvpersonalstatement}
 
 
@@ -56,15 +90,26 @@
 \cvsection{Experience}
 \begin{cventries}
     \cventry
+    { Staff Software Engineer }
+    { loveholidays }
+    {}
+    { November 2024 – Present }
+    {\begin{cvitems}
+        \item { Led accessibility strategy ahead of the European Accessibility Act by building lova11y, a site-wide scanning tool that logs and categorises violations into BigQuery and Looker, enabling measurable progress across teams. }
+        \item { Contributed to core web infrastructure (Kubernetes, Terraform), worked closely with vendors like Fastly and DataDome, and delivered improvements in site performance and reliability. }
+        \item { As learning champion, I created resources and pathways to foster continuous learning, mentoring, and upskilling across the engineering org. }
+    \end{cvitems}}
+    \cventry
     { Principal Engineer }
     { AND Digital }
     {}
-    { August 2022 – Present }
+    { August 2022 – October 2024 }
     {\begin{cvitems}
-        \item { Lead the development of a white-labelled app for Frasers Group, with 1M downloads and 4.8/5 rating (React Native) }
-        \item { Planned and coordinated many mini projects to upskill a team of 8-12 associates alongside my client work }
-        \item { Organised and hosted bi-weekly engineering guild and knowledge transfer sessions for 40 engineers }
-        \item { Worked on large scale migrations to newer and more maintainable tech stacks for Lloyds Bank and International SOS }
+        \item { Led architecture and development for a high-scale white-labelled mobile app for Frasers Group, achieving 1M+ downloads and a 4.8/5 rating on app stores (React Native). }
+        \item { Delivered strategic technical leadership across multiple client projects including Lloyds Bank and International SOS, driving large-scale migrations to modern, maintainable stacks. }
+        \item { Mentored and upskilled a team of 8–12 engineers through structured mini-projects, paired programming, and technical coaching, fostering a high-growth culture. }
+        \item { Established and hosted a bi-weekly engineering guild attended by 40+ engineers, sharing best practices in performance, accessibility, testing, and architecture. }
+        \item { Acted as a bridge between delivery and engineering excellence, ensuring long-term code quality and platform resilience without compromising speed. }
     \end{cvitems}}
     \cventry
     { VP of Frontend Engineering }
@@ -72,19 +117,22 @@
     {}
     { June 2020 – May 2022 }
     {\begin{cvitems}
-        \item { Led the development of a high-performance OTC Electronic Trading platform which facilitated over \$1b of trading volume }
-        \item { Spearheaded a major refactor of the existing codebase, enhancing performance by 50\% and reducing technical debt, resulting in faster load times and a smoother user experience. }
-        \item { Collaborated closely with cross-functional teams, including backend engineers, UX/UI designers, and product managers, to ensure seamless integration of frontend components with backend services. }
+        \item { Directed frontend engineering for Galaxy\textquotesingle{}s flagship OTC trading platform, enabling over \$1B in trading volume with enterprise-grade performance and reliability. }
+        \item { Architected and led a full-stack modernization of legacy codebases, improving app load times by 50\% and significantly reducing tech debt. }
+        \item { Oversaw and scaled frontend engineering strategy, standards, and execution across multiple teams, including hiring, mentoring, and tech governance. }
+        \item { Partnered closely with product, design, and backend leadership to deliver high-quality features at speed, with a strong focus on user experience and stability. }
+        \item { Advocated for open standards, accessibility, and performance as core pillars of engineering success. }
     \end{cvitems}}
     \cventry
-    { Contract Software Engineer }
+    { Contract Software Engineer Lead }
     { Freelance }
     {}
     { January 2018 – June 2020 }
     {\begin{cvitems}
-        \item { Engineering lead on the Shell Recharge app (React Native) }
-        \item { Developed a high quality reusable component library, for a new challenger bank (React, TypeScript, Storybook) }
-        \item { Developed a dashboard to calculate and display vehicle idling and CO2 metrics for Machine Max (Rasp Pi, Node, React) }
+        \item { Acted as engineering lead on high-impact React Native projects including Shell Recharge, driving delivery from design to deployment across platforms. }
+        \item { Built a performant, scalable component library from scratch for a UK fintech startup, establishing strong frontend architecture and design consistency. }
+        \item { Delivered a full-stack IoT dashboard for Machine Max, visualizing real-time CO2 and idling metrics from edge devices (Raspberry Pi + cloud stack). }
+        \item { Consistently embedded in client teams as a trusted lead, providing architecture reviews, CI/CD pipeline improvements, and technical mentorship. }
     \end{cvitems}}
     \cventry
     { Developer }
@@ -94,27 +142,12 @@
     {\begin{cvitems}
         \item { Took lead on the 3D/AR work for the B\&Q bathroom planner (Angular, A-Frame) }
         \item { Lead a team of apprentices on the Accenture UKI Innovation Programme (Google Glass, React, D3.js) }
+        \item { Ran sessions on coding best practices, testing and observability for engineers across the business }
+        \item { Headed up the pair programming initiative within Accenture Digital and their clients }
         \item { Also supported with the roll-out of Universal Credit (Java), Boots NHS Prescriptions integration (Node.js), E.ON Next Smart Meter portal (React) and the Post Office Kiosk Terminal }
     \end{cvitems}}
 \end{cventries}
 
-    \vspace{-5mm}
-    \begin{flushright}
-        \small\color{lightgray} \href{ https://linkedin.com/in/aliciasykes }See all previous roles at linkedin.com/in/aliciasykes
-    \end{flushright}
-
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%     Achievements
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\cvsection{Achievements}
-\begin{cvachievements}
-    \item { I'm among the \href{https://gitstar-ranking.com/Lissy93}{top 100 developers} on GitHub worldwide, with 50k stars and 10M Docker downloads. I maintain over \href{https://apps.aliciasykes.com/}{100 open source projects}, attracting 1M+ annual unique users. }
-    \item { Outside of work, I actively engage in developer communities. I have 10k subscribers to my \href{https://dev.to/lissy93}{DEV.to blog}, 10+ wins in global hackathons, and rank in the top 1\% of contributors on \href{https://stackoverflow.com/users/979052/alicia-sykes}{StackOverflow}. As a frequent \href{https://github.com/lissy93}{open-source contributor}, I have written \href{https://codestats.net/users/alicia}{over 1M lines of code}. }
-    \item { This year I earned a place on the \href{https://openuk.uk/community/openuk-honours-lists/2024-honours-list/}{Open UK Honors list} for contributions to the tech and open source sector. I was among 10 developers selected to take part in the prestigious \href{https://github.blog/news-insights/company-news/2024-github-accelerator-meet-the-11-projects-shaping-open-source-ai/#web-check-bringing-security-to-the-web}{GitHub Accelerator} program, (in partnership with Microsoft's M12 fund), where I developed and launched an AI-powered security insights tool, being used by 10s of thousands of organisations world-wide. }
-\end{cvachievements}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -128,48 +161,123 @@
     { Oxford Brookes }
     {}
     {}
-    {Grade: 1st Class Honors. Winner of British Computer Society Best Final Year Project Prize. President of Computing Society.}
+    {Grade: 1st Class Honors. Winner of Best Final Year Project Prize. President of Computing Society.}
 \end{cventries}
 
 
-\vspace{-2mm}
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%     Skills
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \cvsection{Skills}
-\begin{cventries}
-    \cventry
-    {}
-    {\def\arraystretch{1.15}{\begin{tabular}{ l l }
-        Frontend:  & {\skill{ React, Svelte, TypeScript }} \\
-        Backend:  & {\skill{ Go, Rust, Node.js, Python, Java, PHP }} \\
-        Mobile:  & {\skill{ Kotlin, Swift, React Native, Flutter }} \\
-        DevOps:  & {\skill{ Ansible, Kubernetes, Prometheus, GitHub Actions }} \\
-        Cloud:  & {\skill{ Vercel, Netlify, GCP, Azure }} \\
-        Databases:  & {\skill{ PostgreSQL, SQLite, Redis, MySQL, MongoDB }} \\
-    \end{tabular}}}
-    {}
-    {}
-    {}
-\end{cventries}
-
-    \vspace{-10mm}
-    \begin{flushright}
-        \small\color{lightgray} \href{ https://apps.aliciasykes.com/ }See example projects built with each technology at apps.aliciasykes.com
-    \end{flushright}
+\vspace{0.5mm}  % match Stats/Awards
+\begin{cvskills}
+  \cvskill{ Frontend }{ React, Svelte, TypeScript }
+  \cvskill{ Backend }{ Go, Rust, Node.js, Python, Java, PHP }
+  \cvskill{ Mobile }{ Kotlin, Swift, React Native, Flutter }
+  \cvskill{ DevOps }{ Ansible, Kubernetes, Terraform }
+  \cvskill{ Obs/Mon }{ Prometheus, ELK stack, OpenTelemetry, Grafana }
+  \cvskill{ CI/CD }{ Argo CD, GitHub Actions }
+  \cvskill{ Cloud }{ Vercel, Netlify, GCP, Azure }
+  \cvskill{ Databases }{ PostgreSQL, SQLite, Redis, MySQL, MongoDB }
+\end{cvskills}
 
 
 
-\vspace{-7mm}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%     Achievements Statistics
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\cvsection{Stats}
+\vspace{0.5mm}
+\begin{cvachievements}
+\setlength{\itemsep}{0mm}
+  \item { Top 100 GitHub developer worldwide (70k+ stars) \href{ https://gitstar-ranking.com/Lissy93 }{\scriptsize\color{lightgray}\faLink} }
+  \item { 10M+ Docker pulls for my open-source projects \href{ https://hub.docker.com/u/lissy93 }{\scriptsize\color{lightgray}\faLink} }
+  \item { 10+ global hackathon wins, demonstrating rapid innovation \href{ https://notes.aliciasykes.com/p/0s5s3uOtKj }{\scriptsize\color{lightgray}\faLink} }
+  \item { 1M+ lines of code authored, maintainer of 100+ repos, powering 1M+ annual unique users \href{ https://codestats.net/users/alicia }{\scriptsize\color{lightgray}\faLink} }
+  \item { 10k+ subscribers on DEV.to blog, and 5k+ followers on X, GitHub, LinkedIn \href{ https://dev.to/lissy93 }{\scriptsize\color{lightgray}\faLink} }
+  \item { Top 1\% contributor on StackOverflow \href{ https://stackoverflow.com/users/979052/alicia-sykes }{\scriptsize\color{lightgray}\faLink} }
+\end{cvachievements}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%     Awards
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\cvsection{Awards}
+\vspace{0.5mm}
+\begin{cvachievements}
+\setlength{\itemsep}{0mm}
+  \item { \textbf{ Open UK Honours List (2025) } - Recognised for outstanding contributions to the tech and open-source sector \href{ https://openuk.uk/honours/ }{\scriptsize\color{lightgray}\faLink} }
+  \item { \textbf{ GitHub Accelerator Alumni } - Selected among 10 developers (Microsoft M12 partnership) to launch AI-security tooling \href{ https://accelerator.github.com/ }{\scriptsize\color{lightgray}\faLink} }
+  \item { \textbf{ Open UK Honours List (2024) } - Honoured for leadership and impact in open-source communities \href{ https://openuk.uk/community/openuk-honours-lists/2024-honours-list }{\scriptsize\color{lightgray}\faLink} }
+  \item { \textbf{ Best Comp Sci Project } - Awarded by Oxford British Computer Society \href{ https://oxon.bcs.org/2016/06/27/annual-student-prizes-2016/ }{\scriptsize\color{lightgray}\faLink} }
+\end{cvachievements}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%     Projects
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\cvsection{Projects}
+\vspace{0.5mm}
+\begin{cvachievements}
+  \setlength{\itemsep}{0mm}
+  \item {
+    \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} l r}
+      \href{ https://dashy.to }{\textbf{ Dashy }} 
+      - The self-hosted startpage for servers \href{ https://dashy.to }{\scriptsize\color{lightgray}\faLink}
+      & 
+      \href{https://github.com/lissy93/dashy}{\faGithub\ lissy93/dashy} \\
+    \end{tabular*}
+  }
+  \item {
+    \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} l r}
+      \href{ https://web-check.xyz }{\textbf{ Web-Check }} 
+      - OSINT website scanner \href{ https://web-check.xyz }{\scriptsize\color{lightgray}\faLink}
+      & 
+      \href{https://github.com/lissy93/web-check}{\faGithub\ lissy93/web-check} \\
+    \end{tabular*}
+  }
+  \item {
+    \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} l r}
+      \href{ https://adguardian.as93.net/ }{\textbf{ AdGuardian }} 
+      - CLI DNS and traffic monitoring in the terminal \href{ https://adguardian.as93.net/ }{\scriptsize\color{lightgray}\faLink}
+      & 
+      \href{https://github.com/lissy93/AdGuardian-Term}{\faGithub\ lissy93/AdGuardian-Term} \\
+    \end{tabular*}
+  }
+  \item {
+    \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} l r}
+      \href{ https://digital-defense.io/ }{\textbf{ Digital Defense }} 
+      - Comprehensive personal security assessment tool \href{ https://digital-defense.io/ }{\scriptsize\color{lightgray}\faLink}
+      & 
+      \href{https://github.com/lissy93/personal-security-checklist}{\faGithub\ lissy93/personal-security-checklist} \\
+    \end{tabular*}
+  }
+  \item {
+    \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} l r}
+      \href{ https://domain-locker.com/ }{\textbf{ Domain Locker }} 
+      - All-in-one domain management and security platform \href{ https://domain-locker.com/ }{\scriptsize\color{lightgray}\faLink}
+      & 
+      \href{https://github.com/lissy93/domain-locker}{\faGithub\ lissy93/domain-locker} \\
+    \end{tabular*}
+  }
+\end{cvachievements}
 
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %     Footer
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Add the footer link at the end of the document
 \vspace{10mm}
-\begin{flushleft}
-    \tiny\color{lightgray} \href{https://github.com/lissy93/cv}{ View CV source at github.com/lissy93/cv}
-\end{flushleft}
+\begin{center}
+    \tiny\color{lightgray}
+    Resume built with LaTeX, view source at
+    \href{https://github.com/lissy93/cv}{ github.com/lissy93/cv }.
+    Licensed under MIT (C)
+    \href{https://aliciasykes.com}{ Alicia Sykes } 2025
+\end{center}
 \ 
 \end{document}

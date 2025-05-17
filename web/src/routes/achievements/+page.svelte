@@ -170,6 +170,15 @@ const projects = [
     repo: 'Lissy93/portainer-templates',
     web: 'https://portainer-templates.as93.net',
   },
+  {
+    name: 'Domain Locker',
+    description: 'Complete domain name management suite',
+    tech: 'Angular',
+    logo: 'https://domain-locker.com/icons/android-chrome-192x192.png',
+    stars: '0k',
+    repo: 'Lissy93/domain-locker',
+    web: 'https://domain-locker.com',
+  },
 ];
 
 const normalizeUrl = (url: string) => {
@@ -191,7 +200,9 @@ const normalizeUrl = (url: string) => {
     <li>
       {stat}
       {#if source}
-        <a class="source" href={source} target="_blank" rel="nofollow">[Source]</a>
+        <a class="source" href={source} target="_blank" rel="nofollow" title={`Source: ${normalizeUrl(source)}`}>
+          <i class="fa-solid fa-link"></i>
+        </a>
       {/if}
     </li>
   {/each}
@@ -205,20 +216,10 @@ const normalizeUrl = (url: string) => {
     <li>
       {award}
       {#if source}
-        <a class="source" href={source} target="_blank" rel="nofollow">[Source]</a>
+        <a class="source" href={source} target="_blank" rel="nofollow" title={`Source: ${normalizeUrl(source)}`}>
+          <i class="fa-solid fa-link"></i>
+        </a>
       {/if}
-    </li>
-  {/each}
-</ul>
-
-<hr>
-
-<h3>Hackathons</h3>
-<ul class="hackathons">
-  {#each hackathonWins as win}
-    <li>
-      <p class="line1">{win.line1}</p>
-      <p class="line2">{win.line2}</p>
     </li>
   {/each}
 </ul>
@@ -236,8 +237,15 @@ const normalizeUrl = (url: string) => {
         </strong>
         <span class="desc"> 
           - {project.description}
-          <span title="GitHub Star Count">
-        </span>
+          <a
+            class="source"
+            href={`https://github.com/${project.repo}`}
+            target="_blank"
+            rel="nofollow"
+            title={`GitHub: ${project.repo}`}
+          >
+            <i class="fa-solid fa-link"></i>
+          </a>
       </p>
       <span class="project-stats">
         <Language language={project.tech} small={true} />
@@ -247,10 +255,10 @@ const normalizeUrl = (url: string) => {
           href={`https://github.com/${project.repo}`}>
           <i class="fa-brands fa-github"></i> {project.repo}
         </a>
-        | 
+        <!-- | 
         <a title={`View ${project.name}'s homepage`} href={project.web}>
           <i class="fa-solid fa-globe"></i> {normalizeUrl(project.web)}
-        </a>
+        </a> -->
         |
         <span title="GitHub Star Count"><i class="fa-solid fa-star"></i> Star Count: {project.stars}</span>
       </span>
@@ -260,13 +268,25 @@ const normalizeUrl = (url: string) => {
 
 
 <p class="projects-more">
-  The above list are a selection of projects I have built, which demonstrate my
-  competency with  React, Vue, Svelte, Rust and Python.
-  <br><br>
-  I am incredibly quick to learn new tech stacks, and am able to take a new project
-  from zero to production in a matter of days, while maintaining a high quality of code.
-  You can view my full catalog of apps at <a href="https://apps.aliciasykes.com">apps.aliciasykes.com</a>.
+  The above is just to demonstrate my proficiency in the given tech stacks.
+  But I'm very quick to pick up new technologies.
+  You can view my full catalog of apps at <a href="https://apps.aliciasykes.com">apps.aliciasykes.com</a>,
+  or even more of my apps on my <a href="https://github.com/lissy93?tab=repositories&q=&type=&language=&sort=stargazers">GitHub</a>.
 </p> 
+
+<hr>
+
+<h3>Hackathons</h3>
+<ul class="hackathons">
+  {#each hackathonWins as win}
+    <li>
+      <p class="line1">{win.line1}</p>
+      <p class="line2">{win.line2}</p>
+    </li>
+  {/each}
+</ul>
+
+<img src="/assets/Hackathon-win-pictures.png" alt="Hackathon wins" width="100%" class="hackathon-image" />
 
 <style lang="scss">
   h2 {
@@ -319,6 +339,7 @@ const normalizeUrl = (url: string) => {
         align-items: center;
         gap: 0.5rem;
         flex-wrap: wrap;
+        margin-top: 0.4rem;
       }
       strong {
         font-weight: 500;
@@ -354,8 +375,14 @@ const normalizeUrl = (url: string) => {
     }
   }
 
+  .hackathon-image {
+    margin: 1rem auto 0 auto;
+    max-width: 100%;
+  }
+
   .projects-more {
     opacity: 0.8;
     font-style: italic;
+    font-size: 0.8rem;
   }
 </style>
