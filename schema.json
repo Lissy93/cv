@@ -271,18 +271,6 @@
         }
       }
     },
-    "achievements": {
-      "type": "array",
-      "items": {
-        "type": "object",
-        "additionalProperties": false,
-        "properties": {
-          "text":   { "type": "string" },
-          "source": { "type": "string", "format": "uri" }
-        },
-        "required": ["text"]
-      }
-    },
     "awards": {
       "type": "array",
       "items": {
@@ -294,6 +282,26 @@
           "source":  { "type": "string", "format": "uri" }
         },
         "required": ["title","summary"]
+      }
+    },
+    "achievements": {
+      "type": "array",
+      "description": "List notable achievements",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "text": {
+            "type": "string",
+            "description": "Description of the achievement"
+          },
+          "source": {
+            "type": "string",
+            "description": "URL providing more details about the achievement",
+            "format": "uri"
+          }
+        },
+        "required": ["text", "source"]
       }
     },
     "projects": {
