@@ -33,6 +33,10 @@ aside {
   z-index: 9;
   justify-content: space-between;
 
+  @media (max-height: 800px) {
+    .aside-inner { overflow-x: auto; }
+  }
+
   .aside-inner {
     padding: 1.25rem;
     margin: 0 auto;
