@@ -95,6 +95,8 @@
 \RequirePackage{fontawesome}
 % Needed to deal a paragraphs
 \RequirePackage{parskip}
+% Needed for rounded corners on header
+\RequirePackage{tcolorbox}
 % Needed to deal hyperlink
 \RequirePackage{hyperref}
 \hypersetup{
@@ -127,16 +129,36 @@
 \newcommand*{\@headeraddresslineheight}{11pt}
 \newcommand*{\@headersocialfontsize}{8pt}
 \newcommand*{\@headersociallineheight}{10pt}
+\newcommand*{\@headerquotefontsize}{10pt}
 \newcommand*{\@sectionfontsize}{16pt}
 \newcommand*{\@sectionlineheight}{18pt}
+\newcommand*{\@subsectionfontsize}{12pt}
+\newcommand*{\@subsectionlineheight}{14pt}
 \newcommand*{\@entrytitlefontsize}{12pt}
 \newcommand*{\@entrytitlelineheight}{14pt}
 \newcommand*{\@entrypositionfontsize}{11pt}
 \newcommand*{\@entrypositionlineheight}{13pt}
 \newcommand*{\@entrydatefontsize}{9pt}
 \newcommand*{\@entrydatelineheight}{11pt}
+\newcommand*{\@entrylocationfontsize}{10pt}
+\newcommand*{\@entrylocationlineheight}{12pt}
 \newcommand*{\@descriptionfontsize}{11pt}
 \newcommand*{\@descriptionlineheight}{13pt}
+\newcommand*{\@skillfontsize}{10pt}
+\newcommand*{\@skilltypefontsize}{9pt}
+\newcommand*{\@skillsetfontsize}{9pt}
+\newcommand*{\@achievementfontsize}{9pt}
+\newcommand*{\@personalstatementfontsize}{10pt}
+\newcommand*{\@footerfontsize}{9pt}
+\newcommand*{\@honortitlefontsize}{10pt}
+\newcommand*{\@honorpositionfontsize}{10pt}
+\newcommand*{\@honordatefontsize}{10pt}
+\newcommand*{\@honorlocationfontsize}{10pt}
+\newcommand*{\@subentrytitlefontsize}{9pt}
+\newcommand*{\@subentrypositionfontsize}{7pt}
+\newcommand*{\@subentrydatefontsize}{7pt}
+\newcommand*{\@subentrylocationfontsize}{7pt}
+\newcommand*{\@subdescriptionfontsize}{9pt}
 
 % Spacing
 \newcommand*{\@sectionspacebefore}{1.5ex}
@@ -145,8 +167,29 @@
 \newcommand*{\@bulletindent}{2ex}
 \newcommand*{\@bulletspacebefore}{-4mm}
 \newcommand*{\@bulletspaceafter}{0mm}
-\newcommand*{\@achievementspacing}{2mm}
+\newcommand*{\@achievementspacing}{1.2mm}
 \newcommand*{\@achievementspaceafter}{2mm}
+
+% Header styling
+\newcommand*{\@headerboxradius}{3pt}
+\newcommand*{\@headerbiospacing}{1.5mm}
+
+% Define rounded header box command
+\newcommand{\roundedheaderbox}[2]{%
+  \begin{tcolorbox}[
+    colback=#1,
+    colframe=#1,
+    boxrule=0pt,
+    arc=\@headerboxradius,
+    left=10pt,
+    right=10pt,
+    top=10pt,
+    bottom=10pt,
+    width=\textwidth
+  ]
+    #2
+  \end{tcolorbox}%
+}
 
 
 %-------------------------------------------------------------------------------
@@ -292,10 +335,10 @@
 \newcommand*{\headerpositionstyle}[1]{{\fontsize{\@headerpositionfontsize}{\@headerpositionlineheight}\bodyfont\scshape\color{awesome} #1}}
 \newcommand*{\headeraddressstyle}[1]{{\fontsize{\@headeraddressfontsize}{\@headeraddresslineheight}\headerfont\itshape\color{lighttext} #1}}
 \newcommand*{\headersocialstyle}[1]{{\fontsize{\@headersocialfontsize}{\@headersociallineheight}\headerfont\color{text} #1}}
-\newcommand*{\headerquotestyle}[1]{{\fontsize{10pt}{1em}\bodyfont\itshape\color{darktext} #1}}
-\newcommand*{\footerstyle}[1]{{\fontsize{9pt}{1em}\footerfont\scshape\color{lighttext} #1}}
+\newcommand*{\headerquotestyle}[1]{{\fontsize{\@headerquotefontsize}{1em}\bodyfont\itshape\color{darktext} #1}}
+\newcommand*{\footerstyle}[1]{{\fontsize{\@footerfontsize}{1em}\footerfont\scshape\color{lighttext} #1}}
 \newcommand*{\sectionstyle}[1]{{\fontsize{\@sectionfontsize}{\@sectionlineheight}\bodyfont\bfseries\color{text}\@sectioncolor #1}}
-\newcommand*{\subsectionstyle}[1]{{\fontsize{12pt}{14pt}\bodyfont\scshape\textcolor{text}{#1}}}
+\newcommand*{\subsectionstyle}[1]{{\fontsize{\@subsectionfontsize}{\@subsectionlineheight}\bodyfont\scshape\textcolor{text}{#1}}}
 
 % For elements of entry
 \newcommand*{\entrytitlestyle}[1]{{\vspace*{0mm}\fontsize{\@entrytitlefontsize}{\@entrytitlelineheight}\bodyfont\bfseries\color{darktext} #1}}
@@ -303,33 +346,33 @@
 
 
 \newcommand*{\entrydatestyle}[1]{{\fontsize{\@entrydatefontsize}{\@entrydatelineheight}\bodyfontlight\slshape\color{graytext} #1}}
-\newcommand*{\entrylocationstyle}[1]{{\fontsize{10pt}{12pt}\bodyfontlight\slshape\color{awesome} #1}}
+\newcommand*{\entrylocationstyle}[1]{{\fontsize{\@entrylocationfontsize}{\@entrylocationlineheight}\bodyfontlight\slshape\color{awesome} #1}}
 \newcommand*{\descriptionstyle}[1]{{\fontsize{\@descriptionfontsize}{\@descriptionlineheight}\bodyfontlight\upshape\color{text} #1}}
-\newcommand*{\skill}[1]{{\fontsize{10pt}{1em}\bodyfontlight\upshape\color{text} \textnormal{#1}}}
+\newcommand*{\skill}[1]{{\fontsize{\@skillfontsize}{1em}\bodyfontlight\upshape\color{text} \textnormal{#1}}}
 
 % For elements of subentry
-\newcommand*{\subentrytitlestyle}[1]{{\fontsize{9pt}{1em}\bodyfont\mdseries\color{graytext} #1}}
-\newcommand*{\subentrypositionstyle}[1]{{\fontsize{7pt}{1em}\bodyfont\scshape\color{graytext} #1}}
-\newcommand*{\subentrydatestyle}[1]{{\fontsize{7pt}{1em}\bodyfontlight\slshape\color{graytext} #1}}
-\newcommand*{\subentrylocationstyle}[1]{{\fontsize{7pt}{1em}\bodyfontlight\slshape\color{awesome} #1}}
-\newcommand*{\subdescriptionstyle}[1]{{\fontsize{9pt}{1em}\bodyfontlight\upshape\color{text} #1}}
+\newcommand*{\subentrytitlestyle}[1]{{\fontsize{\@subentrytitlefontsize}{1em}\bodyfont\mdseries\color{graytext} #1}}
+\newcommand*{\subentrypositionstyle}[1]{{\fontsize{\@subentrypositionfontsize}{1em}\bodyfont\scshape\color{graytext} #1}}
+\newcommand*{\subentrydatestyle}[1]{{\fontsize{\@subentrydatefontsize}{1em}\bodyfontlight\slshape\color{graytext} #1}}
+\newcommand*{\subentrylocationstyle}[1]{{\fontsize{\@subentrylocationfontsize}{1em}\bodyfontlight\slshape\color{awesome} #1}}
+\newcommand*{\subdescriptionstyle}[1]{{\fontsize{\@subdescriptionfontsize}{1em}\bodyfontlight\upshape\color{text} #1}}
 
 % For elements of honor
-\newcommand*{\honortitlestyle}[1]{{\fontsize{10pt}{1em}\bodyfont\color{graytext} #1}}
-\newcommand*{\honorpositionstyle}[1]{{\fontsize{10pt}{1em}\bodyfont\bfseries\color{darktext} #1}}
-\newcommand*{\honordatestyle}[1]{{\fontsize{10pt}{1em}\bodyfont\color{graytext} #1}}
-\newcommand*{\honorlocationstyle}[1]{{\fontsize{10pt}{1em}\bodyfontlight\slshape\color{awesome} #1}}
+\newcommand*{\honortitlestyle}[1]{{\fontsize{\@honortitlefontsize}{1em}\bodyfont\color{graytext} #1}}
+\newcommand*{\honorpositionstyle}[1]{{\fontsize{\@honorpositionfontsize}{1em}\bodyfont\bfseries\color{darktext} #1}}
+\newcommand*{\honordatestyle}[1]{{\fontsize{\@honordatefontsize}{1em}\bodyfont\color{graytext} #1}}
+\newcommand*{\honorlocationstyle}[1]{{\fontsize{\@honorlocationfontsize}{1em}\bodyfontlight\slshape\color{awesome} #1}}
 
 % For elements of skill
-\newcommand*{\skilltypestyle}[1]{{\fontsize{11pt}{1em}\bodyfont\bfseries\color{darktext} #1}}
-\newcommand*{\skillsetstyle}[1]{{\fontsize{10pt}{1em}\bodyfontlight\color{text} #1}}
+\newcommand*{\skilltypestyle}[1]{{\fontsize{\@skilltypefontsize}{1em}\bodyfontlight\color{text}\textbf{#1}}}
+\newcommand*{\skillsetstyle}[1]{{\fontsize{\@skillsetfontsize}{1em}\bodyfontlight\color{text} #1}}
 
 % For elements of Achievements
-\newcommand*{\achievementstyle}[1]{{\fontsize{9pt}{1em}\bodyfontlight\upshape\color{text} #1}}
-\newcommand*{\cvparagraphstyle}[1]{{\fontsize{9pt}{1em}\bodyfontlight\upshape\color{text} #1}}
+\newcommand*{\achievementstyle}[1]{{\fontsize{\@achievementfontsize}{1em}\bodyfontlight\upshape\color{text} #1}}
+\newcommand*{\cvparagraphstyle}[1]{{\fontsize{\@achievementfontsize}{1em}\bodyfontlight\upshape\color{text} #1}}
 
 % For elements of personal statement
-\newcommand*{\personalstatementstyle}[1]{{\fontsize{10pt}{1em}\bodyfontlight\upshape\color{text} #1}}
+\newcommand*{\personalstatementstyle}[1]{{\fontsize{\@personalstatementfontsize}{1em}\bodyfontlight\upshape\color{text} #1}}
 
 % Custom command for displaying URLs without the protocol
 \newcommand{\displayurl}[1]{\href{#1}{\nolinkurl{#1}}}
@@ -712,7 +755,7 @@
   \vspace{-2mm}
   \bodyfontlight
   \begin{justify}
-  \fontsize{10pt}{1em}\selectfont
+  \fontsize{\@achievementfontsize}{1em}\selectfont
   \begin{itemize}[leftmargin=0ex, label={}, nosep, noitemsep, before=\achievementstyle]
     \setlength{\parskip}{\@achievementspacing}
 }{
@@ -726,7 +769,7 @@
   \vspace{2mm}
   \bodyfontlight
   \begin{justify}
-  \fontsize{10pt}{1em}\selectfont
+  \fontsize{\@personalstatementfontsize}{1em}\selectfont
   \begin{itemize}[leftmargin=0ex, label={}, nosep, noitemsep, before=\cvparagraphstyle]
     \setlength{\parskip}{2mm}
 }{
@@ -739,7 +782,7 @@
   \vspace{4mm}
   \bodyfontlight
   \begin{justify}
-  \fontsize{12pt}{14pt}\selectfont
+  \fontsize{\@personalstatementfontsize}{14pt}\selectfont
   \begin{itemize}[
     leftmargin=0ex,
     label={},

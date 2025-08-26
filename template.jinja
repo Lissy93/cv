@@ -48,22 +48,20 @@
   }%
 
 \noindent
-\colorbox{headerbg}{
-  \parbox{\dimexpr\textwidth-2\fboxsep}{
-    \color{white} %
-    \begin{center} %
-      \headerfirstnamestyle{ {{ basics.name.split(' ')[0] | latex_escape }} } %
-      \headerlastnamestyle{  {{ basics.name.split(' ')[1] | latex_escape }} }\\[2mm] %
-      \faEnvelope~\href{mailto:{{ basics.email | latex_escape }}}{{ basics.email | latex_escape }} %
-      \quad|\quad %
-      \faMapMarker~{{ basics.location.address | latex_escape }} %
-      \quad|\quad %
-      \faLink~\href{ {{ basics.url | latex_escape }} }{ {{ basics.url | latex_escape }} } %
-    \end{center} %
-  }
+\roundedheaderbox{headerbg}{
+  \color{white} %
+  \begin{center} %
+    \headerfirstnamestyle{ {{ basics.name.split(' ')[0] | latex_escape }} } %
+    \headerlastnamestyle{  {{ basics.name.split(' ')[1] | latex_escape }} }\\[2mm] %
+    \faEnvelope~\href{mailto:{{ basics.email | latex_escape }}}{{ basics.email | latex_escape }} %
+    \quad|\quad %
+    \faMapMarker~{{ basics.location.address | latex_escape }} %
+    \quad|\quad %
+    \faLink~\href{ {{ basics.url | latex_escape }} }{ {{ basics.url | latex_escape }} } %
+  \end{center} %
 }
 \endgroup
-\vspace{2mm} %
+\vspace{0mm} %
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -182,7 +180,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %     Footer
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\vspace{10mm}
+\vspace{5mm}
 \begin{center}
     \tiny\color{lightgray}
     Resume built with LaTeX, view source at
