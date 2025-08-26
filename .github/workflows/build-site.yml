@@ -1,0 +1,114 @@
+name: 🪁 Make Site
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'web/**'
+      - 'resume.yml'
+      - '.github/workflows/build-site.yml'
+  pull_request:
+    branches: [ main ]
+    paths:
+      - 'web/**'
+      - 'resume.yml'
+  workflow_dispatch:
+
+# Allow one concurrent deployment
+concurrency:
+  group: build-site
+  cancel-in-progress: true
+
+jobs:
+  build-and-deploy:
+    name: Build and Deploy Website
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+          cache-dependency-path: 'web/package-lock.json'
+      
+      - name: Install dependencies
+        run: |
+          cd web
+          npm ci
+      
+      - name: Build website
+        env:
+          GITHUB_PAGES: true
+        run: |
+          cd web
+          npm run build
+      
+      - name: Prepare static site for deployment
+        run: |
+          cd web
+          # Create build directory and copy static files
+          mkdir -p build
+          
+          # Copy prerendered pages
+          if [ -d ".svelte-kit/output/prerendered/pages" ]; then
+            cp -r .svelte-kit/output/prerendered/pages/* build/
+          fi
+          
+          # Copy client assets (CSS, JS, images, etc.)
+          if [ -d ".svelte-kit/output/client" ]; then
+            # Copy _app directory for assets
+            [ -d ".svelte-kit/output/client/_app" ] && cp -r .svelte-kit/output/client/_app build/
+            
+            # Copy static assets (favicon, banner, etc.)
+            find .svelte-kit/output/client -maxdepth 1 -type f -exec cp {} build/ \;
+            
+            # Copy other asset directories
+            [ -d ".svelte-kit/output/client/assets" ] && cp -r .svelte-kit/output/client/assets build/
+            [ -d ".svelte-kit/output/client/data" ] && cp -r .svelte-kit/output/client/data build/
+          fi
+          
+          # Verify build succeeded
+          if [ -f "build/index.html" ]; then
+            echo "✅ Static site prepared successfully"
+            echo "Files in build directory:"
+            ls -la build/
+          else
+            echo "❌ Build failed - no index.html found"
+            exit 1
+          fi
+      
+      - name: Deploy to website branch
+        if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          personal_token: ${{ secrets.BOT_TOKEN }}
+          external_repository: ${{ github.repository }}
+          publish_branch: website
+          publish_dir: web/build
+          user_name: 'liss-bot'
+          user_email: 'alicia-gh-bot@mail.as93.net'
+          commit_message: |
+            🪁 Deploy website from ${{ github.sha }}
+            
+            Auto-generated from main branch
+            Commit: ${{ github.event.head_commit.message }}
+          enable_jekyll: false
+          force_orphan: true
+      
+      - name: Comment on PR (if applicable)
+        if: github.event_name == 'pull_request'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: '🪁 Website build completed successfully! The changes will be deployed to the `website` branch when this PR is merged.'
+            })
