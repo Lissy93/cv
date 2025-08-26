@@ -8,7 +8,7 @@ const stats = [
     source: 'https://hub.docker.com/u/lissy93',
   },
   {
-    stat: 'Top 100 developer on GitHub worldwide',
+    stat: 'Top 100 developer on GitHub (out of 150M+ users)',
     source: 'https://gitstar-ranking.com/Lissy93',
   },
   {
@@ -42,6 +42,10 @@ const stats = [
   {
     stat: '1000+ repos and open source projects contributed to',
     source: '',
+  },
+  {
+    stat: 'Ranked num 1 female open source contributor worldwide',
+    source: 'https://gitstar-ranking.com/Lissy93',
   },
   // {
   //   stat: '100k GitHub stars on my personal projects',
@@ -139,7 +143,7 @@ const projects = [
     description: 'Ultimate checklist of online security tips',
     tech: 'Solid',
     logo: 'https://i.ibb.co/Rb6P6h6/shield.png',
-    stars: '17k',
+    stars: '19k',
     repo: 'lissy93/personal-security-checklist',
     web: 'https://digital-defense.io',
   },
@@ -148,7 +152,7 @@ const projects = [
     description: 'Curated list of verified privacy-respecting services',
     tech: 'Astro',
     logo: 'https://github.com/Lissy93/awesome-privacy/blob/gh-pages/awesome-privacy.png?raw=true',
-    stars: '7k',
+    stars: '8k',
     repo: 'lissy93/awesome-privacy',
     web: 'https://awesome-privacy.xyz',
   },
@@ -175,7 +179,7 @@ const projects = [
     description: 'Complete domain name management suite',
     tech: 'Angular',
     logo: 'https://domain-locker.com/icons/android-chrome-192x192.png',
-    stars: '0k',
+    stars: '300',
     repo: 'Lissy93/domain-locker',
     web: 'https://domain-locker.com',
   },
@@ -325,7 +329,7 @@ const normalizeUrl = (url: string) => {
     }
     .line2 {
       font-style: italic;
-      opacity: 0.8;
+      opacity: 0.65;
     }
   }
 
