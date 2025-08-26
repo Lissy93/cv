@@ -1,4 +1,4 @@
-name: ☑️ Validate Resume
+name: 🧼 Validate
 on:
   pull_request:
     branches:

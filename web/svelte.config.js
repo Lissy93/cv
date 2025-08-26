@@ -13,9 +13,9 @@ const config = {
 		adapter: process.env.GITHUB_PAGES ? adapterStatic({
 			pages: 'build',
 			assets: 'build',
-			fallback: null,
+			fallback: 'index.html',
 			precompress: false,
-			strict: true
+			strict: false
 		}) : adapterAuto()
 	}
 };

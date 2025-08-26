@@ -49,37 +49,17 @@ jobs:
           cd web
           npm run build
       
-      - name: Prepare static site for deployment
+      - name: Verify build output
         run: |
           cd web
-          # Create build directory and copy static files
-          mkdir -p build
-          
-          # Copy prerendered pages
-          if [ -d ".svelte-kit/output/prerendered/pages" ]; then
-            cp -r .svelte-kit/output/prerendered/pages/* build/
-          fi
-          
-          # Copy client assets (CSS, JS, images, etc.)
-          if [ -d ".svelte-kit/output/client" ]; then
-            # Copy _app directory for assets
-            [ -d ".svelte-kit/output/client/_app" ] && cp -r .svelte-kit/output/client/_app build/
-            
-            # Copy static assets (favicon, banner, etc.)
-            find .svelte-kit/output/client -maxdepth 1 -type f -exec cp {} build/ \;
-            
-            # Copy other asset directories
-            [ -d ".svelte-kit/output/client/assets" ] && cp -r .svelte-kit/output/client/assets build/
-            [ -d ".svelte-kit/output/client/data" ] && cp -r .svelte-kit/output/client/data build/
-          fi
-          
-          # Verify build succeeded
           if [ -f "build/index.html" ]; then
-            echo "✅ Static site prepared successfully"
-            echo "Files in build directory:"
-            ls -la build/
+            echo "✅ Static site built successfully"
+            echo "Build directory contains:"
+            ls -la build/ | head -10
+            echo "Build size:"
+            du -sh build/
           else
-            echo "❌ Build failed - no index.html found"
+            echo "❌ Build failed - no index.html found in build directory"
             exit 1
           fi
       

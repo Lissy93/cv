@@ -1,5 +1,5 @@
 # Pushes the contents of the repo to the Codeberg mirror
-name: 🪞 Mirror to Codeberg
+name: 🪞 Mirror
 on:
   workflow_dispatch:
   schedule:
