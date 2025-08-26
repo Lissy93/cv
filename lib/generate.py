@@ -94,6 +94,15 @@ def render_template(template_path: str, resume_data: dict) -> str:
     env.filters['format_date'] = format_date
     env.filters['markdown_to_latex'] = markdown_to_latex
     template = env.get_template(os.path.basename(template_path))
+    
+    # Generate compilation timestamp in PDF date format with fallback
+    try:
+        compilation_time = datetime.now()
+        pdf_timestamp = compilation_time.strftime("D:%Y%m%d%H%M%S+00'00'")
+    except Exception:
+        # Fallback to a safe default if datetime fails
+        pdf_timestamp = "D:20240101000000+00'00'"
+    
     return template.render(
         basics=resume_data.get('basics', {}),
         personal_statement=resume_data.get('personal-statement', ""),
@@ -103,7 +112,8 @@ def render_template(template_path: str, resume_data: dict) -> str:
         awards=resume_data.get('awards', []),
         achievements=resume_data.get('achievements', []),
         projects=resume_data.get('projects', []),
-        extra_links=resume_data.get('extra-links', {})
+        extra_links=resume_data.get('extra-links', {}),
+        compilation_timestamp=pdf_timestamp
     )
 
 def main():

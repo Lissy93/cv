@@ -1,6 +1,7 @@
 %!TEX TS-program = xelatex
 %!TEX encoding = UTF-8 Unicode
-% Alicia Sykes CV LaTeX Template
+% {{ basics.name | latex_escape }} CV - Generated from YAML data
+% Source: https://github.com/Lissy93/cv
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %     Configuration
@@ -44,7 +45,17 @@
     linkcolor=white,
     urlcolor=white,
     citecolor=white,
-    pdfborder={0 0 0}
+    pdfborder={0 0 0},
+    pdftitle   = {CV: {{ basics.name | latex_escape }}},
+    pdfauthor  = {{ "{" }}{{ basics.name | latex_escape }}{{ "}" }},
+    pdfsubject = {Curriculum Vitae},
+    pdfkeywords= {principal engineer, software engineering, CV, resume, {{ basics.name | latex_escape }}},
+    pdfcreator = {LaTeX with XeTeX},
+    pdfproducer = {XeTeX},
+    pdflang = {en-GB},
+    pdfcreationdate = {D:20120901162042+01'00'},
+    pdfmoddate = {{ "{" }}{{ compilation_timestamp }}{{ "}" }},
+    pdfdisplaydoctitle = true
   }%
 
 \noindent
@@ -182,7 +193,7 @@
     Resume built with LaTeX, view source at
     \href{https://github.com/lissy93/cv}{ github.com/lissy93/cv }.
     Licensed under MIT (C)
-    \href{https://aliciasykes.com}{ Alicia Sykes } 2025
+    \href{https://aliciasykes.com}{ {{ basics.name | latex_escape }} } {\the\year}
 \end{center}
 \ 
 \end{document}
