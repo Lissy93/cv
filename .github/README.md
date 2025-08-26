@@ -47,18 +47,7 @@ Why? ...Because why spend 30 minutes writing your CV, when you could spend 30 ho
 2. Update resume.json with your own content
 3. Create [a tag](/.github/workflows/tag.yml), or trigger the GH actions workflow
 4. ....and a PDF and website gets magically generated
-
-
-<details><summary>Workflows</summary>
-
-| Workflow     | Description      | Status                     |
-| :----------- | :--------------- | :------------------------: |
-| `tag`        | Creates a new Git tag. Optionally specify the tag name and description, or by default it will just bump the sem ver patch number by 1 | [![🏷️ Tag](https://github.com/Lissy93/cv/actions/workflows/tag.yml/badge.svg)](https://github.com/Lissy93/cv/actions/workflows/tag.yml)  |
-| `generate`   | Generates your resume in PDF form as an artifact. If triggered by a tag, then a new release will be created, with the PDF attatched   | [![Generate PDF](https://github.com/Lissy93/cv/actions/workflows/compile.yml/badge.svg)](https://github.com/Lissy93/cv/actions/workflows/compile.yml) |
-| `validate`   | Validates your resume data against the schema. This will also run whenever a new PR is opened, to ensure it's valid and working | [![☑️ Validate Resume](https://github.com/Lissy93/cv/actions/workflows/validate.yml/badge.svg)](https://github.com/Lissy93/cv/actions/workflows/validate.yml) |
-| `mirror`     | Backups up repository and content to our (non-Microsoft) Codeberg mirror | [![🪞 Mirror to Codeberg](https://github.com/Lissy93/cv/actions/workflows/mirror.yml/badge.svg)](https://github.com/Lissy93/cv/actions/workflows/mirror.yml) |
-
-</details>
+5. View the PDF in the [Releases](https://github.com/Lissy93/cv/releases) tab, and the website source in the [`website`](https://github.com/Lissy93/cv/tree/website) branch, or deployed to GitHub Pages (for me, this is [cv.aliciasykes.com](https://cv.aliciasykes.com))
 
 ---
 
@@ -126,6 +115,19 @@ The source for the website version is located in [`web/`](/web)
 
 <h3 align="center">PDF 📄</h3>
 <p align="center"><a href="https://cv.aliciasykes.com"><img width="650" src="https://i.ibb.co/ycsHkjdF/screenshot-pdf.png?" /></a></p>
+
+---
+
+## Status
+
+| Workflow     | Description      | Status                     |
+| :----------- | :--------------- | :------------------------: |
+| `tag`        | Creates a new Git tag. Optionally specify the tag name and description, or by default it will just bump the sem ver patch number by 1 | [![🏷️ Tag](https://github.com/Lissy93/cv/actions/workflows/tag.yml/badge.svg)](https://github.com/Lissy93/cv/actions/workflows/tag.yml)  |
+| `generate`   | Generates your resume in PDF form as an artifact. If triggered by a tag, then a new release will be created, with the PDF attatched   | [![Generate PDF](https://github.com/Lissy93/cv/actions/workflows/compile.yml/badge.svg)](https://github.com/Lissy93/cv/actions/workflows/compile.yml) |
+| `validate`   | Validates your resume data against the schema. This will also run whenever a new PR is opened, to ensure it's valid and working | [![☑️ Validate Resume](https://github.com/Lissy93/cv/actions/workflows/validate.yml/badge.svg)](https://github.com/Lissy93/cv/actions/workflows/validate.yml) |
+| `website`     | Compiles the web version as a SvelteKit interactive résumé site | [![🪁 Make Site](https://github.com/Lissy93/cv/actions/workflows/build-site.yml/badge.svg)](https://github.com/Lissy93/cv/actions/workflows/build-site.yml) |
+| `mirror`     | Backups up repository and content to our (non-Microsoft) Codeberg mirror | [![🪞 Mirror to Codeberg](https://github.com/Lissy93/cv/actions/workflows/mirror.yml/badge.svg)](https://github.com/Lissy93/cv/actions/workflows/mirror.yml) |
+
 
 ---
 

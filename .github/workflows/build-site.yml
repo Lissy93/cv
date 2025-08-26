@@ -20,8 +20,78 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  build-and-deploy:
-    name: Build and Deploy Website
+  build-cv:
+    name: Build CV PDF
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+          cache-dependency-path: 'lib/requirements.txt'
+      - name: Cache LaTeX packages
+        uses: actions/cache@v4
+        with:
+          path: |
+            /usr/share/texlive
+            /usr/share/texmf
+            /var/lib/texmf
+          key: latex-${{ runner.os }}-${{ hashFiles('**/requirements.txt') }}
+          restore-keys: |
+            latex-${{ runner.os }}-
+      
+      - name: Install LaTeX (optimized)
+        run: |
+          # Update package list only if cache miss
+          if [ ! -f "/usr/bin/xelatex" ]; then
+            echo "🔄 Installing LaTeX packages..."
+            # Use faster mirror and minimal packages
+            sudo apt-get update -qq -o Acquire::Languages=none
+            sudo DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
+              texlive-xetex \
+              texlive-fonts-recommended \
+              texlive-latex-extra \
+              fonts-font-awesome \
+              && sudo apt-get clean \
+              && sudo rm -rf /var/lib/apt/lists/*
+          else
+            echo "✅ LaTeX already cached and available"
+          fi
+      - name: Install Python dependencies
+        run: |
+          pip install -r lib/requirements.txt
+      
+      - name: Generate PDF
+        run: |
+          echo "🔄 Generating PDF from CV data..."
+          
+          # Create output directory
+          mkdir -p out
+          
+          # Generate LaTeX from template
+          python lib/generate.py --resume resume.yml --template template.jinja --output tex/resume.tex
+          echo "✅ LaTeX template generated successfully"
+          
+          # Compile LaTeX to PDF  
+          python lib/compile.py --input tex/resume.tex --output out/Alicia-Sykes-CV.pdf
+          echo "✅ PDF generated successfully"
+          ls -la out/Alicia-Sykes-CV.pdf
+      
+      - name: Upload CV PDF artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: cv-pdf
+          path: out/Alicia-Sykes-CV.pdf
+          retention-days: 90
+
+  build-website:
+    name: Build Website
     runs-on: ubuntu-latest
     
     steps:
@@ -37,51 +107,6 @@ jobs:
           cache: 'npm'
           cache-dependency-path: 'web/package-lock.json'
       
-      - name: Setup Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.11'
-          cache: 'pip'
-          cache-dependency-path: 'lib/requirements.txt'
-      
-      - name: Install LaTeX
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y texlive-xetex texlive-fonts-recommended texlive-fonts-extra
-      
-      - name: Install Python dependencies
-        run: |
-          pip install -r lib/requirements.txt
-      
-      - name: Generate PDF
-        run: |
-          set +e  # Don't fail workflow if PDF generation fails
-          
-          echo "🔄 Generating PDF from CV data..."
-          
-          # Create output directory
-          mkdir -p out
-          
-          # Generate LaTeX from template
-          if python lib/generate.py --resume resume.yml --template template.jinja --output tex/resume.tex; then
-            echo "✅ LaTeX template generated successfully"
-            
-            # Compile LaTeX to PDF  
-            if python lib/compile.py --input tex/resume.tex --output out/Alicia-Sykes-CV.pdf; then
-              echo "✅ PDF generated successfully"
-              ls -la out/Alicia-Sykes-CV.pdf
-              echo "PDF_GENERATED=true" >> $GITHUB_ENV
-            else
-              echo "❌ PDF compilation failed, but continuing with website build"
-              echo "PDF_GENERATED=false" >> $GITHUB_ENV
-            fi
-          else
-            echo "❌ LaTeX generation failed, but continuing with website build"
-            echo "PDF_GENERATED=false" >> $GITHUB_ENV
-          fi
-          
-          set -e  # Re-enable exit on error
-      
       - name: Install web dependencies
         run: |
           cd web
@@ -93,17 +118,6 @@ jobs:
         run: |
           cd web
           npm run build
-          
-          # Copy generated PDF to web build directory with correct naming
-          if [ -f "../out/Alicia-Sykes-CV.pdf" ]; then
-            cp "../out/Alicia-Sykes-CV.pdf" "build/alicia-sykes-cv.pdf"
-            echo "✅ PDF copied to website build as alicia-sykes-cv.pdf"
-          elif [ -f "../out/alicia-sykes-cv.pdf" ]; then
-            cp "../out/alicia-sykes-cv.pdf" "build/"
-            echo "✅ PDF copied to website build"
-          else
-            echo "⚠️  PDF not found, skipping copy to website"
-          fi
       
       - name: Verify build output
         run: |
@@ -115,26 +129,56 @@ jobs:
             echo ""
             echo "Build size:"
             du -sh build/
-            echo ""
-            if [ -f "build/alicia-sykes-cv.pdf" ]; then
-              echo "✅ PDF available in website build"
-              ls -lh build/alicia-sykes-cv.pdf
-            else
-              echo "⚠️  PDF not found in website build"
-            fi
           else
             echo "❌ Build failed - no index.html found in build directory"
             exit 1
           fi
       
+      - name: Upload website artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: website-build
+          path: web/build/
+          retention-days: 90
+
+  deploy:
+    name: Deploy to Website Branch
+    runs-on: ubuntu-latest
+    needs: [build-cv, build-website]
+    if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request' && needs.build-website.result == 'success'
+    
+    steps:
+      - name: Download CV PDF artifact
+        if: needs.build-cv.result == 'success'
+        uses: actions/download-artifact@v4
+        with:
+          name: cv-pdf
+          path: ./pdf/
+      
+      - name: Download website artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: website-build
+          path: ./website/
+      
+      - name: Copy PDF to website build
+        run: |
+          # Copy PDF with web-friendly filename if CV build succeeded
+          if [ "${{ needs.build-cv.result }}" = "success" ] && [ -f "pdf/Alicia-Sykes-CV.pdf" ]; then
+            cp "pdf/Alicia-Sykes-CV.pdf" "website/alicia-sykes-cv.pdf"
+            echo "✅ PDF copied to website build as alicia-sykes-cv.pdf"
+            ls -lh website/alicia-sykes-cv.pdf
+          else
+            echo "⚠️  CV build failed or PDF not found, deploying website without PDF"
+          fi
+      
       - name: Deploy to website branch
-        if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
         uses: peaceiris/actions-gh-pages@v4
         with:
           personal_token: ${{ secrets.BOT_TOKEN }}
           external_repository: ${{ github.repository }}
           publish_branch: website
-          publish_dir: web/build
+          publish_dir: ./website/
           user_name: 'liss-bot'
           user_email: 'alicia-gh-bot@mail.as93.net'
           commit_message: |
@@ -144,15 +188,34 @@ jobs:
             Commit: ${{ github.event.head_commit.message }}
           enable_jekyll: false
           force_orphan: true
-      
-      - name: Comment on PR (if applicable)
-        if: github.event_name == 'pull_request'
+
+  comment-pr:
+    name: Comment on PR
+    runs-on: ubuntu-latest
+    needs: [build-cv, build-website]
+    if: github.event_name == 'pull_request'
+    
+    steps:
+      - name: Comment on PR
         uses: actions/github-script@v7
         with:
           script: |
+            const cvStatus = '${{ needs.build-cv.result }}';
+            const websiteStatus = '${{ needs.build-website.result }}';
+            
+            let message = '🪁 Build completed!\n\n';
+            message += `- CV PDF: ${cvStatus === 'success' ? '✅ Generated successfully' : '❌ Failed to generate'}\n`;
+            message += `- Website: ${websiteStatus === 'success' ? '✅ Built successfully' : '❌ Failed to build'}\n\n`;
+            
+            if (cvStatus === 'success' && websiteStatus === 'success') {
+              message += 'Both CV and website will be deployed when this PR is merged.';
+            } else {
+              message += 'Please check the failed jobs before merging.';
+            }
+            
             github.rest.issues.createComment({
               issue_number: context.issue.number,
               owner: context.repo.owner,
               repo: context.repo.repo,
-              body: '🪁 Website build completed successfully! The changes will be deployed to the `website` branch when this PR is merged.'
+              body: message
             })
