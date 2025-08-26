@@ -37,7 +37,52 @@ jobs:
           cache: 'npm'
           cache-dependency-path: 'web/package-lock.json'
       
-      - name: Install dependencies
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+          cache-dependency-path: 'lib/requirements.txt'
+      
+      - name: Install LaTeX
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y texlive-xetex texlive-fonts-recommended texlive-fonts-extra
+      
+      - name: Install Python dependencies
+        run: |
+          pip install -r lib/requirements.txt
+      
+      - name: Generate PDF
+        run: |
+          set +e  # Don't fail workflow if PDF generation fails
+          
+          echo "🔄 Generating PDF from CV data..."
+          
+          # Create output directory
+          mkdir -p out
+          
+          # Generate LaTeX from template
+          if python lib/generate.py --resume resume.yml --template template.jinja --output tex/resume.tex; then
+            echo "✅ LaTeX template generated successfully"
+            
+            # Compile LaTeX to PDF  
+            if python lib/compile.py --input tex/resume.tex --output out/Alicia-Sykes-CV.pdf; then
+              echo "✅ PDF generated successfully"
+              ls -la out/Alicia-Sykes-CV.pdf
+              echo "PDF_GENERATED=true" >> $GITHUB_ENV
+            else
+              echo "❌ PDF compilation failed, but continuing with website build"
+              echo "PDF_GENERATED=false" >> $GITHUB_ENV
+            fi
+          else
+            echo "❌ LaTeX generation failed, but continuing with website build"
+            echo "PDF_GENERATED=false" >> $GITHUB_ENV
+          fi
+          
+          set -e  # Re-enable exit on error
+      
+      - name: Install web dependencies
         run: |
           cd web
           npm ci
@@ -48,6 +93,17 @@ jobs:
         run: |
           cd web
           npm run build
+          
+          # Copy generated PDF to web build directory with correct naming
+          if [ -f "../out/Alicia-Sykes-CV.pdf" ]; then
+            cp "../out/Alicia-Sykes-CV.pdf" "build/alicia-sykes-cv.pdf"
+            echo "✅ PDF copied to website build as alicia-sykes-cv.pdf"
+          elif [ -f "../out/alicia-sykes-cv.pdf" ]; then
+            cp "../out/alicia-sykes-cv.pdf" "build/"
+            echo "✅ PDF copied to website build"
+          else
+            echo "⚠️  PDF not found, skipping copy to website"
+          fi
       
       - name: Verify build output
         run: |
@@ -55,9 +111,17 @@ jobs:
           if [ -f "build/index.html" ]; then
             echo "✅ Static site built successfully"
             echo "Build directory contains:"
-            ls -la build/ | head -10
+            ls -la build/ | head -15
+            echo ""
             echo "Build size:"
             du -sh build/
+            echo ""
+            if [ -f "build/alicia-sykes-cv.pdf" ]; then
+              echo "✅ PDF available in website build"
+              ls -lh build/alicia-sykes-cv.pdf
+            else
+              echo "⚠️  PDF not found in website build"
+            fi
           else
             echo "❌ Build failed - no index.html found in build directory"
             exit 1

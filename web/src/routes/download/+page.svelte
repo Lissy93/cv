@@ -8,24 +8,31 @@
   onMount(async () => {
     if (browser) {
       try {
-        const repoOwner = 'Lissy93';
-        const repoName = 'cv'; 
-        const assetName = 'Alicia-Sykes-CV.pdf';
-
-        // Fetch the latest release data from GitHub API
-        const response = await fetch(`https://api.github.com/repos/${repoOwner}/${repoName}/releases/latest`);
-        if (!response.ok) {
-          throw new Error('Failed to fetch release info');
-        }
-
-        const release = await response.json();
-        const tagName = release.tag_name;
-
-        // Construct the download URL and redirect
-        const downloadUrl = `https://github.com/${repoOwner}/${repoName}/releases/download/${tagName}/${assetName}`;
+        // Try to download the PDF directly from the website
+        const pdfUrl = '/alicia-sykes-cv.pdf';
         
-        // Redirect to download
-        window.location.href = downloadUrl;
+        // Check if the PDF exists
+        const response = await fetch(pdfUrl, { method: 'HEAD' });
+        if (response.ok) {
+          // PDF exists, redirect to it
+          window.location.href = pdfUrl;
+        } else {
+          // Fallback to GitHub releases
+          const repoOwner = 'Lissy93';
+          const repoName = 'cv'; 
+          const assetName = 'Alicia-Sykes-CV.pdf';
+
+          const releaseResponse = await fetch(`https://api.github.com/repos/${repoOwner}/${repoName}/releases/latest`);
+          if (!releaseResponse.ok) {
+            throw new Error('Failed to fetch release info');
+          }
+
+          const release = await releaseResponse.json();
+          const tagName = release.tag_name;
+          const downloadUrl = `https://github.com/${repoOwner}/${repoName}/releases/download/${tagName}/${assetName}`;
+          
+          window.location.href = downloadUrl;
+        }
       } catch (err) {
         console.error('Download error:', err);
         error = true;
