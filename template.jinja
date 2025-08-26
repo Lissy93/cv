@@ -164,13 +164,9 @@
 \begin{cvachievements}
   \setlength{\itemsep}{0mm}
 {%- for proj in projects %}
-  \item {
-    \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} l r}
-      \href{ {{ proj.url | latex_escape }} }{\textbf{ {{ proj.name | latex_escape }} }} 
-      - {{ proj.description | latex_escape }} \href{ {{ proj.url | latex_escape }} }{\scriptsize\color{lightgray}\faLink}
-      & 
-      \href{https://github.com/{{ proj.github | latex_escape }}}{\faGithub\ {{ proj.github | latex_escape }}} \\
-    \end{tabular*}
+  \item {\hspace{-5pt}
+    \textbf{ {{ proj.name | latex_escape }} } ({{ proj.stars | latex_escape }} \raisebox{0.5pt}{\scriptsize\faStar}) \href{ {{ proj.url | latex_escape }} }{\scriptsize\color{lightgray}\faLink} \hfill \href{https://github.com/{{ proj.github | latex_escape }}}{\hspace{1pt}\faGithub\ {{ proj.github | latex_escape }}}\\
+    {{ proj.description | latex_escape }}
   }
 {%- endfor %}
 \end{cvachievements}
