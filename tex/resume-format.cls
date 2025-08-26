@@ -264,15 +264,19 @@
 %-------------------------------------------------------------------------------
 %                Configuration for fonts
 %-------------------------------------------------------------------------------
-% Set font for header (default is Roboto)
-\newfontfamily\headerfont[
+% Define shared font options for efficiency
+\def\@robotofullspec{%
   Path=\@fontdir,
   UprightFont=*-Regular,
   ItalicFont=*-Italic,
   BoldFont=*-Bold,
-  BoldItalicFont=*-BoldItalic,
-]{Roboto}
+  BoldItalicFont=*-BoldItalic%
+}
 
+% Set font for header (Roboto Regular/Bold)
+\newfontfamily\headerfont[\@robotofullspec]{Roboto}
+
+% Set font for header light (Roboto Thin/Medium)
 \newfontfamily\headerfontlight[
   Path=\@fontdir,
   UprightFont=*-Thin,
@@ -281,22 +285,11 @@
   BoldItalicFont=*-MediumItalic,
 ]{Roboto}
 
-% Set font for footer (default is Source Sans Pro)
-\newfontfamily\footerfont[
-  Path=\@fontdir,
-  UprightFont=*-Regular,
-  ItalicFont=*-Italic,
-  BoldFont=*-Bold
-]{Roboto}
+% Set font for footer (Roboto Regular/Bold)
+\newfontfamily\footerfont[\@robotofullspec]{Roboto}
 
-% Set font for body (default is Source Sans Pro)
-\newfontfamily\bodyfont[
-  Path=\@fontdir,
-  UprightFont=*-Regular,
-  ItalicFont=*-Italic,
-  BoldFont=*-Bold,
-  BoldItalicFont=*-BoldItalic
-]{Roboto}
+% Set font for body (Roboto Regular/Bold)
+\newfontfamily\bodyfont[\@robotofullspec]{Roboto}
 
 \newfontfamily\bodyfontlight[
   Path=\@fontdir,
