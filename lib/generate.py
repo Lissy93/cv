@@ -59,7 +59,7 @@ def latex_escape(text: str) -> str:
 
 def markdown_to_latex(text):
     link_pattern = re.compile(r'\[([^\]]+)\]\(([^)]+)\)')
-    return link_pattern.sub(r'\\href{\2}{\1}', text).replace('%', '\%')
+    return link_pattern.sub(r'\\href{\2}{\1}', text).replace('%', '\\%')
 
 def format_date(date_str: str) -> str:
     """
