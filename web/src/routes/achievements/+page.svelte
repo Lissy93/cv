@@ -16,7 +16,7 @@ const stats = [
     source: 'https://notes.aliciasykes.com/p/0s5s3uOtKj',
   },
   {
-    stat: 'Top 1% helper on StackOverflow',
+    stat: 'Top 1% answerer on StackOverflow',
     source: 'https://stackoverflow.com/users/979052/alicia-sykes',
   },
   {
@@ -36,12 +36,8 @@ const stats = [
     source: 'https://github.com/lissy93',
   },
   {
-    stat: '100+ repos I maintain or are a core contributor of',
+    stat: '100+ repos I maintain, and 1000 contributed to',
     source: 'https://github.com/Lissy93?tab=repositories&q=&type=&language=&sort=stargazers',
-  },
-  {
-    stat: '1000+ repos and open source projects contributed to',
-    source: '',
   },
   {
     stat: 'Ranked num 1 female open source contributor worldwide',
