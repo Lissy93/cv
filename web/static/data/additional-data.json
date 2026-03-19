@@ -47,7 +47,7 @@
 		{
 			"company": "loveholidays",
 			"companyUrl": "https://loveholidays.com",
-			"companyLogo": "https://a.loveholidays.com/design-system/meta/loveholidays/android-chrome-192x192.png",
+			"companyLogo": "https://pixelflare.cc/alicia/icons/loveholidays",
 			"jobTitle": "Staff Engineer",
 			"datesWorked": "November 2024 - Present",
 			"responsibilities": "",
@@ -56,7 +56,7 @@
 		{
 			"company": "AND.Digital",
 			"companyUrl": "https://and.digital/",
-			"companyLogo": "https://and.digital/favicon.ico",
+			"companyLogo": "https://pixelflare.cc/alicia/icons/and-digital",
 			"jobTitle": "Principle Engineer",
 			"datesWorked": "August 2022 - Oct 2024",
 			"responsibilities": "As a member of the Practice Group within Hamilton Club, I work across several client projects, ensuring that code quality, maintainability and security are top notch. I'm responsible for training up our developers, helping them gain the skills necessary to best support our clients. I'm always up for trying out new tech, so that I'm in a good position to choose the best tech stacks on a per-client basis.",
@@ -64,17 +64,17 @@
 			"projects": [
 				{
 					"name": "International SOS",
-					"logo": "https://i.ibb.co/WgKKMFQ/Isos.jpg",
+					"logo": "https://pixelflare.cc/alicia/icons/international-sos",
 					"description": ""
 				},
 				{
-					"name": "Frasers Group",
-					"logo": "https://i.ibb.co/sQcvxmG/Frasers.png",
+					"name": "Sports Direct",
+					"logo": "https://pixelflare.cc/alicia/icons/sports-direct",
 					"description": ""
 				},
 				{
 					"name": "Lloyds Bank",
-					"logo": "https://i.ibb.co/GCSDPCq/Lloyds-bank.jpg",
+					"logo": "https://pixelflare.cc/alicia/icons/lloyds-bank",
 					"description": ""
 				}
 			],
@@ -100,27 +100,27 @@
 			"projects": [
 				{
 					"name": "Futr.AI",
-					"logo": "https://i.ibb.co/SyjxvhT/Futr-ai.png",
+					"logo": "https://pixelflare.cc/alicia/icons/futr-ai",
 					"description": ""
 				},
 				{
 					"name": "Shell",
-					"logo": "https://i.ibb.co/7r1K9cb/Shell.png",
+					"logo": "https://pixelflare.cc/alicia/icons/shell",
 					"description": ""
 				},
 				{
 					"name": "Shell Recharge",
-					"logo": "https://i.ibb.co/BBdP2Wh/Shell-recharge.jpg",
+					"logo": "https://pixelflare.cc/alicia/icons/shell-recharge",
 					"description": ""
 				},
 				{
 					"name": "Machine Max",
-					"logo": "https://i.ibb.co/XzXTKWF/machine-max.png",
+					"logo": "https://pixelflare.cc/alicia/icons/machine-max",
 					"description": ""
 				},
 				{
 					"name": "Ctemplar",
-					"logo": "https://i.ibb.co/2Sg6G3s/Ctemplar.png",
+					"logo": "https://pixelflare.cc/alicia/icons/ctemplar",
 					"description": ""
 				}
 			],
@@ -129,7 +129,7 @@
 		{
 			"company": "Accenture",
 			"companyUrl": "https://www.accenture.com/",
-			"companyLogo": "https://i.ibb.co/kcCKDF1/accenture.png",
+			"companyLogo": "https://pixelflare.cc/alicia/icons/accenture",
 			"jobTitle": "Software Developer",
 			"datesWorked": "June 2014 - February 2019",
 			"responsibilities": "After joining as an associate, I had the opportunity to work on a range of exciting client projects, each with their own challenges, his helped me to develop my skills and knowledge in a variety of areas. Over time I worked my way up to a senior role, where I could actively deliver high quality solutions to clients.",
@@ -137,32 +137,32 @@
 			"projects": [
 				{
 					"name": "E.ON",
-					"logo": "https://i.ibb.co/4PcVN4B/Eon.png",
+					"logo": "https://pixelflare.cc/alicia/icons/e-on",
 					"description": ""
 				},
 				{
 					"name": "B&Q",
-					"logo": "https://i.ibb.co/F79xSDK/Bandq.jpg",
+					"logo": "https://pixelflare.cc/alicia/icons/b-and-q",
 					"description": ""
 				},
 				{
 					"name": "Boots",
-					"logo": "https://i.ibb.co/SnPtC8t/Boots.jpg",
+					"logo": "https://pixelflare.cc/alicia/icons/boots",
 					"description": ""
 				},
 				{
 					"name": "TK Maxx",
-					"logo": "https://i.ibb.co/MBkQVs1/tkmaxx.jpg",
+					"logo": "https://pixelflare.cc/alicia/icons/tk-maz",
 					"description": ""
 				},
 				{
 					"name": "Vodafone",
-					"logo": "https://i.ibb.co/Zh1SwbR/Vodafone.png",
+					"logo": "https://pixelflare.cc/alicia/icons/vodafone",
 					"description": ""
 				},
 				{
 					"name": "UKI Innovation Center",
-					"logo": "https://i.ibb.co/1JX4Q9Y/Accenture-innovation.jpg",
+					"logo": "https://pixelflare.cc/alicia/icons/accenture-innovation-centers",
 					"description": ""
 				}
 			],
@@ -171,7 +171,7 @@
 		{
 			"company": "University of Oxford",
 			"companyUrl": "https://www.ox.ac.uk/",
-			"companyLogo": "https://i.ibb.co/QYmLPTX/oxford-uni.jpg",
+			"companyLogo": "https://pixelflare.cc/alicia/icons/university-of-oxford",
 			"jobTitle": "Intern",
 			"datesWorked": "June 2013 - September 2013",
 			"responsibilities": "Worked on developing a Java application which would calculate the most effective mg of antimalarial drug, per kg or patient body weight, to prevent vaccine resistance building up. Involved dealing with millions of patient records, which were often in varying formats and units.",
@@ -179,7 +179,7 @@
 			"projects": [
 				{
 					"name": "WWARN",
-					"logo": "https://i.ibb.co/1R657nh/Wwarn.jpg",
+					"logo": "https://pixelflare.cc/alicia/icons/wwarn",
 					"description": ""
 				}
 			],
@@ -188,7 +188,7 @@
 		{
 			"company": "British Army",
 			"companyUrl": "https://www.army.mod.uk/",
-			"companyLogo": "https://i.ibb.co/gv6mbKw/Army.jpg",
+			"companyLogo": "https://pixelflare.cc/alicia/icons/british-army",
 			"jobTitle": "Soldier",
 			"datesWorked": "",
 			"responsibilities": "",
@@ -196,17 +196,17 @@
 			"projects": [
 				{
 					"name": "Signals",
-					"logo": "https://i.ibb.co/F5mhzkr/Signals.png",
+					"logo": "https://pixelflare.cc/alicia/icons/royal-corps-of-signals",
 					"description": ""
 				},
 				{
 					"name": "Oxford UOTC",
-					"logo": "https://i.ibb.co/ZMH1TWq/ouotc.jpg",
+					"logo": "https://pixelflare.cc/alicia/icons/oxford-uni-otc",
 					"description": ""
 				},
 				{
 					"name": "Intelligence Corps",
-					"logo": "https://i.ibb.co/svn2XLq/mi.jpg",
+					"logo": "https://pixelflare.cc/alicia/icons/inteligence-corps",
 					"description": ""
 				}
 			]

@@ -26,9 +26,9 @@ export default [
 				parser: ts.parser
 			}
 		},
-		rules: { // NOTE: Added these rules, becos everything static. I'll remove em if i make dynamic in the future
+		rules: {
 			'svelte/no-navigation-without-resolve': 'off', // not got any dynamic routes, so hardcoded strings are fine
-			'svelte/require-each-key': 'off', // i'm only using static data here, no point keying them in each for loop
+			'svelte/require-each-key': 'off' // i'm only using static data here, no point keying them in each for loop
 		}
 	},
 	{

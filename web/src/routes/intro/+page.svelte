@@ -6,9 +6,6 @@
 		{ name: 'Contact', url: '/contact', icon: 'fa-paper-plane' }
 	];
 
-	const tagline =
-		'A hands-on engineering manager, dedicated to bringing out the best in developers and building top-notch products.';
-
 	const intro = [
 		`I'm a builder at heart.
       Whether it's a global-scale trading platform or a fun little CLI tool to check website privacy,

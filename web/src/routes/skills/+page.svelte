@@ -108,9 +108,8 @@
 
 	<div class="note">
 		<p>
-			<b>Note</b>:
-			The technology list is not exhaustive, as it doesn't include some technologies I've used professionally
-			at work, or for private clients.
+			<b>Note</b>: The technology list is not exhaustive, as it doesn't include some technologies
+			I've used professionally at work, or for private clients.
 			<br />
 			<br />
 			For a full-list of programming languages and frameworks I've worked extensively with, as well as

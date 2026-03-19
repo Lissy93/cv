@@ -92,8 +92,9 @@
 
 <h2>Get in Touch</h2>
 <p>
-	Does this sound good to you? If so, I'd love to hear from you!
-	So please do <a href="/contact">get in touch</a>.
+	Does this sound good to you? If so, I'd love to hear from you! So please do <a href="/contact"
+		>get in touch</a
+	>.
 </p>
 
 <div class="other-pages">
