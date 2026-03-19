@@ -1,6 +1,5 @@
 <script lang="ts">
-	export let language = '';
-	export let small = false;
+	let { language = '', small = false }: { language?: string; small?: boolean } = $props();
 
 	interface LanguageAttributes {
 		name: string;
@@ -160,20 +159,19 @@
 		);
 	};
 
-	// Make both badge URL and language info available to the component (and reactive)
-	$: langAttributes = getLangAttributes(language);
+	let langAttributes = $derived(getLangAttributes(language));
 </script>
 
 {#if langAttributes}
 	<div
 		class="language {small ? 'small' : ''}"
-		title={`Build with ${langAttributes.name}`}
+		title={`Built with ${langAttributes.name}`}
 		style={`--lang-color: #${langAttributes.color};`}
 	>
 		<img
 			height="16"
 			width="16"
-			alt="l"
+			alt={langAttributes.name}
 			src="https://cdn.simpleicons.org/{langAttributes.icon}/{langAttributes.color}"
 		/>
 		{langAttributes.name}
@@ -182,7 +180,6 @@
 
 <style lang="scss">
 	img {
-		// filter: grayscale(20%);
 		filter: brightness(0.6);
 		transition: all 0.1s ease-in-out;
 		&:hover {
@@ -196,8 +193,6 @@
 		width: fit-content;
 		padding: 0.1rem 0.2rem;
 		border-radius: var(--curve-factor, 4px);
-		display: flex;
-		gap: 0.5rem;
 		display: inline;
 		transition: all 0.3s ease-in-out;
 		cursor: default;

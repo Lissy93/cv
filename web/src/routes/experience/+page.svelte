@@ -1,8 +1,9 @@
 <script lang="ts">
 	import Language from '../../components/Language.svelte';
 
-	export let data = {};
-	const experience = data.combinedJobData;
+	// eslint-disable-next-line @typescript-eslint/no-explicit-any
+	let { data }: { data: { combinedJobData: any[] } } = $props();
+	let experience = $derived(data.combinedJobData);
 </script>
 
 <svelte:head>

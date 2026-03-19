@@ -1,8 +1,8 @@
 <script lang="ts">
 	import '../styles/resume-main.scss';
-	import { marked } from 'marked';
 
-	export let data: any;
+	// eslint-disable-next-line @typescript-eslint/no-explicit-any
+	let { data }: { data: any } = $props();
 
 	const makeUrlretty = (url: string) => {
 		return url.replace(/(^\w+:|^)\/\//, '');
@@ -29,13 +29,6 @@
 		];
 		return `${months[parseInt(month) - 1]} ${year}`;
 	};
-
-	const mdToHtml = (md: { text: string; source: string }) => {
-		if (!md || !md.text) {
-			return '';
-		}
-		return marked(md.text);
-	};
 </script>
 
 <svelte:head>
@@ -56,12 +49,10 @@
 	<!-- Personal statement -->
 	<section class="personal-statement">
 		<p>{data['personal-statement']}</p>
-		<a href="/intro">
-			<button class="small-btn">
-				<i class="nav-icon fa-solid fa-address-card"></i>
-				View Full Bio
-				<i class="fa-solid fa-arrow-right"></i>
-			</button>
+		<a href="/intro" class="small-btn no-underline">
+			<i class="nav-icon fa-solid fa-address-card"></i>
+			View Full Bio
+			<i class="fa-solid fa-arrow-right"></i>
 		</a>
 	</section>
 
@@ -82,12 +73,10 @@
 					</ul>
 				</div>
 			{/each}
-			<a href="/experience">
-				<button class="small-btn">
-					<i class="nav-icon fa-solid fa-briefcase"></i>
-					View All Experience
-					<i class="fa-solid fa-arrow-right"></i>
-				</button>
+			<a href="/experience" class="small-btn no-underline">
+				<i class="nav-icon fa-solid fa-briefcase"></i>
+				View All Experience
+				<i class="fa-solid fa-arrow-right"></i>
 			</a>
 		</section>
 	{/if}
@@ -110,17 +99,15 @@
 		<ul>
 			{#each data.skills as skill}
 				<li>
-					<b>{skill.name}: </b>
+					<b>{skill.name}:</b>
 					{skill.keywords.join(', ')}
 				</li>
 			{/each}
 		</ul>
-		<a href="/skills">
-			<button class="small-btn">
-				<i class="nav-icon fa-solid fa-code"></i>
-				View All Skills
-				<i class="fa-solid fa-arrow-right"></i>
-			</button>
+		<a href="/skills" class="small-btn no-underline">
+			<i class="nav-icon fa-solid fa-code"></i>
+			View All Skills
+			<i class="fa-solid fa-arrow-right"></i>
 		</a>
 	</section>
 
@@ -143,12 +130,10 @@
 				</li>
 			{/each}
 		</ul>
-		<a href="/achievements">
-			<button class="small-btn">
-				<i class="nav-icon fa-solid fa-star"></i>
-				View All Achievements
-				<i class="fa-solid fa-arrow-right"></i>
-			</button>
+		<a href="/achievements" class="small-btn no-underline">
+			<i class="nav-icon fa-solid fa-star"></i>
+			View All Achievements
+			<i class="fa-solid fa-arrow-right"></i>
 		</a>
 	</section>
 
@@ -157,7 +142,9 @@
 		<ul>
 			{#each data.awards || [] as award}
 				<li>
-					<b>{award.title}</b> - <i>{award.summary}</i>
+					<b>{award.title}</b>
+					-
+					<i>{award.summary}</i>
 					{#if award.source}
 						<a
 							href={award.source}

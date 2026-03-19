@@ -1,11 +1,12 @@
-<script>
+<script lang="ts">
 	import '../../styles/resume-main.scss';
 	import '../../styles/other-pages.scss';
 
 	import Language from '../../components/Language.svelte';
-	export let data = {};
+	// eslint-disable-next-line @typescript-eslint/no-explicit-any
+	let { data }: { data: Record<string, any> } = $props();
 
-	const techStack = data.techStack;
+	let techStack = $derived(data.techStack);
 
 	const softSkills = [
 		{
@@ -72,12 +73,12 @@
 		<ul>
 			{#each techStack[technologyArea] as technology}
 				<li>
-					<b><Language language={technology.language} /> </b>
+					<b><Language language={technology.language} /></b>
 					<br />
 					<details class="projects-collapsable">
-						<summary class="project-list-title"
-							>Sample Projects ({technology.projects.length})</summary
-						>
+						<summary class="project-list-title">
+							Sample Projects ({technology.projects.length})
+						</summary>
 						<ul>
 							{#each technology.projects as project}
 								<li>
@@ -98,34 +99,34 @@
 	<ul class="soft-skills">
 		{#each softSkills as skill}
 			<li>
-				{skill.skill}<br />
+				{skill.skill}
+				<br />
 				<span class="skill-desc">{skill.desc}</span>
 			</li>
 		{/each}
-
-		<div class="note">
-			<p>
-				<b>Note</b>: The technology list is not exhaustive, as it doesn't include some technologies
-				I've used professionally at work, or for private clients.
-				<br /><br />
-				For a full-list of programming languages and frameworks I've worked extensivley with, as well
-				as links to code written in each, please reference
-				<a href="https://apps.aliciasykes.com">apps.aliciasykes.com</a>.
-				<br /><br />
-				For the soft skills, I can provide references, or put you in touch with previous colleagues who
-				can vouch for my abilities.
-			</p>
-		</div>
 	</ul>
+
+	<div class="note">
+		<p>
+			<b>Note</b>:
+			The technology list is not exhaustive, as it doesn't include some technologies I've used professionally
+			at work, or for private clients.
+			<br />
+			<br />
+			For a full-list of programming languages and frameworks I've worked extensively with, as well as
+			links to code written in each, please reference
+			<a href="https://apps.aliciasykes.com">apps.aliciasykes.com</a>.
+			<br />
+			<br />
+			For the soft skills, I can provide references, or put you in touch with previous colleagues who
+			can vouch for my abilities.
+		</p>
+	</div>
 </section>
 
 <style lang="scss">
 	p {
 		font-size: 0.95rem;
-	}
-	.second-intro {
-		font-size: 0.8rem;
-		opacity: 0.8;
 	}
 	ul {
 		padding-left: 0.5rem;
@@ -161,7 +162,6 @@
 	}
 	.soft-skills {
 		list-style: none;
-		// padding-left: 1.5rem;
 		li {
 			font-size: 0.95rem;
 			font-weight: 500;
@@ -179,6 +179,7 @@
 
 				display: -webkit-box;
 				max-width: 100%;
+				line-clamp: 2;
 				-webkit-line-clamp: 2;
 				-webkit-box-orient: vertical;
 				overflow: hidden;

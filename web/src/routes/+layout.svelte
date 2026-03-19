@@ -1,27 +1,22 @@
 <script lang="ts">
 	import { browser } from '$app/environment';
-	import { onMount } from 'svelte';
-	import { page } from '$app/stores';
+	import { onMount, type Snippet } from 'svelte';
+	import { page } from '$app/state';
 	import { onNavigate } from '$app/navigation';
-
 	import '../app.css';
 	import '../styles/variables.scss';
 	import '../styles/link.scss';
 	import '../styles/page-global.scss';
 
-	interface Document {
-		startViewTransition?: (callback: () => Promise<void>) => void;
-	}
+	let { children }: { children: Snippet } = $props();
 
 	onNavigate((navigation) => {
-		const doc = document as Document;
-		if (!doc.startViewTransition) return;
+		if (!document.startViewTransition) return;
 		return new Promise<void>((resolve) => {
-			doc.startViewTransition &&
-				doc.startViewTransition(async () => {
-					resolve();
-					await navigation.complete;
-				});
+			document.startViewTransition!(async () => {
+				resolve();
+				await navigation.complete;
+			});
 		});
 	});
 
@@ -63,9 +58,7 @@
 		}
 	});
 
-	let path;
-	// @ts-ignore
-	$: path = $page.url.pathname;
+	let path = $derived(page.url.pathname);
 
 	const socials = [
 		{ name: 'GitHub', url: 'https://github.com/lissy93', icon: 'fa-github', color: '#333' },
@@ -117,9 +110,9 @@
 			<h2 class="job-title">Principal Engineer</h2>
 			<img class="profile-picture" width="300" src="/profile-picture.jpg" alt="Alicia Sykes" />
 			<ul class="socials">
-				{#each socials as { url, icon, color }}
+				{#each socials as { name, url, icon, color }}
 					<li style="--hover-color: {color}">
-						<a class="no-underline" href={url} target="_blank" rel="nofollow">
+						<a class="no-underline" href={url} target="_blank" rel="nofollow" aria-label={name}>
 							<i class="fa-brands {icon}"></i>
 						</a>
 					</li>
@@ -129,22 +122,31 @@
 				<ul>
 					{#each navLinks as { name, url, icon }}
 						<li class:is-active={path === url}>
-							<a class="no-underline" href={url}><i class="nav-icon fa-solid {icon}"></i>{name}</a>
+							<a class="no-underline" href={url}>
+								<i class="nav-icon fa-solid {icon}"></i>
+								{name}
+							</a>
 						</li>
 					{/each}
 					{#if path !== '/'}
 						<li>
-							<a href="/" class="no-underline"><i class="nav-icon fa-solid fa-home"></i>Home</a>
+							<a href="/" class="no-underline">
+								<i class="nav-icon fa-solid fa-home"></i>
+								Home
+							</a>
 						</li>
 					{/if}
 				</ul>
 			</nav>
 			<a href="/download" class="no-underline">
-				<button class="download-btn"><i class="fa-solid fa-file-arrow-down"></i>Download CV</button>
+				<button class="download-btn">
+					<i class="fa-solid fa-file-arrow-down"></i>
+					Download CV
+				</button>
 			</a>
-			<a class="view-code-link" href="https://github.com/lissy93/cv" target="_blank" rel="nofollow"
-				>Or View CV Source Code on GitHub</a
-			>
+			<a class="view-code-link" href="https://github.com/lissy93/cv" target="_blank" rel="nofollow">
+				Or View CV Source Code on GitHub
+			</a>
 		</div>
 		<div class="aside-bottom">
 			<a class="get-in-touch" href="/contact">
@@ -154,8 +156,11 @@
 			<br />
 			<small class="license">
 				<a href="https://github.com/lissy93/cv">lissy93/cv</a>
-				is licensed under <a href="https://github.com/Lissy93/cv/blob/main/LICENSE">MIT</a>, &copy;
-				<a href="https://aliciasykes.com">Alicia Sykes</a> 2024
+				is licensed under
+				<a href="https://github.com/Lissy93/cv/blob/main/LICENSE">MIT</a>
+				, &copy;
+				<a href="https://aliciasykes.com">Alicia Sykes</a>
+				2026
 			</small>
 		</div>
 	</aside>
@@ -174,20 +179,21 @@
 					<p>
 						<strong>As of {startDateFormatted}, I am actively seeking new opportunities!</strong>
 						<br />
-						Read my <a href="/intro">full bio</a> to learn more about me, and if you think I could
-						be a good fit for your team, please <a href="/contact">get in touch</a>.
+						Read my
+						<a href="/intro">full bio</a>
+						to learn more about me, and if you think I could be a good fit for your team, please
+						<a href="/contact">get in touch</a>
+						.
 					</p>
-					<a href="/ideal-role">
-						<button class="small-btn">
-							<i class="fa-solid fa-bullseye-arrow"></i>
-							View Ideal Role
-							<i class="fa-solid fa-arrow-right"></i>
-						</button>
+					<a href="/ideal-role" class="small-btn no-underline">
+						<i class="fa-solid fa-bullseye-arrow"></i>
+						View Ideal Role
+						<i class="fa-solid fa-arrow-right"></i>
 					</a>
 				</div>
 			{/if}
 
-			<div class="page"><slot /></div>
+			<div class="page">{@render children()}</div>
 		</main>
 	</div>
 </div>

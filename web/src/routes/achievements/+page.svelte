@@ -124,8 +124,8 @@
 			name: 'Dashy',
 			description: 'Control panel for self-hosting',
 			tech: 'Vue',
-			logo: 'https://dashy.to/img/dashy.png',
-			stars: '20k',
+			logo: 'https://pixelflare.cc/alicia/logo/dashy/w128',
+			stars: '25k',
 			repo: 'lissy93/dashy',
 			web: 'https://dashy.to'
 		},
@@ -133,8 +133,8 @@
 			name: 'Web-Check',
 			description: 'All-in-one OSINT and security scanner',
 			tech: 'React',
-			logo: 'https://github.com/Lissy93/web-check/blob/master/.github/web-check-logo.png?raw=true',
-			stars: '25k',
+			logo: 'https://pixelflare.cc/alicia/logo/web-check/w128',
+			stars: '30k',
 			repo: 'lissy93/web-check',
 			web: 'https://web-check.xyz'
 		},
@@ -142,8 +142,8 @@
 			name: 'Digital Defense',
 			description: 'Ultimate checklist of online security tips',
 			tech: 'Solid',
-			logo: 'https://i.ibb.co/Rb6P6h6/shield.png',
-			stars: '19k',
+			logo: 'https://pixelflare.cc/alicia/logo/digital-defense/w128',
+			stars: '20k',
 			repo: 'lissy93/personal-security-checklist',
 			web: 'https://digital-defense.io'
 		},
@@ -151,8 +151,8 @@
 			name: 'Awesome Privacy',
 			description: 'Curated list of verified privacy-respecting services',
 			tech: 'Astro',
-			logo: 'https://github.com/Lissy93/awesome-privacy/blob/gh-pages/awesome-privacy.png?raw=true',
-			stars: '8k',
+			logo: 'https://pixelflare.cc/alicia/logo/awesome-privacy/w128',
+			stars: '10k',
 			repo: 'lissy93/awesome-privacy',
 			web: 'https://awesome-privacy.xyz'
 		},
@@ -160,7 +160,7 @@
 			name: 'AdGuardian Term',
 			description: 'Real-time traffic monitoring',
 			tech: 'Rust',
-			logo: 'https://i.ibb.co/25GNT0n/adguardian-banner-4.png',
+			logo: 'https://pixelflare.cc/alicia/logo/adguardian/w128',
 			stars: '1k',
 			repo: 'lissy93/AdGuardian-Term',
 			web: 'https://adguardian.as93.net'
@@ -169,7 +169,7 @@
 			name: 'Portainer Templates',
 			description: 'Over 500 1-click Docker apps',
 			tech: 'Python',
-			logo: 'https://i.ibb.co/hMymwH0/portainer-templates-small.png',
+			logo: 'https://pixelflare.cc/alicia/logo/portainer-templates/w128',
 			stars: '2k',
 			repo: 'Lissy93/portainer-templates',
 			web: 'https://portainer-templates.as93.net'
@@ -178,10 +178,19 @@
 			name: 'Domain Locker',
 			description: 'Complete domain name management suite',
 			tech: 'Angular',
-			logo: 'https://domain-locker.com/icons/android-chrome-192x192.png',
-			stars: '300',
+			logo: 'https://pixelflare.cc/alicia/logo/domain-locker/w128',
+			stars: '1k',
 			repo: 'Lissy93/domain-locker',
 			web: 'https://domain-locker.com'
+		},
+		{
+			name: 'Networking Toolbox',
+			description: 'Advanced network tools and utilities',
+			tech: 'Svelte',
+			logo: 'https://pixelflare.cc/alicia/logo/networking-toolbox-2/w128',
+			stars: '2k',
+			repo: 'Lissy93/networking-toolbox',
+			web: 'https://networkingtoolbox.net'
 		}
 	];
 
@@ -246,7 +255,7 @@
 	{#each projects as project}
 		<li>
 			<p class="top-line">
-				<img src={project.logo} alt={''} width="20" />
+				<img src={project.logo} alt="" width="20" />
 				<strong>
 					<a href={project.web}>{project.name}</a>
 				</strong>
@@ -273,14 +282,15 @@
 					<i class="fa-brands fa-github"></i>
 					{project.repo}
 				</a>
-				<!-- | 
+				<!-- |
         <a title={`View ${project.name}'s homepage`} href={project.web}>
           <i class="fa-solid fa-globe"></i> {normalizeUrl(project.web)}
         </a> -->
 				|
-				<span title="GitHub Star Count"
-					><i class="fa-solid fa-star"></i> Star Count: {project.stars}</span
-				>
+				<span title="GitHub Star Count">
+					<i class="fa-solid fa-star"></i>
+					Star Count: {project.stars}
+				</span>
 			</span>
 		</li>
 	{/each}
@@ -289,10 +299,15 @@
 <p class="projects-more">
 	The above is just to demonstrate my proficiency in the given tech stacks. But I'm very quick to
 	pick up new technologies. You can view my full catalog of apps at <a
-		href="https://apps.aliciasykes.com">apps.aliciasykes.com</a
-	>, or even more of my apps on my
-	<a href="https://github.com/lissy93?tab=repositories&q=&type=&language=&sort=stargazers">GitHub</a
-	>.
+		href="https://apps.aliciasykes.com"
+	>
+		apps.aliciasykes.com
+	</a>
+	, or even more of my apps on my
+	<a href="https://github.com/lissy93?tab=repositories&q=&type=&language=&sort=stargazers">
+		GitHub
+	</a>
+	.
 </p>
 
 <hr />
@@ -326,8 +341,7 @@
 	p,
 	a,
 	li,
-	span,
-	div {
+	span {
 		font-size: 0.9rem;
 	}
 	ul {
@@ -377,8 +391,6 @@
 				gap: 0.5rem;
 				justify-content: center;
 				align-items: center;
-				a {
-				}
 			}
 			i {
 				font-size: 0.8rem;
@@ -405,8 +417,8 @@
 	}
 
 	.hackathon-image {
+		width: 100%;
 		margin: 1rem auto 0 auto;
-		max-width: 100%;
 	}
 
 	.projects-more {

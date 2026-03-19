@@ -81,25 +81,26 @@
 
 <h2>Why me?</h2>
 <p>
-	I'm an accomplished full-stack senior developer, just take a look at my recent <a
-		href="/achievements">achievements</a
-	>
-	for evidence of this! You can learn more about me, my attributes and the philosophy that drives me
-	in my <a href="/intro">intro</a> page. Or if you prefer to see my past work, take a look at my
-	published apps at <a href="https://apps.aliciasykes.com">apps.aliciasykes.com</a>
+	I'm an accomplished full-stack senior developer, just take a look at my recent
+	<a href="/achievements">achievements</a>
+	for evidence of this! You can learn more about me, my attributes and the philosophy that drives me in
+	my
+	<a href="/intro">intro</a>
+	page. Or if you prefer to see my past work, take a look at my published apps at
+	<a href="https://apps.aliciasykes.com">apps.aliciasykes.com</a>
 </p>
 
 <h2>Get in Touch</h2>
 <p>
-	Does this sound good to you? If so, I'd love to hear from you! So please do <a href="/contact"
-		>get in touch</a
-	>.
+	Does this sound good to you? If so, I'd love to hear from you!
+	So please do <a href="/contact">get in touch</a>.
 </p>
 
 <div class="other-pages">
 	{#each navLinks as { name, url, icon }}
-		<a href={url} class="no-underline">
-			<button class="big-btn"><i class="fa-solid {icon}"></i>{name}</button>
+		<a href={url} class="big-btn no-underline">
+			<i class="fa-solid {icon}"></i>
+			{name}
 		</a>
 	{/each}
 </div>
@@ -141,11 +142,9 @@
 		gap: 1rem;
 		margin: 1rem 0;
 		a {
-			button {
-				margin: 0;
-				font-size: 1rem;
-				padding: 0.5rem 0.5rem;
-			}
+			margin: 0;
+			font-size: 1rem;
+			padding: 0.5rem 0.5rem;
 		}
 	}
 </style>

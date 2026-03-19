@@ -116,8 +116,9 @@
 
 <div class="other-pages">
 	{#each navLinks as { name, url, icon }}
-		<a href={url} class="no-underline">
-			<button class="big-btn"><i class="fa-solid {icon}"></i>{name}</button>
+		<a href={url} class="big-btn no-underline">
+			<i class="fa-solid {icon}"></i>
+			{name}
 		</a>
 	{/each}
 </div>
@@ -144,11 +145,9 @@
 		grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
 		gap: 1rem;
 		a {
-			button {
-				margin: 0;
-				font-size: 1rem;
-				padding: 0.5rem 0.5rem;
-			}
+			margin: 0;
+			font-size: 1rem;
+			padding: 0.5rem 0.5rem;
 		}
 	}
 </style>

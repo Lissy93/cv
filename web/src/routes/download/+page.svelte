@@ -2,8 +2,8 @@
 	import { onMount } from 'svelte';
 	import { browser } from '$app/environment';
 
-	let loading = true;
-	let error = false;
+	let loading = $state(true);
+	let error = $state(false);
 
 	onMount(async () => {
 		if (browser) {
@@ -63,9 +63,9 @@
 		<p>Sorry, there was an issue downloading the CV. You can try:</p>
 		<ul>
 			<li>
-				<a href="https://github.com/Lissy93/cv/releases/latest" target="_blank" rel="noopener"
-					>Visit the releases page directly</a
-				>
+				<a href="https://github.com/Lissy93/cv/releases/latest" target="_blank" rel="noopener">
+					Visit the releases page directly
+				</a>
 			</li>
 			<li><a href="/">Return to the CV website</a></li>
 		</ul>
