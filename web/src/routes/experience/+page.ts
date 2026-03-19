@@ -1,13 +1,9 @@
 import yaml from 'js-yaml';
 import type { PageLoad } from './$types';
+import resumeYaml from '../../../../resume.yml?raw';
+import additionalData from '../../../static/data/additional-data.json';
 
 export const prerender = true;
-
-const yamlEndpoint = 'https://raw.githubusercontent.com/Lissy93/cv/HEAD/resume.yml';
-const jsonEndpoint =
-	'https://raw.githubusercontent.com/Lissy93/cv/refs/heads/main/web/static/data/additional-data.json';
-// const jsonEndpoint =
-// 	'https://gist.githubusercontent.com/Lissy93/f3f3ad8c35449043f4e68449a05afd4d/raw/4ad57ecd293f659892d38cdc0e4683df1c67e560/cv-data.json';
 
 const formatForCompare = (str: string) => {
 	if (!str) {
@@ -71,17 +67,10 @@ const mergeJobData = (cvData: any[], websiteData: any[]) => {
 	return [...combinedData, ...additionalWebsiteJobs];
 };
 
-export const load: PageLoad = async () => {
-	const [yamlResponse, jsonResponse] = await Promise.all([
-		fetch(yamlEndpoint),
-		fetch(jsonEndpoint)
-	]);
-
-	const yamlText = await yamlResponse.text();
+export const load: PageLoad = () => {
 	// eslint-disable-next-line @typescript-eslint/no-explicit-any
-	const cvData = ((yaml.load(yamlText) as any) || {}).work;
-	const websiteData = await jsonResponse.json();
-	const combinedJobData = mergeJobData(cvData, websiteData.workExperience);
+	const cvData = ((yaml.load(resumeYaml) as any) || {}).work;
+	const combinedJobData = mergeJobData(cvData, additionalData.workExperience);
 
 	return {
 		combinedJobData
