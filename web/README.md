@@ -32,14 +32,17 @@ npm run preview # Preview production build
 Config files: [`svelte.config.js`](https://github.com/Lissy93/cv/blob/main/web/svelte.config.js), [`vite.config.ts`](https://github.com/Lissy93/cv/blob/main/web/vite.config.ts)
 
 ## Tech Stack
+
 Built with SvelteKit, hosted on Vercel.
 
 ## Troubleshooting
 
 If you get Rollup errors on Apple Silicon, just clear cache first:
+
 ```bash
 rm -rf node_modules package-lock.json yarn.lock && npm install
 ```
 
 ## License
+
 See [`LICENSE`](https://github.com/Lissy93/cv/blob/main/LICENSE).

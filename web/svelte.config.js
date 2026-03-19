@@ -10,13 +10,15 @@ const config = {
 
 	kit: {
 		// Use static adapter for GitHub Pages deployment, auto adapter otherwise
-		adapter: process.env.GITHUB_PAGES ? adapterStatic({
-			pages: 'build',
-			assets: 'build',
-			fallback: 'index.html',
-			precompress: false,
-			strict: false
-		}) : adapterAuto()
+		adapter: process.env.GITHUB_PAGES
+			? adapterStatic({
+					pages: 'build',
+					assets: 'build',
+					fallback: 'index.html',
+					precompress: false,
+					strict: false
+				})
+			: adapterAuto()
 	}
 };
 
